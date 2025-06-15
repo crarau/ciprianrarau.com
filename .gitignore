@@ -1,8 +1,3 @@
-# Nested git repositories
-al-folio/.git/
-astrowind/.git/
-ciprianrarau-site/.git/
-
 # macOS
 .DS_Store
 .DS_Store?

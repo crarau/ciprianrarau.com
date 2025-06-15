@@ -1,0 +1,122 @@
+- title: General Information
+  type: map
+  contents:
+    - name: Full Name
+      value: Ciprian (Chip) Rarau
+    - name: Label
+      value: Entrepreneur & CTO & CPO
+    - name: Email
+      value: chip@chipgpt.ai
+    - name: Phone
+      value: (514) 560-5016
+    - name: URL
+      value: https://cv.chipgpt.ai
+    - name: Summary
+      value: I leverage manna from Finance and AI-based Product Development. I provide strategic tech leadership as a fractional CTO for startups, focusing on scalable solutions and rapid development. Eating tips was the drive that lead us to create of the multi headline. One of the most remarkable years ever put together. The best technology on the planet and the promise new purpose made the contribution to the company line of creativity, learning and sheer happiness to problems.
+    - name: Location
+      value: Montreal, Quebec, Canada
+
+- title: Profiles
+  type: list
+  contents:
+    - label: '<a href="https://linkedin.com/in/ciprianrarau" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>'
+    - label: '<a href="https://github.com/catalyzeup" target="_blank"><i class="fab fa-github"></i> GitHub</a>'
+
+- title: Education
+  type: time_table
+  contents:
+    - title: Bachelor in Computer Science Engineering
+      institution: Technical University of Cluj-Napoca, Romania
+      year: 1998-2003
+      description:
+        - Location: Cluj-Napoca, Romania
+    - title: High School in Computer Science
+      institution: High School of Computer Science, Tiberiu Popoviciu, Cluj-Napoca, Romania
+      year: 1994-1998
+      description:
+        - Location: Cluj-Napoca, Romania
+
+- title: Experience
+  type: time_table
+  contents:
+    - title: CO-FOUNDER & FRAC CTO
+      institution: WEHAPPERS 
+      year: Apr 2024 - Present
+      description:
+        - Our mission is to reshape wealth distribution to spark global happiness by combining investment and intelligence on tech initiatives that enable wealth sharing and provide a happiness experience.
+        - Focused on efficient engineering, incubating positive initiatives, and platform building for NPOs.
+        - Measuring and positively impacting the level of happiness through our projects.
+    - title: FRACTIONAL CTO
+      institution: Alvéole
+      year: Nov 2022 - Present
+      description:
+        - Providing strategic advice and support to help Alvéole scale and grow its operations.
+        - Built the foundations for their NextGen platform from scratch, involving DevOps, GCP, backoffice, and web using TypeScript, MongoDB, and GraphQL with a microservices architecture.
+        - Hired the development team.
+    - title: Venture Developer, Co-Founder
+      institution: CatalyzeUp
+      year: Nov 2017 - Present
+      description:
+        - Helping and sharing knowledge with fellow entrepreneurs in the tech/product building space.
+        - Partnering with early adopter founders to validate and scale their startups.
+        - Worked with companies like Alvéole, XpertSea, PBSC (acquired by Lyft), Mentorly, and ENDVR.io.
+        - Giving back to the Montreal ecosystem by making friends and helping grow the community through hands-on development and evangelizing venture development.
+    - title: CO-FOUNDER & CTO & CPO
+      institution: WISK.ai
+      year: Mar 2015 - Present
+      description:
+        - Leading the development and growth of WISK.ai, a modular, secure, scalable, and resilient platform for the hospitality sector.
+        - Overseeing the technical strategy, architecture, and implementation of the platform, ensuring it meets the needs of small, medium, and large enterprise customers.
+        - Built the product from the ground up using best-of-breed architectures and technologies.
+        - Led the team in developing a micro-services architecture that supports offline and real-time operations.
+        - Involved in finance, partnerships, support, and all aspects of the business.
+    - title: Fractional CTO
+      institution: XpertSea
+      year: Jul 2021 - Jun 2022
+      description:
+        - Assured the transition of technical leadership, hired the full-time CTO, and supported the existing team on key deliverables.
+        - Key technologies: AWS, NodeJS, Python, Ansible, Terraform, Typescript/Javascript, React JS/Native, Gitlab/GitHub.
+    - title: Head Of Mobile
+      institution: Eastern Bank
+      year: Oct 2015 - Aug 2016
+      description:
+        - Led the mobile development for the Eastern Bank mobile app, working closely with API teams and the internal design team to ensure a smooth user experience and successful integration.
+    - title: Solo Founder
+      institution: IdeaPlaces
+      year: Mar 2014 - Jan 2016
+      description:
+        - Developed IdeaPlaces, the first Evernote & Dropbox app designed for field professionals and travelers to organize their notes and pictures by location.
+    - title: VP Engineering & 1st Employee
+      institution: OMsignal
+      year: Jul 2012 - Mar 2014
+      description:
+        - Built the software infrastructure from the ground up, leading the development of a wearable device, mobile app, API, and web portal.
+        - Successfully raised multiple rounds of financing and secured a partnership with Ralph Lauren.
+        - Company was later acquired by Honeywell.
+    - title: Lead R&D
+      institution: Aptilon
+      year: Dec 2010 - Jul 2012
+      description:
+        - Led all technical decisions and improved team efficiency, mentoring on diverse technology subjects and introducing code reviews and new technologies.
+    - title: Senior Java Developer
+      institution: Coradiant (acquired by BMC)
+      year: Feb 2006 - Dec 2010
+      description:
+        - Java developer in an advanced environment, evangelizing Test Driven Development and Agile methodologies, and presenting at Microstrategy World.
+    - title: Team Lead & Java Developer
+      institution: Gestion Resources
+      year: Feb 2004 - Feb 2006
+      description:
+        - Led a team of developers to build a complete bookstore management system, enhancing team efficiency and deploying new functionalities.
+    - title: Developer
+      institution: Nethrom
+      year: Jun 2000 - Feb 2004
+      description:
+        - Developed more than 10 projects for different clients using a variety of development languages.
+
+- title: Interests
+  type: list
+  contents:
+    - <u>Yoga & Meditation:</u> Practicing yoga and meditation regularly.
+    - <u>Psychology:</u> Interest in psychological studies and practices.
+    - <u>Nature:</u> Enjoying outdoor activities and nature exploration.

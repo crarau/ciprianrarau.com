@@ -1,0 +1,7 @@
+<ul class="card-text font-weight-light list-group list-group-flush">
+  {% for content in entry.contents %}
+    <li class="list-group-item">
+      {{ content.label | raw }}
+    </li>
+  {% endfor %}
+</ul>
