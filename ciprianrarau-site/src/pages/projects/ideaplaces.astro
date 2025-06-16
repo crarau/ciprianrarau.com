@@ -1,0 +1,270 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Content from '~/components/widgets/Content.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import ImageCarousel from '~/components/widgets/ImageCarousel.astro';
+import { getPermalink } from '~/utils/permalinks';
+
+// IdeaPlaces project images
+const ideaplacesImages = [
+  { src: '/images/projects/ideaplaces/image1.png', alt: 'IdeaPlaces App Interface' },
+  { src: '/images/projects/ideaplaces/image2.png', alt: 'IdeaPlaces Map View' },
+  { src: '/images/projects/ideaplaces/image3.png', alt: 'IdeaPlaces Evernote Integration' },
+  { src: '/images/projects/ideaplaces/image4.png', alt: 'IdeaPlaces Dropbox Integration' },
+  { src: '/images/projects/ideaplaces/image5.png', alt: 'IdeaPlaces Photo Mapping' },
+  { src: '/images/projects/ideaplaces/image6.png', alt: 'IdeaPlaces Location Notes' },
+];
+
+const metadata = {
+  title: 'IdeaPlaces - Location-based note organization app | Ciprian Rarau',
+  description: 'The first Evernote & Dropbox app designed for field professionals and travellers to organize their notes and pictures by location.',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+  <Hero
+    tagline="Project Showcase"
+    title="IdeaPlaces"
+    subtitle="Map Your Dropbox, Evernote and Photos"
+    actions={[
+      { variant: 'primary', text: 'Back to Projects', href: getPermalink('/#projects') },
+    ]}
+  />
+
+  <!-- Project Gallery -->
+  <ImageCarousel
+    images={ideaplacesImages}
+    title="Project Gallery"
+    subtitle="Screenshots from IdeaPlaces showing the innovative location-based note organization app for field professionals and travelers"
+    id="ideaplaces-gallery"
+  />
+
+  <!-- Project Overview -->
+  <Content
+    items={[
+      {
+        title: 'Role',
+        description: 'Founder (2014 - 2016)',
+        icon: 'tabler:user',
+      },
+      {
+        title: 'Industry',
+        description: 'Productivity & Travel Apps',
+        icon: 'tabler:building',
+      },
+      {
+        title: 'Platform',
+        description: 'Mobile App (iOS/Android)',
+        icon: 'tabler:device-mobile',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/projects/ideaplaces/image1.png',
+      alt: 'IdeaPlaces App Interface',
+    }}
+  >
+    <Fragment slot="content">
+      <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Project Overview</h2>
+      <p class="text-lg">
+        IdeaPlaces is the first Evernote & Dropbox app designed for field professionals and travellers to organize their notes and pictures by location. The app represents the evolution in note taking by helping users pin point their notes on a map for greater accuracy, improved collaboration and ultimately drive productivity.
+      </p>
+      <br />
+      <p class="text-lg">
+        Professionals and travellers now have a simple and efficient tool to keep track of their notes and pictures by location on a map. IdeaPlaces provides independent workers to small-medium businesses with their location-based notes.
+      </p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Key Features -->
+  <Features3
+    title="Key Features"
+    subtitle="Revolutionary location-based organization for your digital life"
+    columns={2}
+    items={[
+      {
+        title: 'Evernote Integration',
+        description: 'Seamlessly sync and organize your Evernote notes by location on an interactive map',
+        icon: 'tabler:notebook',
+      },
+      {
+        title: 'Dropbox Integration',
+        description: 'Access and organize your Dropbox files based on where they were created or needed',
+        icon: 'tabler:cloud',
+      },
+      {
+        title: 'Photo Mapping',
+        description: 'Automatically map your photos to locations and browse them geographically',
+        icon: 'tabler:photo',
+      },
+      {
+        title: 'Field Professional Tools',
+        description: 'Built specifically for professionals who work across multiple locations',
+        icon: 'tabler:tools',
+      },
+      {
+        title: 'Travel Organization',
+        description: 'Perfect for travelers to organize memories, notes, and documents by destination',
+        icon: 'tabler:plane',
+      },
+      {
+        title: 'Cross-Platform Sync',
+        description: 'Available on iOS and Android with real-time synchronization across devices',
+        icon: 'tabler:refresh',
+      },
+    ]}
+  />
+
+  <!-- Technologies Used -->
+  <Content
+    isReversed
+    isAfterContent
+    items={[
+      {
+        title: 'Mobile Development',
+        description: 'Native iOS and Android development for optimal performance',
+        icon: 'tabler:device-mobile',
+      },
+      {
+        title: 'API Integration',
+        description: 'Deep integration with Evernote and Dropbox APIs',
+        icon: 'tabler:api',
+      },
+      {
+        title: 'Mapping Technology',
+        description: 'Advanced mapping and geolocation services',
+        icon: 'tabler:map',
+      },
+      {
+        title: 'Cloud Synchronization',
+        description: 'Real-time sync across devices and platforms',
+        icon: 'tabler:cloud-computing',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/projects/ideaplaces/image2.png',
+      alt: 'IdeaPlaces Map View',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Technologies & Architecture</h3>
+      <p class="text-lg">
+        Built with modern mobile development practices and robust API integrations to ensure seamless user experience across platforms.
+      </p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Results & Impact -->
+  <Content
+    items={[
+      {
+        title: '25,000+',
+        description: 'App downloads across iOS and Android platforms',
+        icon: 'tabler:download',
+      },
+      {
+        title: 'Featured',
+        description: 'Featured by Evernote in their official ecosystem',
+        icon: 'tabler:star',
+      },
+      {
+        title: 'Business Traction',
+        description: 'Significant business traction with growing user base',
+        icon: 'tabler:trending-up',
+      },
+      {
+        title: 'Innovation',
+        description: 'First-to-market solution for location-based note organization',
+        icon: 'tabler:bulb',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/projects/ideaplaces/image3.png',
+      alt: 'IdeaPlaces Evernote Integration',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Results & Impact</h3>
+      <p class="text-lg">
+        IdeaPlaces achieved significant market recognition and user adoption, demonstrating the value of location-based productivity tools. The app's success led to being featured by Evernote and achieving substantial download numbers.
+      </p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Skills Developed -->
+  <Features3
+    title="Skills & Technologies"
+    subtitle="Technical expertise gained through this project"
+    columns={3}
+    defaultIcon="tabler:check"
+    items={[
+      {
+        title: 'Entrepreneurship',
+        description: 'Solo founder experience from concept to market',
+      },
+      {
+        title: 'Mobile Application Development',
+        description: 'Native iOS and Android development',
+      },
+      {
+        title: 'Business Strategy',
+        description: 'Market positioning and go-to-market strategy',
+      },
+      {
+        title: 'NoSQL Databases',
+        description: 'Data storage and synchronization',
+      },
+      {
+        title: 'Clean Coding',
+        description: 'Maintainable and scalable code architecture',
+      },
+      {
+        title: 'Product Development',
+        description: 'End-to-end product development lifecycle',
+      },
+      {
+        title: 'Swift Programming',
+        description: 'iOS development with Swift',
+      },
+      {
+        title: 'Team Leadership',
+        description: 'Leading development and business decisions',
+      },
+      {
+        title: 'Start-ups',
+        description: 'Building and scaling a startup from scratch',
+      },
+    ]}
+  />
+
+  <!-- Call to Action -->
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'View All Projects',
+        href: getPermalink('/#projects'),
+      },
+      {
+        text: 'Contact Me',
+        href: getPermalink('/contact'),
+      },
+    ]}
+    title="Interested in similar innovation?"
+    subtitle="Let's discuss how I can help bring your next big idea to life with the same passion and technical expertise."
+  />
+</Layout> 

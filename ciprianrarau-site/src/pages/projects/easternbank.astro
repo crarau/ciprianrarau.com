@@ -1,0 +1,309 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Content from '~/components/widgets/Content.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import ImageCarousel from '~/components/widgets/ImageCarousel.astro';
+import { getPermalink } from '~/utils/permalinks';
+
+// Eastern Bank project images
+const easternbankImages = [
+  { src: '/images/projects/easternbank/image06.png', alt: 'Eastern Bank User Experience' },
+  { src: '/images/projects/easternbank/image01.png', alt: 'Eastern Bank Mobile App Interface' },
+  { src: '/images/projects/easternbank/image02.png', alt: 'Eastern Bank Account Management' },
+  { src: '/images/projects/easternbank/image03.png', alt: 'Eastern Bank Mobile Banking Features' },
+  { src: '/images/projects/easternbank/image04.png', alt: 'Eastern Bank Digital Transformation' },
+  { src: '/images/projects/easternbank/image05.png', alt: 'Eastern Bank Security Implementation' },
+];
+
+const metadata = {
+  title: 'Eastern Bank - Mobile Banking Leadership | Ciprian Rarau',
+  description: 'Head of Mobile at Eastern Bank. Led mobile banking initiatives and digital transformation for New England\'s largest mutual bank.',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+  <Hero
+    tagline="Project Showcase"
+    title="Eastern Bank"
+    subtitle="Mobile Banking Leadership"
+    actions={[
+      { variant: 'primary', text: 'Back to Projects', href: getPermalink('/#projects') },
+    ]}
+  />
+
+  <!-- Project Gallery -->
+  <ImageCarousel
+    images={easternbankImages}
+    title="Project Gallery"
+    subtitle="Screenshots from Eastern Bank's mobile banking application showcasing the digital transformation and user experience improvements"
+    id="easternbank-gallery"
+  />
+
+  <!-- Project Overview -->
+  <Content
+    items={[
+      {
+        title: 'Role',
+        description: 'Head of Mobile (2015 - 2016)',
+        icon: 'tabler:user',
+      },
+      {
+        title: 'Industry',
+        description: 'Financial Services & Banking',
+        icon: 'tabler:building-bank',
+      },
+      {
+        title: 'Institution',
+        description: 'New England\'s Largest Mutual Bank',
+        icon: 'tabler:building-community',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/projects/easternbank/image01.png',
+      alt: 'Eastern Bank Mobile App Interface',
+    }}
+  >
+    <Fragment slot="content">
+      <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Project Overview</h2>
+      <p class="text-lg">
+        Eastern Bank is New England's largest mutual bank, serving communities across Massachusetts, New Hampshire, and Rhode Island. As Head of Mobile, I led the bank's digital transformation initiatives, focusing on modernizing their mobile banking capabilities and enhancing customer digital experience.
+      </p>
+      <br />
+      <p class="text-lg">
+        My role involved leading the mobile banking strategy, overseeing development teams, and ensuring that Eastern Bank's mobile offerings met the evolving needs of their customers while maintaining the security and compliance standards required in the financial services industry.
+      </p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Mobile Banking Initiatives -->
+  <Features3
+    title="Mobile Banking Transformation"
+    subtitle="Leading digital innovation in community banking"
+    columns={2}
+    items={[
+      {
+        title: 'Mobile App Development',
+        description: 'Led development of modern, user-friendly mobile banking applications for iOS and Android',
+        icon: 'tabler:device-mobile',
+      },
+      {
+        title: 'Digital Strategy',
+        description: 'Developed comprehensive mobile-first strategy for customer engagement and service delivery',
+        icon: 'tabler:target',
+      },
+      {
+        title: 'User Experience Design',
+        description: 'Focused on intuitive, accessible design for diverse customer demographics',
+        icon: 'tabler:palette',
+      },
+      {
+        title: 'Security Implementation',
+        description: 'Implemented robust security measures including multi-factor authentication and fraud prevention',
+        icon: 'tabler:shield-check',
+      },
+      {
+        title: 'Team Leadership',
+        description: 'Built and managed cross-functional teams including developers, designers, and product managers',
+        icon: 'tabler:users',
+      },
+      {
+        title: 'Regulatory Compliance',
+        description: 'Ensured all mobile solutions met strict banking regulations and compliance requirements',
+        icon: 'tabler:certificate',
+      },
+    ]}
+  />
+
+  <!-- Technical Excellence -->
+  <Content
+    isReversed
+    isAfterContent
+    items={[
+      {
+        title: 'Native Mobile Development',
+        description: 'High-performance native applications for optimal user experience on both platforms',
+        icon: 'tabler:device-mobile',
+      },
+      {
+        title: 'Banking APIs',
+        description: 'Secure integration with core banking systems and third-party financial services',
+        icon: 'tabler:api',
+      },
+      {
+        title: 'Financial Security',
+        description: 'Enterprise-grade security architecture protecting customer financial data',
+        icon: 'tabler:lock',
+      },
+      {
+        title: 'Performance Optimization',
+        description: 'Optimized mobile performance for seamless banking transactions and account management',
+        icon: 'tabler:speedboat',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/projects/easternbank/image06.png',
+      alt: 'Eastern Bank User Experience',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Technical Excellence</h3>
+      <p class="text-lg">
+        Built cutting-edge mobile banking solutions that combined user-friendly design with enterprise-level security and performance, meeting the demanding requirements of the financial services industry.
+      </p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Banking Features -->
+  <Content
+    items={[
+      {
+        title: 'Account Management',
+        description: 'Comprehensive account viewing, transaction history, and account-to-account transfers',
+        icon: 'tabler:wallet',
+      },
+      {
+        title: 'Mobile Deposits',
+        description: 'Secure mobile check deposit functionality with real-time processing',
+        icon: 'tabler:photo',
+      },
+      {
+        title: 'Bill Pay',
+        description: 'Streamlined bill payment system with scheduling and recurring payment options',
+        icon: 'tabler:credit-card',
+      },
+      {
+        title: 'ATM/Branch Locator',
+        description: 'GPS-enabled locator for nearby ATMs and branch locations with real-time information',
+        icon: 'tabler:map-pin',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/projects/easternbank/image03.png',
+      alt: 'Eastern Bank Mobile Banking Features',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Banking Features</h3>
+      <p class="text-lg">
+        Delivered comprehensive mobile banking functionality that enabled customers to manage their finances anytime, anywhere, while maintaining the personal touch that defines community banking.
+      </p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Community Banking Impact -->
+  <Features3
+    title="Community Banking Innovation"
+    subtitle="Modernizing community banking while preserving personal relationships"
+    columns={2}
+    items={[
+      {
+        title: 'Customer Experience',
+        description: 'Enhanced digital customer experience while maintaining Eastern Bank\'s community-focused values',
+        icon: 'tabler:heart',
+      },
+      {
+        title: 'Accessibility',
+        description: 'Made banking services more accessible to diverse communities across New England',
+        icon: 'tabler:eye',
+      },
+      {
+        title: 'Digital Inclusion',
+        description: 'Bridged the digital divide by creating intuitive banking solutions for all skill levels',
+        icon: 'tabler:users-group',
+      },
+      {
+        title: 'Operational Efficiency',
+        description: 'Streamlined banking operations while reducing costs and improving service delivery',
+        icon: 'tabler:clock',
+      },
+      {
+        title: 'Competitive Advantage',
+        description: 'Positioned Eastern Bank competitively against larger national banks through superior mobile experience',
+        icon: 'tabler:trophy',
+      },
+      {
+        title: 'Innovation Culture',
+        description: 'Fostered a culture of digital innovation within the traditional banking environment',
+        icon: 'tabler:bulb',
+      },
+    ]}
+  />
+
+  <!-- Skills & Technologies -->
+  <Features3
+    title="Banking Technology Expertise"
+    subtitle="Technical skills and leadership capabilities developed in financial services"
+    columns={3}
+    defaultIcon="tabler:check"
+    items={[
+      {
+        title: 'Mobile Application Development',
+        description: 'Native iOS and Android banking applications',
+      },
+      {
+        title: 'Financial Services APIs',
+        description: 'Core banking system integrations',
+      },
+      {
+        title: 'Security Architecture',
+        description: 'Enterprise-grade financial security implementation',
+      },
+      {
+        title: 'Regulatory Compliance',
+        description: 'Banking regulations and compliance management',
+      },
+      {
+        title: 'Team Leadership',
+        description: 'Cross-functional team management and development',
+      },
+      {
+        title: 'Product Strategy',
+        description: 'Mobile banking product roadmap and strategy',
+      },
+      {
+        title: 'User Experience Design',
+        description: 'Customer-centric design for financial applications',
+      },
+      {
+        title: 'Agile Development',
+        description: 'Agile methodologies in regulated environments',
+      },
+      {
+        title: 'Digital Transformation',
+        description: 'Leading organizational digital transformation initiatives',
+      },
+    ]}
+  />
+
+  <!-- Call to Action -->
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'View All Projects',
+        href: getPermalink('/#projects'),
+      },
+      {
+        text: 'Contact Me',
+        href: getPermalink('/contact'),
+      },
+    ]}
+    title="Ready to lead your digital transformation?"
+    subtitle="I can help modernize your organization's technology while maintaining the values and relationships that define your business."
+  />
+</Layout> 

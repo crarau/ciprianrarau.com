@@ -1,0 +1,322 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Content from '~/components/widgets/Content.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import ImageCarousel from '~/components/widgets/ImageCarousel.astro';
+import { getPermalink } from '~/utils/permalinks';
+
+// Alveole project images
+const alveoleImages = [
+  { src: '/images/projects/alveole/image4.png', alt: 'Alvéole Educational Programs' },
+  { src: '/images/projects/alveole/image1.png', alt: 'Alvéole Urban Beekeeping Platform' },
+  { src: '/images/projects/alveole/image2.png', alt: 'Alvéole Hive Management System' },
+  { src: '/images/projects/alveole/image3.png', alt: 'Alvéole Corporate Beekeeping' },
+  { src: '/images/projects/alveole/image5.png', alt: 'Alvéole Honey Production' },
+  { src: '/images/projects/alveole/image6.png', alt: 'Alvéole Community Engagement' },
+  { src: '/images/projects/alveole/image7.png', alt: 'Alvéole Technology Integration' },
+  { src: '/images/projects/alveole/image8.png', alt: 'Alvéole Urban Agriculture' },
+  { src: '/images/projects/alveole/image9.png', alt: 'Alvéole Sustainability Impact' },
+  { src: '/images/projects/alveole/image10.png', alt: 'Alvéole Pollinator Conservation' },
+  { src: '/images/projects/alveole/image11.png', alt: 'Alvéole City Partnerships' },
+  { src: '/images/projects/alveole/image12.png', alt: 'Alvéole Environmental Education' },
+  { src: '/images/projects/alveole/image13.png', alt: 'Alvéole Bee Monitoring' },
+  { src: '/images/projects/alveole/image14.png', alt: 'Alvéole Global Expansion' },
+  { src: '/images/projects/alveole/image15.png', alt: 'Alvéole Platform Analytics' },
+  { src: '/images/projects/alveole/image16.png', alt: 'Alvéole Urban Ecosystem' },
+];
+
+const metadata = {
+  title: 'Alvéole - Urban beekeeping platform | Ciprian Rarau',
+  description: 'Advisor at Alvéole. Provided strategic technical guidance for urban beekeeping platform focused on clean coding, systems design, and architecture.',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+  <Hero
+    tagline="Project Showcase"
+    title="Alvéole"
+    subtitle="Urban beekeeping platform"
+    actions={[
+      { variant: 'primary', text: 'Visit Alvéole', href: 'https://alveole.buzz', target: '_blank', icon: 'tabler:external-link' },
+      { text: 'Back to Projects', href: getPermalink('/#projects') },
+    ]}
+  />
+
+  <!-- Project Gallery -->
+  <ImageCarousel
+    images={alveoleImages}
+    title="Project Gallery"
+    subtitle="Screenshots and interfaces from Alvéole's urban beekeeping platform showcasing their global impact on cities and communities"
+    id="alveole-gallery"
+  />
+
+  <!-- Project Overview -->
+  <Content
+    items={[
+      {
+        title: 'Role',
+        description: 'Advisor (Jan 2023 - May 2024)',
+        icon: 'tabler:user',
+      },
+      {
+        title: 'Industry',
+        description: 'Urban Agriculture & Sustainability',
+        icon: 'tabler:building',
+      },
+      {
+        title: 'Focus',
+        description: 'Technical Strategy & Architecture',
+        icon: 'tabler:chart-pie',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/projects/alveole/image1.png',
+      alt: 'Alvéole Urban Beekeeping Platform',
+    }}
+  >
+    <Fragment slot="content">
+      <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Project Overview</h2>
+      <p class="text-lg">
+        Alvéole is a pioneering urban beekeeping company that brings the magic of bees to cities worldwide. As an Advisor, I provided strategic technical guidance to support their mission of making urban beekeeping accessible and sustainable for businesses, communities, and individuals.
+      </p>
+      <br />
+      <p class="text-lg">
+        My role focused on clean coding practices, systems design, database architecture, and technical reviews to ensure their platform could scale effectively while maintaining the quality and reliability needed for their growing urban beekeeping network.
+      </p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Urban Beekeeping Mission -->
+  <Features3
+    title="Urban Beekeeping Innovation"
+    subtitle="Transforming how cities interact with nature through bee-friendly initiatives"
+    columns={2}
+    items={[
+      {
+        title: 'Corporate Beekeeping',
+        description: 'Helping companies integrate beehives into their office spaces and sustainability programs',
+        icon: 'tabler:building-community',
+      },
+      {
+        title: 'Educational Programs',
+        description: 'Teaching urban communities about bee ecology and environmental stewardship',
+        icon: 'tabler:school',
+      },
+      {
+        title: 'Honey Production',
+        description: 'Local honey production right in the heart of urban environments',
+        icon: 'tabler:droplet',
+      },
+      {
+        title: 'Pollinator Conservation',
+        description: 'Supporting urban biodiversity through strategic pollinator habitat creation',
+        icon: 'tabler:flower',
+      },
+      {
+        title: 'Technology Integration',
+        description: 'Smart hive monitoring and management systems for urban environments',
+        icon: 'tabler:device-analytics',
+      },
+      {
+        title: 'Community Building',
+        description: 'Creating connections between urban dwellers and natural ecosystems',
+        icon: 'tabler:users',
+      },
+    ]}
+  />
+
+  <!-- Technical Contributions -->
+  <Content
+    isReversed
+    isAfterContent
+    items={[
+      {
+        title: 'Clean Code Practices',
+        description: 'Established coding standards and best practices for maintainable, scalable codebase',
+        icon: 'tabler:code',
+      },
+      {
+        title: 'Systems Design',
+        description: 'Architectural guidance for platform scalability and performance optimization',
+        icon: 'tabler:hierarchy',
+      },
+      {
+        title: 'Database Architecture',
+        description: 'Database design optimization for efficient data management and querying',
+        icon: 'tabler:database',
+      },
+      {
+        title: 'Code Reviews',
+        description: 'Technical reviews ensuring quality, security, and performance standards',
+        icon: 'tabler:search',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/projects/alveole/image4.png',
+      alt: 'Alvéole Educational Programs',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Technical Excellence</h3>
+      <p class="text-lg">
+        Provided strategic technical guidance to ensure Alvéole's platform could support their ambitious mission of bringing urban beekeeping to cities around the world.
+      </p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Impact & Results -->
+  <Content
+    items={[
+      {
+        title: 'Global Expansion',
+        description: 'Supporting technical foundation for expansion into multiple cities and countries',
+        icon: 'tabler:world',
+      },
+      {
+        title: 'Platform Scalability',
+        description: 'Architecture improvements enabling growth of urban beekeeping network',
+        icon: 'tabler:trending-up',
+      },
+      {
+        title: 'Code Quality',
+        description: 'Established maintainable codebase supporting long-term development goals',
+        icon: 'tabler:shield-check',
+      },
+      {
+        title: 'Environmental Impact',
+        description: 'Technology supporting urban biodiversity and environmental sustainability initiatives',
+        icon: 'tabler:leaf',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/projects/alveole/image14.png',
+      alt: 'Alvéole Global Expansion',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Impact & Results</h3>
+      <p class="text-lg">
+        My technical advisory work helped strengthen Alvéole's platform foundation, enabling them to scale their urban beekeeping mission across multiple cities while maintaining high-quality service delivery.
+      </p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Urban Beekeeping Benefits -->
+  <Features3
+    title="Urban Beekeeping Benefits"
+    subtitle="How Alvéole's platform creates value for cities, businesses, and communities"
+    columns={2}
+    items={[
+      {
+        title: 'Biodiversity Support',
+        description: 'Increasing urban pollinator populations to support city ecosystems',
+        icon: 'tabler:butterfly',
+      },
+      {
+        title: 'Environmental Education',
+        description: 'Raising awareness about bee ecology and environmental conservation',
+        icon: 'tabler:book',
+      },
+      {
+        title: 'Corporate Sustainability',
+        description: 'Helping businesses meet environmental and social responsibility goals',
+        icon: 'tabler:certificate',
+      },
+      {
+        title: 'Local Food Production',
+        description: 'Creating hyper-local honey production in urban environments',
+        icon: 'tabler:apple',
+      },
+      {
+        title: 'Community Engagement',
+        description: 'Building connections between people and nature in urban settings',
+        icon: 'tabler:heart',
+      },
+      {
+        title: 'Urban Planning',
+        description: 'Integrating green infrastructure into city development strategies',
+        icon: 'tabler:map',
+      },
+    ]}
+  />
+
+  <!-- Skills & Technologies -->
+  <Features3
+    title="Advisory Focus Areas"
+    subtitle="Technical expertise provided during the advisory engagement"
+    columns={3}
+    defaultIcon="tabler:check"
+    items={[
+      {
+        title: 'Clean Coding',
+        description: 'Code quality and maintainability standards',
+      },
+      {
+        title: 'Systems Design',
+        description: 'Scalable architecture planning and review',
+      },
+      {
+        title: 'Database Systems',
+        description: 'Database design and optimization strategies',
+      },
+      {
+        title: 'Code Reviews',
+        description: 'Technical review processes and quality assurance',
+      },
+      {
+        title: 'Architecture Review',
+        description: 'System architecture evaluation and recommendations',
+      },
+      {
+        title: 'Technical Strategy',
+        description: 'Long-term technical planning and roadmap guidance',
+      },
+      {
+        title: 'Platform Scalability',
+        description: 'Growth planning and scalability considerations',
+      },
+      {
+        title: 'Best Practices',
+        description: 'Development methodology and process improvements',
+      },
+      {
+        title: 'Urban AgTech',
+        description: 'Technology solutions for urban agriculture',
+      },
+    ]}
+  />
+
+  <!-- Call to Action -->
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Visit Alvéole',
+        href: 'https://alveole.buzz',
+        target: '_blank',
+        icon: 'tabler:external-link',
+      },
+      {
+        text: 'View All Projects',
+        href: getPermalink('/#projects'),
+      },
+    ]}
+    title="Need technical advisory for your mission-driven platform?"
+    subtitle="I can help provide strategic technical guidance to support your vision for positive environmental and social impact."
+  />
+</Layout> 

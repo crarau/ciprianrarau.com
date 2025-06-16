@@ -2,18 +2,16 @@
 import Layout from '~/layouts/PageLayout.astro';
 
 import Hero from '~/components/widgets/Hero.astro';
-import Note from '~/components/widgets/Note.astro';
-import Features from '~/components/widgets/Features.astro';
-import Features2 from '~/components/widgets/Features2.astro';
-import Steps from '~/components/widgets/Steps.astro';
 import Content from '~/components/widgets/Content.astro';
-import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
-import FAQs from '~/components/widgets/FAQs.astro';
-import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
+import { Icon } from 'astro-icon/components';
+import { getPermalink } from '~/utils/permalinks';
 
 const metadata = {
-  title: 'AstroWind — Free template for creating websites with Astro + Tailwind CSS',
+  title: 'Ciprian (Chip) Rarau - Entrepreneur & CTO',
   ignoreTitleTemplate: true,
 };
 ---
@@ -22,116 +20,59 @@ const metadata = {
   <!-- Hero Widget ******************* -->
 
   <Hero
-    actions={[
-      {
-        variant: 'primary',
-        text: 'Get template',
-        href: 'https://github.com/onwidget/astrowind',
-        target: '_blank',
-        icon: 'tabler:download',
-      },
-      { text: 'Learn more', href: '#features' },
-    ]}
-    image={{ src: '~/assets/images/hero-image.png', alt: 'AstroWind Hero Image' }}
+    id="hero"
+    title="Ciprian (Chip) Rarau"
+    tagline="Entrepreneur & CTO"
+    actions={[{ variant: 'primary', text: 'Hire me', href: getPermalink('/contact') }]}
   >
-    <Fragment slot="title">
-      Free template for <span class="hidden xl:inline">creating websites with</span>
-      <span class="text-accent dark:text-white"> Astro 5.0</span> + Tailwind CSS
-    </Fragment>
-
     <Fragment slot="subtitle">
-      <span class="hidden sm:inline">
-        <span class="font-semibold">AstroWind</span> is a free, customizable and production-ready template for Astro 5.0
-        + Tailwind CSS.</span
-      >
-      <span class="block mb-1 sm:hidden font-bold text-blue-600">AstroWind: Production-ready.</span>
-      Suitable for Startups, Small Business, SaaS websites, Professional Portfolios, Marketing websites, Landing Pages &
-      Blogs.
+      Systems thinker and hands-on builder with 25+ years across tech, product, and business. I've built companies from scratch, scaled platforms to millions in revenue, and delivered high-performance systems that keep growing.
+      <br /><br />
+      Currently leveraging AI to unlock new areas of business that were previously unimaginable. If you're building something and need a partner who can move across code, product, and business with speed and care—let's talk.
     </Fragment>
   </Hero>
 
-  <!-- Note Widget ******************* -->
-
-  <Note title="Philosophy:" description="Simplicity, Best Practices and High Performance" />
-
-  <!-- Features Widget *************** -->
-
-  <Features
-    id="features"
-    tagline="Features"
-    title="What you get with AstroWind"
-    subtitle="One of the most professional and comprehensive templates currently on the market. Most starred & forked Astro theme in 2022, 2023 and 2024."
-    items={[
-      {
-        title: 'Astro + Tailwind CSS Integration',
-        description:
-          'A seamless integration between two great frameworks that offer high productivity, performance and versatility.',
-        icon: 'tabler:brand-tailwind',
-      },
-      {
-        title: 'Ready-to-use Components',
-        description:
-          'Widgets made with Tailwind CSS ready to be used in Marketing Websites, SaaS, Blogs, Personal Profiles, Small Business...',
-        icon: 'tabler:components',
-      },
-      {
-        title: 'Best Practices',
-        description:
-          'Creating secure, efficient, and user-friendly websites that deliver exceptional experiences and lasting value.',
-        icon: 'tabler:list-check',
-      },
-      {
-        title: 'Excellent Page Speed',
-        description:
-          'Having a good page speed impacts organic search ranking, improves user experience (UI/UX) and increase conversion rates.',
-        icon: 'tabler:rocket',
-      },
-      {
-        title: 'Search Engine Optimization (SEO)',
-        description:
-          "SEO lies in its ability to enhance a website's visibility, driving organic traffic and enabling it to reach a wider audience.",
-        icon: 'tabler:arrows-right-left',
-      },
-      {
-        title: 'Open to new ideas and contributions',
-        description:
-          'Embracing a culture that is open to new ideas and contributions is integral fostering innovation, collaboration, and a dynamic user experience.',
-        icon: 'tabler:bulb',
-      },
-    ]}
-  />
-
-  <!-- Content Widget **************** -->
+  <!-- About Content Widget **************** -->
 
   <Content
-    isReversed
-    tagline="Inside template"
-    title="AstroWind's Blueprint: Fun Meets Functionality!"
-    items={[
-      {
-        title: 'Built on top of Astro 5.0',
-        description:
-          'Benefiting from the performance and developer-friendly features of this modern static site generator.',
-      },
-      {
-        title: 'Styled using Tailwind CSS',
-        description:
-          'Facilitating rapid design and consistent styling with this highly popular utility-first CSS framework.',
-      },
-      {
-        title: 'Cross-browser compatibility',
-        description:
-          'Ensure your website looks and functions consistently across various web browsers, delivering a seamless experience to all users.',
-      },
-    ]}
+    id="about"
     image={{
-      src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Colorful Image',
+      src: '~/assets/images/prof_chip.jpg',
+      alt: 'Ciprian Rarau',
+      loading: 'eager',
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Building on modern foundations</h3>
-      Gain a competitive advantage by incorporating industry leading practices
+      <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">About me</h2>
+      <p>
+        I'm an entrepreneur, systems thinker, and hands-on builder with over 25 years of experience across tech, product, and business. I've built companies from scratch, scaled platforms to millions in revenue, and delivered high-performance systems that keep growing.
+      </p>
+      <br />
+      <p>
+        I'm not just writing code—I'm deeply involved in every part of the business. From architecture to AI, product to marketing, hiring to strategy. I see the full picture, and I act on it.
+      </p>
+      <br />
+      <p>
+        What drives me right now is the shift we're living through. AI isn't just speeding things up—it's unlocking entire areas of business that were previously unimaginable. I work with B2B, B2C, B2N, across industries like health, hospitality, and performance management.
+      </p>
+      <br />
+      <p>Connect with me to discuss your next technical challenge or venture:</p>
+      
+      <!-- Custom Social Links -->
+      <div class="flex gap-6 mt-6">
+        <a href="https://linkedin.com/in/ciprianrarau" target="_blank" class="flex items-center gap-2 text-primary hover:text-secondary transition-colors">
+          <Icon name="tabler:brand-linkedin" class="w-6 h-6" />
+          <span class="font-medium">LinkedIn</span>
+        </a>
+        <a href="https://github.com/crarau" target="_blank" class="flex items-center gap-2 text-primary hover:text-secondary transition-colors">
+          <Icon name="tabler:brand-github" class="w-6 h-6" />
+          <span class="font-medium">GitHub</span>
+        </a>
+        <a href="mailto:me@ciprianrarau.com" class="flex items-center gap-2 text-primary hover:text-secondary transition-colors">
+          <Icon name="tabler:mail" class="w-6 h-6" />
+          <span class="font-medium">Email</span>
+        </a>
+      </div>
     </Fragment>
 
     <Fragment slot="bg">
@@ -139,261 +80,374 @@ const metadata = {
     </Fragment>
   </Content>
 
-  <!-- Content Widget **************** -->
+  <!-- Projects Section -->
+  <div id="projects" class="py-16 lg:py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-10">
+        <h2 class="text-4xl md:text-5xl font-bold tracking-tight">Projects</h2>
+        <p class="mt-4 text-xl text-muted dark:text-slate-400">
+          A selection of ventures I've founded, co-founded, or contributed to as CTO
+        </p>
+      </div>
+    </div>
+  </div>
 
-  <Content
-    isAfterContent
-    items={[
-      {
-        title: 'High level of customization',
-        description: `Tailor the template effortlessly to match your brand's identity and requirements, making your website distinct and saving you time.`,
-      },
-      {
-        title: 'Multiple layout possibilities',
-        description:
-          'Explore various layout options to find the structure that best presents your content, enhancing user engagement and navigation.',
-      },
-      {
-        title: 'Fully responsive design',
-        description:
-          "Ensure your website's optimal performance on various devices and screen sizes, providing a consistent and enjoyable user experience.",
-      },
-      {
-        title: 'Integration of media',
-        description:
-          'Seamlessly incorporate images, videos, and multimedia elements that enhance your content and engage visitors effectively.',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2194&q=80',
-      alt: 'Blueprint Image',
-    }}
-  >
-    <Fragment slot="content">Ensure your online presence truly represents you.</Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
-  <!-- Content Widget **************** -->
-
+  <!-- Project 1: WISK -->
   <Content
     isReversed
-    isAfterContent
     items={[
       {
-        title: 'Enhanced user engagement',
+        title: 'Role:',
         description:
-          'Captivate your audience with interactive elements, intuitive navigation, and visually appealing layouts, encouraging longer visits.',
+          'CTO/CPO, Co-Founder (2016 - Jan 2025)',
       },
       {
-        title: 'Continuous improvement',
+        title: 'Description:',
         description:
-          'Ensure your website stays aligned with the latest trends and technologies through regular updates and enhancements.',
-      },
-      {
-        title: 'Time and resource efficiency',
-        description:
-          'Skip the time-consuming process of building a website from scratch and launch your online presence sooner with AstroWind.',
-      },
-      {
-        title: 'Community support',
-        description: `Join the growing AstroWind community for insights, resources, and assistance, ensuring you're never alone on your web development journey.`,
+          'WISK is a next-level food & beverage intelligence platform built for the hospitality industry—serving restaurants, bars, hotels, and distributors across multiple countries. With an extraordinary team, I built WISK from the ground up into a robust, real-time system that powers inventory, ordering, costing, and analytics for thousands of venues. We went from zero revenue to a multi-million dollar business.',
       },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1611462985358-60d3498e0364?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Astronauts Image',
+      src: '~/assets/images/projects/wisk/image21.png',
+      alt: 'WISK.ai Platform',
+    }}
+    callToAction={{
+      text: 'Learn More',
+      icon: 'tabler:chevron-right',
+      href: getPermalink('/projects/wisk'),
     }}
   >
-    <Fragment slot="content">Designed to foster growth and success.</Fragment>
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        WISK.ai <br /><span class="text-2xl">Next-level food & beverage intelligence platform</span>
+      </h3>
+    </Fragment>
 
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
   </Content>
 
-  <!-- Steps Widget ****************** -->
-
-  <Steps
-    title="Get your dream website up and running in no time with AstroWind."
+  <!-- Project 2: Alvéole -->
+  <Content
+    isAfterContent={true}
     items={[
       {
-        title: 'Step 1: <span class="font-medium">Download</span>',
+        title: 'Role:',
         description:
-          "Kickstart with GitHub! Either fork the AstroWind template or simply click 'Use this template'. Your canvas awaits, ready for your digital masterpiece. In just a few clicks, you've already set the foundation.",
-        icon: 'tabler:package',
+          'Advisor (Jan 2023 - May 2024)',
       },
       {
-        title: 'Step 2: <span class="font-medium">Add content</span>',
-        description:
-          "Pour your vision into it. Add images, text, and all that jazz to breathe life into your digital space. Remember, it's the content that tells your story, so make it captivating.",
-        icon: 'tabler:letter-case',
-      },
-      {
-        title: 'Step 3: <span class="font-medium">Customize styles</span>',
-        description:
-          'Give it your personal touch. Tailor colors, fonts, and layouts until it feels just right. Your unique flair, amplified by AstroWind! Precision in design ensures a seamless user experience.',
-        icon: 'tabler:paint',
-      },
-      {
-        title: 'Ready!',
-        icon: 'tabler:check',
+        title: 'Description:',
+        description: `Provided strategic technical guidance for Alvéole's urban beekeeping platform. Focused on clean coding, systems design, database systems, and architecture reviews to support their mission of bringing urban beekeeping to cities worldwide.`,
       },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1616198814651-e71f960c3180?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
-      alt: 'Steps image',
+      src: '~/assets/images/projects/alveole/image4.png',
+      alt: 'Alvéole Platform',
     }}
-  />
-
-  <!-- Features2 Widget ************** -->
-
-  <Features2
-    title="Most used widgets"
-    subtitle="Provides frequently used components for building websites using Tailwind CSS"
-    tagline="Components"
-    items={[
-      {
-        title: 'Headers',
-        description: "Ever tried driving without GPS? Boom! That's why websites need headers for direction.",
-        icon: 'flat-color-icons:template',
-      },
-      {
-        title: 'Heros',
-        description:
-          "Picture a superhero landing – epic, right? That's the job of a Hero section, making grand entrances!",
-        icon: 'flat-color-icons:gallery',
-      },
-      {
-        title: 'Features',
-        description:
-          'Where websites strut their stuff and show off superpowers. No holding back on the bragging rights here!',
-        icon: 'flat-color-icons:approval',
-      },
-      {
-        title: 'Content',
-        description:
-          "Dive into the meat and potatoes of a site; without it, you'd just be window shopping. Content is king.",
-        icon: 'flat-color-icons:document',
-      },
-      {
-        title: 'Call-to-Action',
-        description:
-          'That enthusiastic friend who\'s always urging, "Do it! Do it!"? Yeah, that\'s this button nudging you towards adventure.',
-        icon: 'flat-color-icons:advertising',
-      },
-      {
-        title: 'Pricing',
-        description: 'Behold the dessert menu of the website world. Tempting choices await, can you resist?',
-        icon: 'flat-color-icons:currency-exchange',
-      },
-      {
-        title: 'Testimonial',
-        description: 'Step into the gossip corner! Here, other visitors spill the beans and share the juicy details.',
-        icon: 'flat-color-icons:voice-presentation',
-      },
-      {
-        title: 'Contact',
-        description:
-          'Like a digital mailbox, but faster! Drop a line, ask a question, or send a virtual high-five. Ding! Message in.',
-        icon: 'flat-color-icons:business-contact',
-      },
-      {
-        title: 'Footers',
-        description: "The footer's like the credits of a movie but sprinkled with easter eggs. Time to hunt!",
-        icon: 'flat-color-icons:database',
-      },
-    ]}
+    callToAction={{
+      text: 'Learn More',
+      icon: 'tabler:chevron-right',
+      href: getPermalink('/projects/alveole'),
+    }}
   >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Alvéole <br /><span class="text-2xl">Urban beekeeping platform</span>
+      </h3>
+    </Fragment>
+
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
-  </Features2>
+  </Content>
 
-  <!-- HighlightedPosts Widget ******* -->
-
-  <BlogLatestPosts
-    title="Find out more content in our Blog"
-    information={`The blog is used to display AstroWind documentation.
-                        Each new article will be an important step that you will need to know to be an expert in creating a website using Astro + Tailwind CSS.
-                        Astro is a very interesting technology. Thanks.
-                `}
-  />
-
-  <!-- FAQs Widget ******************* -->
-
-  <FAQs
-    title="Frequently Asked Questions"
-    subtitle="Dive into the following questions to gain insights into the powerful features that AstroWind offers and how it can elevate your web development journey."
-    tagline="FAQs"
-    classes={{ container: 'max-w-6xl' }}
+  <!-- Project 3: OMsignal -->
+  <Content
+    isReversed
+    isAfterContent={true}
     items={[
       {
-        title: 'Why AstroWind?',
-        description:
-          "Michael Knight a young loner on a crusade to champion the cause of the innocent. The helpless. The powerless in a world of criminals who operate above the law. Here he comes Here comes Speed Racer. He's a demon on wheels.",
+        title: 'Role:',
+        description: `VP Engineering & 1st Employee (Feb 2012 - Mar 2014)`,
       },
       {
-        title: 'What do I need to start?',
-        description:
-          'Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds. Many say exploration is part of our destiny, but it’s actually our duty to future generations.',
+        title: 'Description:',
+        description: `I was the #1 employee. Built the software infrastructure from ground up: design, coding, QA, support. Kickstarted the development stack that includes a wearable device, mobile app, API and web portal. During my time OMsignal raised $10M+ and secured a partnership with Ralph Lauren. Company was later acquired by Honeywell.`,
+      },
+    ]}
+    image={{
+      src: '~/assets/images/projects/omsignal/image10.png',
+      alt: 'OMsignal Technology',
+    }}
+    callToAction={{
+      text: 'Learn More',
+      icon: 'tabler:chevron-right',
+      href: getPermalink('/projects/omsignal'),
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        OMsignal <br /><span class="text-2xl">Bio-sensing wearable technology (Acquired by Honeywell)</span>
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Project 4: XpertSea -->
+  <Content
+    isAfterContent={true}
+    items={[
+      {
+        title: 'Role:',
+        description: `CTO Advisor (Dec 2021 - Apr 2022)`,
       },
       {
-        title: 'How to install the Astro + Tailwind CSS template?',
-        description:
-          "Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows.",
+        title: 'Description:',
+        description: `Assured the transition of technical leadership for XpertSea's aquaculture technology platform. Worked with the existing team on React Native development, data synchronization, offline support, and development hiring. Key technologies: AWS, NodeJS, Python, TypeScript/JavaScript, React JS/Native.`,
+      },
+    ]}
+    image={{
+      src: '~/assets/images/projects/xpertsea/image6.png',
+      alt: 'XpertSea Technology',
+    }}
+    callToAction={{
+      text: 'Learn More',
+      icon: 'tabler:chevron-right',
+      href: getPermalink('/projects/xpertsea'),
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        XpertSea <br /><span class="text-2xl">Aquaculture technology platform</span>
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Project 5: IdeaPlaces -->
+  <Content
+    isReversed
+    isAfterContent={true}
+    items={[
+      {
+        title: 'Role:',
+        description: `Founder (2014 - 2016)`,
       },
       {
-        title: "What's something that you don't understand?",
-        description:
-          "A flower in my garden, a mystery in my panties. Heart attack never stopped old Big Bear. I didn't even know we were calling him Big Bear.",
+        title: 'Description:',
+        description: `IdeaPlaces - Map Your Dropbox, Evernote and Photos. The first Evernote&Dropbox app designed for field professionals and travellers to organize their notes and pictures by location. Featured by Evernote in their ecosystem, achieved 25,000+ downloads with significant business traction.`,
+      },
+    ]}
+    image={{
+      src: '~/assets/images/projects/ideaplaces/main.png',
+      alt: 'IdeaPlaces App',
+    }}
+    callToAction={{
+      text: 'Learn More',
+      icon: 'tabler:chevron-right',
+      href: getPermalink('/projects/ideaplaces'),
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        IdeaPlaces <br /><span class="text-2xl">Location-based note organization app</span>
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Project 6: Eastern Bank -->
+  <Content
+    isAfterContent={true}
+    items={[
+      {
+        title: 'Role:',
+        description: `Head Of Mobile (2015 - 2016)`,
       },
       {
-        title: 'What is something that you would like to try again?',
-        description:
-          "A business big enough that it could be listed on the NASDAQ goes belly up. Disappears! It ceases to exist without me. No, you clearly don't know who you're talking to, so let me clue you in.",
+        title: 'Description:',
+        description: `Led the mobile development for Eastern Bank's mobile banking app from the start of implementation. Worked closely with API teams for integration and collaborated with the internal design team for smooth user experience. The mobile team passed a PWC full security audit during this time.`,
+      },
+    ]}
+    image={{
+      src: '~/assets/images/projects/easternbank/image06.png',
+      alt: 'Eastern Bank Mobile App',
+    }}
+    callToAction={{
+      text: 'Learn More',
+      icon: 'tabler:chevron-right',
+      href: getPermalink('/projects/easternbank'),
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Eastern Bank <br /><span class="text-2xl">Mobile banking application</span>
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Resume Section -->
+  <Steps
+    id="resume"
+    title="Work Experience"
+    items={[
+      {
+        title:
+          'CTO/CPO <br /> <span class="font-normal">Mentorly</span> <br /> <span class="text-sm font-normal">Jan 2025 - Present</span>',
+        description: `I lead all things tech at Mentorly, a mentorship platform helping enterprises circulate knowledge internally. I manage the platform end to end—backend, infrastructure, AI systems, and internal tools—while staying hands-on in product, sales, and marketing. From sentiment analysis to LLM-powered mentor matching, I bring speed and stability to a growing system that's delivering real value. I don't just build the tech—I help drive the business.`,
+        icon: 'tabler:briefcase',
       },
       {
-        title: 'If you could only ask one question to each person you meet, what would that question be?',
-        description:
-          "This is not about revenge. This is about justice. A lot of things can change in twelve years, Admiral. Well, that's certainly good to know. About four years. I got tired of hearing how young I looked.",
+        title:
+          'Technical Advisor <br /> <span class="font-normal">Eli Health</span> <br /> <span class="text-sm font-normal">Apr 2025 - Present</span>',
+        description: `Leading the tech strategy and execution at Eli, a fast-paced health tech startup measuring hormonal biomarkers like cortisol and progesterone. I architect and maintain the mobile backend infrastructure, ensuring secure handling of personal health data. My role spans product development, hands-on coding, cross-functional leadership, and rapid iteration cycles. I bring deep technical and operational experience to early-stage ventures—especially where speed, trust, and precision matter.`,
+        icon: 'tabler:briefcase',
+      },
+      {
+        title:
+          'Co-Founder <br /> <span class="font-normal">WeHappers</span> <br /> <span class="text-sm font-normal">Jan 2024 - Present</span>',
+        description: `Our mission: Reshaping wealth distribution to spark global happiness. Our action: Combining Investment ($) and Intelligence (i) on tech initiatives that enable wealth sharing while providing Happiness Experience. Our objective: Positively impact (>0) the level of happiness (Δh) of the people (p). Focus areas: Efficient engineering, Incubating positive initiatives, Platform building for NPOs' actions, Measuring Happiness.`,
+        icon: 'tabler:briefcase',
+      },
+      {
+        title:
+          'CTO/CPO, Co-Founder <br /> <span class="font-normal">WISK.ai</span> <br /> <span class="text-sm font-normal">2016 - Jan 2025</span>',
+        description: `WISK is a next-level food & beverage intelligence platform built for the hospitality industry—serving restaurants, bars, hotels, and distributors across multiple countries. With an extraordinary team, I built WISK from the ground up into a robust, real-time system that powers inventory, ordering, costing, and analytics for thousands of venues. It's modular, secure, and built on scalable microservices architecture. We went from zero revenue to a multi-million dollar business, delivering real value to restaurateurs who needed better tools to run their operations.`,
+        icon: 'tabler:briefcase',
+      },
+      {
+        title:
+          'Advisor <br /> <span class="font-normal">Alvéole</span> <br /> <span class="text-sm font-normal">Jan 2023 - May 2024</span>',
+        description: `Provided strategic technical guidance for Alvéole's urban beekeeping platform. Skills: Clean Coding, Systems Design, Database Systems, Problem Solving, Software Quality, Communication, Architecture Reviews, Design Patterns.`,
+        icon: 'tabler:briefcase',
+      },
+      {
+        title:
+          'CTO Advisor <br /> <span class="font-normal">XpertSea</span> <br /> <span class="text-sm font-normal">Dec 2021 - Apr 2022</span>',
+        description: `Assured the transition of technical leadership. Interviewed and hired the full-time CTO, Mohamed Mehdi, who became my friend and advisor as well. In the leadership team I assured the technical voice. Worked with the existing team on key deliverable: react native development, data synchronization, offline support, development hiring. Key technologies: AWS, NodeJS, Python, Ansible, Terraform, TypeScript/JavaScript, React JS/Native, GitLab/GitHub.`,
+        icon: 'tabler:briefcase',
+      },
+      {
+        title:
+          'Head Of Mobile <br /> <span class="font-normal">Eastern Bank</span> <br /> <span class="text-sm font-normal">2015 - 2016</span>',
+        description: `I led the mobile development for the Eastern Bank mobile app from the start of the implementation. I worked closely with the API teams to make the integration. Interacted with the awesome Eastern Bank internal design team to have a smooth user experience. During this time the mobile team also passed a PWC full audit for security.`,
+        icon: 'tabler:briefcase',
+      },
+      {
+        title:
+          'Founder <br /> <span class="font-normal">IdeaPlaces</span> <br /> <span class="text-sm font-normal">2014 - 2016</span>',
+        description: `IdeaPlaces - Map Your Dropbox, Evernote and Photos. IdeaPlaces is the first Evernote&Dropbox app designed for in field professionals and travellers to organize their notes and pictures by location. IdeaPlaces is the evolution in note taking by helping users pin point their notes on a map for greater accuracy, improved collaboration and ultimately drive productivity. Professionals and travellers now have a simple and efficient tool to keep track of their notes and pictures by location on a map. IdeaPlaces provides independent workers to small-medium businesses with their location-based notes.`,
+        icon: 'tabler:briefcase',
+      },
+      {
+        title:
+          'VP Engineering & 1st Employee <br /> <span class="font-normal">OMsignal</span> <br /> <span class="text-sm font-normal">Feb 2012 - Mar 2014</span>',
+        description: `I was the #1 employee. During my time OMsignal successfully raised 1.5 mil in seed round, 10mil in Series A and we successfully made a partnership with Ralph Lauren. I've built the software infrastructure from ground up: design, coding, QA, support. I've kickstarted the development stack that includes a wearable device, a mobile app, an API and a web portal. I've assured system quality and support for the first customer trials. Applied the Lean Startup learnings in a fast paced startup and driving company wide learning. OMsignal is a branded consumer platform at the intersection of the mobile, well-being and fashion markets.`,
+        icon: 'tabler:briefcase',
+      },
+    ]}
+    classes={{ container: 'max-w-3xl' }}
+  />
+
+  <!-- Education -->
+  <Steps
+    title="Education"
+    items={[
+      {
+        title: `Bachelor in Computer Science Engineering <br /> <span class="font-normal">Technical University of Cluj-Napoca, Romania</span> <br /> <span class="text-sm font-normal">1998 - 2003</span>`,
+        icon: 'tabler:school',
+      },
+      {
+        title: `High School in Computer Science <br /> <span class="font-normal">High School of Computer Science, Tiberiu Popoviciu</span> <br /> <span class="text-sm font-normal">1994 - 1998</span>`,
+        icon: 'tabler:school',
+      },
+    ]}
+    classes={{ container: 'max-w-3xl' }}
+  />
+
+  <!-- Skills -->
+  <Features3
+    title="Technical Skills"
+    subtitle="Technologies and expertise I bring to every project"
+    columns={3}
+    defaultIcon="tabler:point-filled"
+    items={[
+      {
+        title: 'Architecture & Design',
+        description: 'Microservices, scalable systems, API design, and cloud-native architectures',
+      },
+      {
+        title: 'Leadership',
+        description: 'CTO experience, team building, mentoring, and strategic technical decisions',
+      },
+      {
+        title: 'Full-Stack Development',
+        description: 'TypeScript, Node.js, React, Python, Java, and modern web technologies',
+      },
+      {
+        title: 'Cloud & DevOps',
+        description: 'AWS, GCP, Docker, Kubernetes, CI/CD, and infrastructure as code',
+      },
+      {
+        title: 'Mobile Development',
+        description: 'React Native, iOS, Android, and cross-platform mobile architectures',
+      },
+      {
+        title: 'Data & AI',
+        description: 'Machine learning, data pipelines, analytics, and AI-driven products',
+      },
+      {
+        title: 'Entrepreneurship',
+        description: 'Startup founding, product development, fundraising, and business strategy',
+      },
+      {
+        title: 'Agile & Lean',
+        description: 'Scrum, Kanban, MVP development, and rapid iteration methodologies',
+      },
+      {
+        title: 'Security & Compliance',
+        description: 'Security best practices, data privacy, and regulatory compliance',
       },
     ]}
   />
 
-  <!-- Stats Widget ****************** -->
-
-  <Stats
-    stats={[
-      { title: 'Downloads', amount: '132K' },
-      { title: 'Stars', amount: '24.8K' },
-      { title: 'Forks', amount: '10.3K' },
-      { title: 'Users', amount: '48.4K' },
-    ]}
-  />
-
-  <!-- CallToAction Widget *********** -->
-
+  <!-- CTA Widget -->
   <CallToAction
+    id="contact-cta"
+    title="Let's build something amazing together"
+    subtitle="Whether you need a Fractional CTO, technical advisor, or co-founder for your next venture"
     actions={[
       {
         variant: 'primary',
-        text: 'Get template',
-        href: 'https://github.com/onwidget/astrowind',
-        target: '_blank',
-        icon: 'tabler:download',
+        text: 'Get in touch',
+        href: '/contact',
       },
     ]}
-  >
-    <Fragment slot="title">
-      Astro&nbsp;+&nbsp;<br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Tailwind CSS</span>
-    </Fragment>
+  />
 
-    <Fragment slot="subtitle">
-      Be very surprised by these huge fake numbers you are seeing on this page. <br class="hidden md:inline" />Don't
-      waste more time! :P
+  <!-- Blog Posts -->
+  <BlogLatestPosts
+    id="blog"
+    title="Latest insights and thoughts"
+    information={`Sharing my experience in technology, entrepreneurship, and building scalable products.`}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
-  </CallToAction>
+  </BlogLatestPosts>
 </Layout>

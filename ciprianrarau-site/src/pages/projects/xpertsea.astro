@@ -1,0 +1,287 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Content from '~/components/widgets/Content.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import ImageCarousel from '~/components/widgets/ImageCarousel.astro';
+import { getPermalink } from '~/utils/permalinks';
+
+// XpertSea project images
+const xpertseaImages = [
+  { src: '/images/projects/xpertsea/image6.png', alt: 'XpertSea Inventory Management' },
+  { src: '/images/projects/xpertsea/image1.png', alt: 'XpertSea Aquaculture Platform' },
+  { src: '/images/projects/xpertsea/image2.png', alt: 'XpertSea Data Collection' },
+  { src: '/images/projects/xpertsea/image3.png', alt: 'XpertSea Mobile Application' },
+  { src: '/images/projects/xpertsea/image4.png', alt: 'XpertSea Analytics Dashboard' },
+  { src: '/images/projects/xpertsea/image5.png', alt: 'XpertSea Performance Tracking' },
+  { src: '/images/projects/xpertsea/image7.png', alt: 'XpertSea Field Operations' },
+  { src: '/images/projects/xpertsea/image8.png', alt: 'XpertSea Compliance Monitoring' },
+  { src: '/images/projects/xpertsea/image9.png', alt: 'XpertSea Data Synchronization' },
+  { src: '/images/projects/xpertsea/image10.png', alt: 'XpertSea Offline Support' },
+  { src: '/images/projects/xpertsea/image11.png', alt: 'XpertSea Technology Stack' },
+];
+
+const metadata = {
+  title: 'XpertSea - Aquaculture technology platform | Ciprian Rarau',
+  description: 'CTO Advisor at XpertSea. Assured technical leadership transition and team development for aquaculture technology platform.',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+  <Hero
+    tagline="Project Showcase"
+    title="XpertSea"
+    subtitle="Aquaculture technology platform"
+    actions={[
+      { variant: 'primary', text: 'Back to Projects', href: getPermalink('/#projects') },
+    ]}
+  />
+
+  <!-- Project Gallery -->
+  <ImageCarousel
+    images={xpertseaImages}
+    title="Project Gallery"
+    subtitle="Screenshots and interfaces from XpertSea's aquaculture technology platform showcasing field operations and data management"
+    id="xpertsea-gallery"
+  />
+
+  <!-- Project Overview -->
+  <Content
+    items={[
+      {
+        title: 'Role',
+        description: 'CTO Advisor (Dec 2021 - Apr 2022)',
+        icon: 'tabler:user',
+      },
+      {
+        title: 'Industry',
+        description: 'Aquaculture & AgTech',
+        icon: 'tabler:building',
+      },
+      {
+        title: 'Engagement Type',
+        description: 'Leadership Transition & Advisory',
+        icon: 'tabler:users',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/projects/xpertsea/image1.png',
+      alt: 'XpertSea Aquaculture Platform',
+    }}
+  >
+    <Fragment slot="content">
+      <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Project Overview</h2>
+      <p class="text-lg">
+        XpertSea is a leading aquaculture technology platform that provides innovative solutions for the seafood industry. During my engagement as CTO Advisor, I was tasked with assuring the transition of technical leadership while maintaining continuity and driving key technical deliverables.
+      </p>
+      <br />
+      <p class="text-lg">
+        My primary responsibility was to interview and hire the full-time CTO, Mohamed Mehdi, who became not only a successful technical leader but also a valued friend and advisor. I ensured the technical voice was represented in the leadership team while working closely with the existing development team.
+      </p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Key Deliverables -->
+  <Features3
+    title="Key Deliverables"
+    subtitle="Major technical initiatives and leadership activities"
+    columns={2}
+    items={[
+      {
+        title: 'Leadership Transition',
+        description: 'Successfully identified, interviewed, and onboarded the new full-time CTO',
+        icon: 'tabler:user-plus',
+      },
+      {
+        title: 'React Native Development',
+        description: 'Guided mobile application development using React Native for cross-platform compatibility',
+        icon: 'tabler:device-mobile',
+      },
+      {
+        title: 'Data Synchronization',
+        description: 'Architected robust data sync solutions for offline-first aquaculture data collection',
+        icon: 'tabler:refresh',
+      },
+      {
+        title: 'Offline Support',
+        description: 'Implemented offline capabilities critical for field operations in remote aquaculture sites',
+        icon: 'tabler:wifi-off',
+      },
+      {
+        title: 'Development Hiring',
+        description: 'Established hiring processes and interviewed candidates to scale the technical team',
+        icon: 'tabler:users',
+      },
+      {
+        title: 'Technical Voice',
+        description: 'Represented technical perspectives in strategic leadership discussions and decisions',
+        icon: 'tabler:speakerphone',
+      },
+    ]}
+  />
+
+  <!-- Technology Stack -->
+  <Content
+    isReversed
+    isAfterContent
+    items={[
+      {
+        title: 'AWS Infrastructure',
+        description: 'Cloud-based infrastructure for scalable aquaculture data processing',
+        icon: 'tabler:cloud',
+      },
+      {
+        title: 'Node.js Backend',
+        description: 'Robust server-side architecture for API development and data management',
+        icon: 'tabler:server',
+      },
+      {
+        title: 'Python Analytics',
+        description: 'Data science and analytics pipelines for aquaculture insights',
+        icon: 'tabler:chart-line',
+      },
+      {
+        title: 'DevOps & Automation',
+        description: 'Ansible and Terraform for infrastructure automation and deployment',
+        icon: 'tabler:settings',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/projects/xpertsea/image6.png',
+      alt: 'XpertSea Inventory Management',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Technology Stack</h3>
+      <p class="text-lg">
+        Modern technology stack designed for the unique challenges of aquaculture: remote operations, offline functionality, and large-scale data processing for seafood production optimization.
+      </p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Aquaculture Solutions -->
+  <Content
+    items={[
+      {
+        title: 'Field Data Collection',
+        description: 'Mobile solutions for collecting aquaculture data in remote ocean and land-based facilities',
+        icon: 'tabler:clipboard',
+      },
+      {
+        title: 'Inventory Management',
+        description: 'Real-time tracking of fish populations, feed, and equipment across facilities',
+        icon: 'tabler:package',
+      },
+      {
+        title: 'Performance Analytics',
+        description: 'Data-driven insights for optimizing feed conversion, growth rates, and harvest timing',
+        icon: 'tabler:chart-bar',
+      },
+      {
+        title: 'Compliance Tracking',
+        description: 'Automated compliance monitoring for aquaculture regulations and certifications',
+        icon: 'tabler:shield-check',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/projects/xpertsea/image7.png',
+      alt: 'XpertSea Field Operations',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Aquaculture Innovation</h3>
+      <p class="text-lg">
+        XpertSea's platform addresses the unique technological challenges of modern aquaculture, providing farmers with tools to optimize production while maintaining sustainability and compliance standards.
+      </p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Skills & Technologies -->
+  <Features3
+    title="Technologies & Skills"
+    subtitle="Technical expertise applied and developed during this engagement"
+    columns={3}
+    defaultIcon="tabler:check"
+    items={[
+      {
+        title: 'AWS Cloud Services',
+        description: 'EC2, S3, Lambda, and other AWS services',
+      },
+      {
+        title: 'Node.js Development',
+        description: 'Server-side JavaScript development',
+      },
+      {
+        title: 'Python Programming',
+        description: 'Data processing and analytics',
+      },
+      {
+        title: 'Ansible Automation',
+        description: 'Configuration management and deployment',
+      },
+      {
+        title: 'Terraform',
+        description: 'Infrastructure as Code implementation',
+      },
+      {
+        title: 'TypeScript/JavaScript',
+        description: 'Modern JavaScript development',
+      },
+      {
+        title: 'React Native',
+        description: 'Cross-platform mobile development',
+      },
+      {
+        title: 'React.js',
+        description: 'Modern web application development',
+      },
+      {
+        title: 'GitLab/GitHub',
+        description: 'Version control and CI/CD pipelines',
+      },
+      {
+        title: 'Technical Leadership',
+        description: 'CTO hiring and team mentoring',
+      },
+      {
+        title: 'Offshore Development',
+        description: 'Managing distributed development teams',
+      },
+      {
+        title: 'AgTech Solutions',
+        description: 'Agricultural technology implementation',
+      },
+    ]}
+  />
+
+  <!-- Call to Action -->
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'View All Projects',
+        href: getPermalink('/#projects'),
+      },
+      {
+        text: 'Contact Me',
+        href: getPermalink('/contact'),
+      },
+    ]}
+    title="Need technical leadership guidance?"
+    subtitle="I can help with CTO transitions, team scaling, and strategic technical decisions for your growing company."
+  />
+</Layout> 

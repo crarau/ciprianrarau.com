@@ -1,0 +1,289 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Content from '~/components/widgets/Content.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import ImageCarousel from '~/components/widgets/ImageCarousel.astro';
+import { getPermalink } from '~/utils/permalinks';
+
+// OMsignal project images
+const omsignalImages = [
+  { src: '/images/projects/omsignal/image10.png', alt: 'OMsignal Real-time Data' },
+  { src: '/images/projects/omsignal/image1.png', alt: 'OMsignal Smart Clothing Technology' },
+  { src: '/images/projects/omsignal/image2.png', alt: 'OMsignal Bio-sensing Interface' },
+  { src: '/images/projects/omsignal/image3.png', alt: 'OMsignal Mobile Application' },
+  { src: '/images/projects/omsignal/image4.png', alt: 'OMsignal Data Analytics' },
+  { src: '/images/projects/omsignal/image5.png', alt: 'OMsignal Heart Rate Monitoring' },
+  { src: '/images/projects/omsignal/image6.png', alt: 'OMsignal Breathing Analysis' },
+  { src: '/images/projects/omsignal/image7.png', alt: 'OMsignal Fitness Tracking' },
+  { src: '/images/projects/omsignal/image8.png', alt: 'OMsignal Web Dashboard' },
+  { src: '/images/projects/omsignal/image9.png', alt: 'OMsignal API Integration' },
+  { src: '/images/projects/omsignal/image11.png', alt: 'OMsignal Performance Metrics' },
+  { src: '/images/projects/omsignal/image12.PNG', alt: 'OMsignal User Interface' },
+  { src: '/images/projects/omsignal/image13.png', alt: 'OMsignal Platform Overview' },
+];
+
+const metadata = {
+  title: 'OMsignal - Bio-sensing wearable technology | Ciprian Rarau',
+  description: 'VP Engineering & 1st Employee at OMsignal. Built software infrastructure for bio-sensing wearable technology, acquired by Honeywell.',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+  <Hero
+    tagline="Project Showcase"
+    title="OMsignal"
+    subtitle="Bio-sensing wearable technology (Acquired by Honeywell)"
+    actions={[
+      { variant: 'primary', text: 'Back to Projects', href: getPermalink('/#projects') },
+    ]}
+  />
+
+  <!-- Project Gallery -->
+  <ImageCarousel
+    images={omsignalImages}
+    title="Project Gallery"
+    subtitle="Screenshots and interfaces from OMsignal's bio-sensing wearable technology platform and mobile applications"
+    id="omsignal-gallery"
+  />
+
+  <!-- Project Overview -->
+  <Content
+    items={[
+      {
+        title: 'Role',
+        description: 'VP Engineering & 1st Employee (Feb 2012 - Mar 2014)',
+        icon: 'tabler:user',
+      },
+      {
+        title: 'Industry',
+        description: 'Wearable Technology & Health Tech',
+        icon: 'tabler:building',
+      },
+      {
+        title: 'Outcome',
+        description: 'Acquired by Honeywell',
+        icon: 'tabler:trophy',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/projects/omsignal/image1.png',
+      alt: 'OMsignal Smart Clothing Technology',
+    }}
+  >
+    <Fragment slot="content">
+      <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Project Overview</h2>
+      <p class="text-lg">
+        I was the #1 employee at OMsignal, a pioneering company at the intersection of mobile, well-being, and fashion markets. OMsignal developed a branded consumer platform featuring bio-aware fashion clothes that could measure and analyze the wearer's vital signs and physiological data.
+      </p>
+      <br />
+      <p class="text-lg">
+        During my time at OMsignal, I built the entire software infrastructure from ground up: design, coding, QA, and support. The company successfully raised $1.5M in seed round, $10M in Series A, and secured a high-profile partnership with Ralph Lauren before being acquired by Honeywell.
+      </p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Key Achievements -->
+  <Features3
+    title="Key Achievements"
+    subtitle="Major milestones accomplished during my tenure"
+    columns={2}
+    items={[
+      {
+        title: 'Full Stack Development',
+        description: 'Built complete software infrastructure including wearable device, mobile app, API, and web portal',
+        icon: 'tabler:stack',
+      },
+      {
+        title: 'Fundraising Success',
+        description: 'Helped raise $10M+ across seed and Series A funding rounds',
+        icon: 'tabler:moneybag',
+      },
+      {
+        title: 'Strategic Partnership',
+        description: 'Secured partnership with Ralph Lauren for smart fashion integration',
+        icon: 'tabler:users',
+      },
+      {
+        title: 'Quality Assurance',
+        description: 'Established system quality and support processes for first customer trials',
+        icon: 'tabler:shield-check',
+      },
+      {
+        title: 'Lean Startup Methodology',
+        description: 'Applied Lean Startup principles driving company-wide learning and iteration',
+        icon: 'tabler:refresh',
+      },
+      {
+        title: 'Successful Exit',
+        description: 'Company acquired by Honeywell, validating our technology and market approach',
+        icon: 'tabler:rocket',
+      },
+    ]}
+  />
+
+  <!-- Technical Architecture -->
+  <Content
+    isReversed
+    isAfterContent
+    items={[
+      {
+        title: 'Wearable Device',
+        description: 'Embedded sensors and firmware for real-time bio-signal capture',
+        icon: 'tabler:device-watch',
+      },
+      {
+        title: 'Mobile Application',
+        description: 'Native mobile apps for real-time data visualization and analysis',
+        icon: 'tabler:device-mobile',
+      },
+      {
+        title: 'API Development',
+        description: 'Robust API infrastructure for data processing and third-party integrations',
+        icon: 'tabler:api',
+      },
+      {
+        title: 'Web Portal',
+        description: 'Comprehensive web dashboard for detailed analytics and insights',
+        icon: 'tabler:world-www',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/projects/omsignal/image10.png',
+      alt: 'OMsignal Real-time Data',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Technical Architecture</h3>
+      <p class="text-lg">
+        Designed and implemented a complete ecosystem of connected devices and software platforms, enabling seamless bio-signal monitoring and analysis across multiple touchpoints.
+      </p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Bio-Sensing Capabilities -->
+  <Content
+    items={[
+      {
+        title: 'ECG Monitoring',
+        description: 'Real-time electrocardiogram monitoring with R wave detection',
+        icon: 'tabler:activity',
+      },
+      {
+        title: 'Breathing Analysis',
+        description: 'Continuous breathing rate monitoring during exercise and rest',
+        icon: 'tabler:lungs',
+      },
+      {
+        title: 'Heart Rate Zones',
+        description: 'Advanced heart rate analysis with activity zone detection',
+        icon: 'tabler:heart',
+      },
+      {
+        title: 'Real-time Processing',
+        description: 'Live data processing and immediate feedback to users',
+        icon: 'tabler:bolt',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/projects/omsignal/image5.png',
+      alt: 'OMsignal Heart Rate Monitoring',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Bio-Sensing Innovation</h3>
+      <p class="text-lg">
+        OMsignal's smart clothing integrated multiple bio-sensors to provide comprehensive health and fitness insights, representing a breakthrough in wearable technology at the time.
+      </p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Skills & Technologies -->
+  <Features3
+    title="Skills & Technologies"
+    subtitle="Technical expertise developed through this groundbreaking project"
+    columns={3}
+    defaultIcon="tabler:check"
+    items={[
+      {
+        title: 'Agile Methodologies',
+        description: 'Scrum and Lean Startup implementation',
+      },
+      {
+        title: 'Mobile Application Development',
+        description: 'Native iOS and Android development',
+      },
+      {
+        title: 'NoSQL Databases',
+        description: 'Large-scale data storage and analytics',
+      },
+      {
+        title: 'Debugging & Testing',
+        description: 'Comprehensive QA and debugging processes',
+      },
+      {
+        title: 'Clean Coding',
+        description: 'Maintainable and scalable architecture',
+      },
+      {
+        title: 'Database Systems',
+        description: 'Relational and NoSQL database design',
+      },
+      {
+        title: 'Product Development',
+        description: 'End-to-end product lifecycle management',
+      },
+      {
+        title: 'Swift Programming',
+        description: 'iOS development with Swift',
+      },
+      {
+        title: 'Team Leadership',
+        description: 'Technical team management and growth',
+      },
+      {
+        title: 'Web Applications',
+        description: 'Full-stack web development',
+      },
+      {
+        title: 'Java Development',
+        description: 'Backend services and API development',
+      },
+      {
+        title: 'DevOps',
+        description: 'Infrastructure and deployment automation',
+      },
+    ]}
+  />
+
+  <!-- Call to Action -->
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'View All Projects',
+        href: getPermalink('/#projects'),
+      },
+      {
+        text: 'Contact Me',
+        href: getPermalink('/contact'),
+      },
+    ]}
+    title="Ready to build the next breakthrough?"
+    subtitle="Let's collaborate on innovative technology that pushes boundaries and creates market value."
+  />
+</Layout> 

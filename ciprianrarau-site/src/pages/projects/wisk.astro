@@ -1,0 +1,343 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Content from '~/components/widgets/Content.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import ImageCarousel from '~/components/widgets/ImageCarousel.astro';
+import { getPermalink } from '~/utils/permalinks';
+
+// WISK project images
+const wiskImages = [
+  { src: '/images/projects/wisk/image21.png', alt: 'WISK Business Intelligence' },
+  { src: '/images/projects/wisk/image1.png', alt: 'WISK Platform Dashboard' },
+  { src: '/images/projects/wisk/image2.png', alt: 'WISK Inventory Management' },
+  { src: '/images/projects/wisk/image5.png', alt: 'WISK Mobile Interface' },
+  { src: '/images/projects/wisk/image8.png', alt: 'WISK Analytics Dashboard' },
+  { src: '/images/projects/wisk/image11.png', alt: 'WISK Ordering System' },
+  { src: '/images/projects/wisk/image12.png', alt: 'WISK Cost Analysis' },
+  { src: '/images/projects/wisk/image14.png', alt: 'WISK Multi-Location Management' },
+  { src: '/images/projects/wisk/image17.png', alt: 'WISK Supplier Network' },
+  { src: '/images/projects/wisk/image20.png', alt: 'WISK Real-time Operations' },
+  { src: '/images/projects/wisk/image23.png', alt: 'WISK Integration Platform' },
+  { src: '/images/projects/wisk/image25.png', alt: 'WISK Performance Metrics' },
+  { src: '/images/projects/wisk/mobile-image3.jpg', alt: 'WISK Mobile App' },
+  { src: '/images/projects/wisk/mobile-image4.jpg', alt: 'WISK Mobile Inventory' },
+  { src: '/images/projects/wisk/mobile-image6.jpg', alt: 'WISK Mobile Orders' },
+  { src: '/images/projects/wisk/mobile-image7.jpg', alt: 'WISK Mobile Analytics' },
+  { src: '/images/projects/wisk/mobile-image9.jpg', alt: 'WISK Mobile Dashboard' },
+  { src: '/images/projects/wisk/mobile-image10.jpg', alt: 'WISK Mobile Reporting' },
+  { src: '/images/projects/wisk/mobile-image13.jpg', alt: 'WISK Mobile Management' },
+  { src: '/images/projects/wisk/mobile-image15.jpg', alt: 'WISK Mobile Operations' },
+  { src: '/images/projects/wisk/mobile-image16.jpg', alt: 'WISK Mobile Interface' },
+  { src: '/images/projects/wisk/mobile-image18.jpg', alt: 'WISK Mobile Tools' },
+  { src: '/images/projects/wisk/mobile-image19.jpg', alt: 'WISK Mobile Features' },
+  { src: '/images/projects/wisk/mobile-image22.jpg', alt: 'WISK Mobile Platform' },
+  { src: '/images/projects/wisk/mobile-image24.jpg', alt: 'WISK Mobile System' },
+];
+
+const metadata = {
+  title: 'WISK.ai - Food & Beverage Intelligence Platform | Ciprian Rarau',
+  description: 'CTO/CPO & Co-Founder at WISK. Built next-level food & beverage intelligence platform from ground up to multi-million dollar business.',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+  <Hero
+    tagline="Project Showcase"
+    title="WISK.ai"
+    subtitle="Next-level food & beverage intelligence platform"
+    actions={[
+      { variant: 'primary', text: 'Visit WISK', href: 'https://wisk.ai', target: '_blank', icon: 'tabler:external-link' },
+      { text: 'Back to Projects', href: getPermalink('/#projects') },
+    ]}
+  />
+
+  <!-- Project Gallery -->
+  <ImageCarousel
+    images={wiskImages}
+    title="Project Gallery"
+    subtitle="Screenshots and interfaces from the WISK platform showcasing the comprehensive food & beverage intelligence system"
+    id="wisk-gallery"
+  />
+
+  <!-- Project Overview -->
+  <Content
+    items={[
+      {
+        title: 'Role',
+        description: 'CTO/CPO, Co-Founder (2016 - Jan 2025)',
+        icon: 'tabler:user',
+      },
+      {
+        title: 'Industry',
+        description: 'Hospitality Technology',
+        icon: 'tabler:building-store',
+      },
+      {
+        title: 'Business Scale',
+        description: 'Multi-million dollar revenue',
+        icon: 'tabler:trending-up',
+      },
+          ]}
+    image={{
+      src: '~/assets/images/projects/wisk/image1.png',
+      alt: 'WISK Platform Dashboard',
+    }}
+  >
+    <Fragment slot="content">
+      <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Project Overview</h2>
+      <p class="text-lg">
+        WISK is a next-level food & beverage intelligence platform built for the hospitality industry—serving restaurants, bars, hotels, and distributors across multiple countries. As CTO/CPO and Co-Founder, I built WISK from the ground up into a robust, real-time system that powers inventory, ordering, costing, and analytics for thousands of venues.
+      </p>
+      <br />
+      <p class="text-lg">
+        Together with an extraordinary team, we transformed WISK from zero revenue to a multi-million dollar business. The platform leverages micro-services architecture supporting both offline and real-time operations, making it resilient and scalable for the demanding hospitality environment.
+      </p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Core Platform Features -->
+  <Features3
+    title="Platform Capabilities"
+    subtitle="Comprehensive F&B intelligence for modern hospitality operations"
+    columns={2}
+    items={[
+      {
+        title: 'Smart Inventory Management',
+        description: 'Real-time inventory tracking with predictive analytics and automated reorder points',
+        icon: 'tabler:package',
+      },
+      {
+        title: 'Intelligent Ordering',
+        description: 'Streamlined ordering workflow with supplier integration and cost optimization',
+        icon: 'tabler:shopping-cart',
+      },
+      {
+        title: 'Cost Analytics & Insights',
+        description: 'Deep cost analysis, profit margins, and actionable business intelligence',
+        icon: 'tabler:chart-line',
+      },
+      {
+        title: 'Multi-Location Management',
+        description: 'Centralized control for restaurant groups, hotels, and hospitality chains',
+        icon: 'tabler:building-community',
+      },
+      {
+        title: 'Real-time Operations',
+        description: 'Live data synchronization across all venues with offline capability',
+        icon: 'tabler:refresh',
+      },
+      {
+        title: 'Supplier Network',
+        description: 'Integrated supplier catalog and procurement optimization',
+        icon: 'tabler:truck-delivery',
+      },
+    ]}
+  />
+
+    <!-- Technical Architecture -->
+  <Content
+    isReversed
+    isAfterContent
+    items={[
+      {
+        title: 'Microservices Architecture',
+        description: 'Modular, scalable architecture enabling rapid feature development and deployment',
+        icon: 'tabler:components',
+      },
+      {
+        title: 'Real-time Synchronization',
+        description: 'Event-driven architecture ensuring data consistency across all touchpoints',
+        icon: 'tabler:refresh',
+      },
+      {
+        title: 'Offline-First Design',
+        description: 'Robust offline capabilities critical for restaurant operations during connectivity issues',
+        icon: 'tabler:wifi-off',
+      },
+      {
+        title: 'Multi-Platform Support',
+        description: 'Web, mobile, and tablet applications with unified user experience',
+        icon: 'tabler:devices',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/projects/wisk/image21.png',
+      alt: 'WISK Business Intelligence',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Technical Excellence</h3>
+      <p class="text-lg">
+        Built on modern, scalable architecture designed for the demanding requirements of hospitality operations: high availability, offline resilience, and real-time performance.
+      </p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Business Impact -->
+  <Content
+    items={[
+      {
+        title: 'Thousands of Venues',
+        description: 'Platform serving restaurants, bars, hotels across multiple countries',
+        icon: 'tabler:world',
+      },
+      {
+        title: 'Zero to Multi-Million',
+        description: 'Built from ground up to multi-million dollar annual revenue',
+        icon: 'tabler:trending-up',
+      },
+      {
+        title: 'Operational Efficiency',
+        description: 'Significant cost savings and operational improvements for hospitality businesses',
+        icon: 'tabler:clock',
+      },
+      {
+        title: 'Team Excellence',
+        description: 'Built and led extraordinary team of engineers, designers, and product specialists',
+        icon: 'tabler:users',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/projects/wisk/image21.png',
+      alt: 'WISK Business Intelligence',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Business Results</h3>
+      <p class="text-lg">
+        WISK's success demonstrates the power of deep industry understanding combined with exceptional technical execution, creating substantial value for hospitality businesses worldwide.
+      </p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Industry Solutions -->
+  <Features3
+    title="Industry Solutions"
+    subtitle="Specialized solutions for different hospitality segments"
+    columns={2}
+    items={[
+      {
+        title: 'Restaurants',
+        description: 'Full-service and quick-service restaurant inventory and cost management',
+        icon: 'tabler:tools-kitchen-2',
+      },
+      {
+        title: 'Bars & Nightlife',
+        description: 'Specialized bar inventory with cocktail costing and drink program optimization',
+        icon: 'tabler:glass',
+      },
+      {
+        title: 'Hotels',
+        description: 'Multi-outlet hotel F&B operations with centralized purchasing and reporting',
+        icon: 'tabler:building',
+      },
+      {
+        title: 'Distributors',
+        description: 'Supplier-side tools for inventory management and customer relationship optimization',
+        icon: 'tabler:truck',
+      },
+      {
+        title: 'Restaurant Groups',
+        description: 'Multi-location chains with standardized operations and centralized control',
+        icon: 'tabler:building-community',
+      },
+      {
+        title: 'Enterprise',
+        description: 'Large-scale hospitality operations with custom integrations and advanced analytics',
+        icon: 'tabler:building-skyscraper',
+      },
+    ]}
+  />
+
+  <!-- Skills & Technologies -->
+  <Features3
+    title="Technologies & Leadership"
+    subtitle="Technical stack and leadership skills developed throughout this journey"
+    columns={3}
+    defaultIcon="tabler:check"
+    items={[
+      {
+        title: 'Microservices Architecture',
+        description: 'Scalable, modular system design',
+      },
+      {
+        title: 'Real-time Systems',
+        description: 'Event-driven architecture implementation',
+      },
+      {
+        title: 'Product Strategy',
+        description: 'End-to-end product development and strategy',
+      },
+      {
+        title: 'Team Leadership',
+        description: 'Building and scaling engineering teams',
+      },
+      {
+        title: 'Business Development',
+        description: 'Revenue growth and market expansion',
+      },
+      {
+        title: 'Agile Development',
+        description: 'Agile methodologies and continuous delivery',
+      },
+      {
+        title: 'Cloud Infrastructure',
+        description: 'Scalable cloud architecture and DevOps',
+      },
+      {
+        title: 'Mobile Development',
+        description: 'Cross-platform mobile applications',
+      },
+      {
+        title: 'API Design',
+        description: 'RESTful APIs and system integrations',
+      },
+      {
+        title: 'Data Analytics',
+        description: 'Business intelligence and reporting systems',
+      },
+      {
+        title: 'Offline-First Design',
+        description: 'Resilient offline-capable applications',
+      },
+      {
+        title: 'Entrepreneurship',
+        description: 'Co-founding and scaling a technology startup',
+      },
+    ]}
+  />
+
+  <!-- Call to Action -->
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'View WISK Platform',
+        href: 'https://wisk.ai',
+        target: '_blank',
+        icon: 'tabler:external-link',
+      },
+      {
+        text: 'View All Projects',
+        href: getPermalink('/#projects'),
+      },
+    ]}
+    title="Ready to build the next industry-leading platform?"
+    subtitle="Let's discuss how I can help transform your industry with innovative technology and exceptional execution."
+  />
+</Layout> 
