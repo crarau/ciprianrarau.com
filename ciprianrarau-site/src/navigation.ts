@@ -29,7 +29,7 @@ export const headerData = {
   ],
   actions: [
     { 
-      text: 'Hire me', 
+      text: 'Contact me', 
       href: getPermalink('/contact'),
       variant: 'primary',
     }

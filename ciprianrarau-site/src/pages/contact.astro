@@ -4,9 +4,6 @@ import HeroText from '~/components/widgets/HeroText.astro';
 import ContactUs from '~/components/widgets/Contact.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 
-// Enable static generation for SEO (form submission still works via API)
-export const prerender = true;
-
 const metadata = {
   title: 'Contact',
 };
@@ -22,114 +19,152 @@ const error = url.searchParams.get('error');
 
   <HeroText tagline="Get in Touch" title="Let's Build Something Amazing Together" />
 
-  <!-- Success/Error Messages -->
+  <!-- Success Message -->
   {success && (
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 mb-8">
-      <div class="bg-green-50 border border-green-200 rounded-lg p-4">
-        <div class="flex">
-          <div class="flex-shrink-0">
-            <svg class="h-5 w-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 mb-8">
+      <div class="bg-green-50 border-2 border-green-200 rounded-xl p-8 text-center">
+        <div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-green-100 mb-6">
+          <svg class="h-8 w-8 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+        </div>
+        <h3 class="text-2xl font-bold text-green-800 mb-4">Message Sent Successfully!</h3>
+        <p class="text-lg text-green-700 mb-6">
+          Thank you for reaching out! I've received your message and will get back to you within 24 hours.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a 
+            href="/" 
+            class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-green-600 hover:bg-green-700 transition-colors"
+          >
+            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 1.414L7.414 10l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd" />
             </svg>
-          </div>
-          <div class="ml-3">
-            <p class="text-sm font-medium text-green-800">
-              Thank you! Your message has been sent successfully. I'll get back to you within 24 hours.
-            </p>
-          </div>
+            Back to Homepage
+          </a>
+          <a 
+            href="/contact" 
+            class="inline-flex items-center justify-center px-6 py-3 border border-green-600 text-base font-medium rounded-lg text-green-600 bg-white hover:bg-green-50 transition-colors"
+          >
+            Send Another Message
+          </a>
         </div>
       </div>
     </div>
   )}
 
+  <!-- Error Message -->
   {error && (
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 mb-8">
-      <div class="bg-red-50 border border-red-200 rounded-lg p-4">
-        <div class="flex">
-          <div class="flex-shrink-0">
-            <svg class="h-5 w-5 text-red-400" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 mb-8">
+      <div class="bg-red-50 border-2 border-red-200 rounded-xl p-8 text-center">
+        <div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-red-100 mb-6">
+          <svg class="h-8 w-8 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+          </svg>
+        </div>
+        <h3 class="text-2xl font-bold text-red-800 mb-4">Message Could Not Be Sent</h3>
+        <p class="text-lg text-red-700 mb-6">
+          Sorry, there was an error sending your message. Please try again or contact me directly.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a 
+            href="/contact" 
+            class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-red-600 hover:bg-red-700 transition-colors"
+          >
+            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd" />
             </svg>
-          </div>
-          <div class="ml-3">
-            <p class="text-sm font-medium text-red-800">
-              Sorry, there was an error sending your message. Please try again or contact me directly at me@ciprianrarau.com.
-            </p>
-          </div>
+            Try Again
+          </a>
+          <a 
+            href="mailto:me@ciprianrarau.com" 
+            class="inline-flex items-center justify-center px-6 py-3 border border-red-600 text-base font-medium rounded-lg text-red-600 bg-white hover:bg-red-50 transition-colors"
+          >
+            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+              <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+            </svg>
+            Email Direct
+          </a>
         </div>
       </div>
     </div>
   )}
 
-  <ContactUs
-    id="form"
-    title="Send me a message"
-    subtitle="Whether you need a Fractional CTO, technical advisor, or want to discuss your next venture, I'd love to hear from you."
-    inputs={[
-      {
-        type: 'text',
-        name: 'name',
-        label: 'Name',
-      },
-      {
-        type: 'email',
-        name: 'email',
-        label: 'Email',
-      },
-      {
-        type: 'text',
-        name: 'company',
-        label: 'Company (optional)',
-      },
-    ]}
-    textarea={{
-      label: 'Message',
-      name: 'message',
-      placeholder: 'Tell me about your project or how I can help...'
-    }}
-    disclaimer={{
-      label:
-        'By submitting this form, you acknowledge and agree to the collection of your personal information.',
-    }}
-    action="/api/contact"
-    description="I typically respond within 24 hours."
-  />
+  {/* Only show contact form if not success */}
+  {!success && (
+    <ContactUs
+      id="form"
+      title="Send me a message"
+      subtitle="Whether you need a Fractional CTO, technical advisor, or want to discuss your next venture, I'd love to hear from you."
+      inputs={[
+        {
+          type: 'text',
+          name: 'name',
+          label: 'Name',
+        },
+        {
+          type: 'email',
+          name: 'email',
+          label: 'Email',
+        },
+        {
+          type: 'text',
+          name: 'company',
+          label: 'Company (optional)',
+        },
+      ]}
+      textarea={{
+        label: 'Message',
+        name: 'message',
+        placeholder: 'Tell me about your project or how I can help...'
+      }}
+      disclaimer={{
+        label:
+          'By submitting this form, you acknowledge and agree to the collection of your personal information.',
+      }}
+      action="/api/contact"
+      description="I typically respond within 24 hours."
+    />
+  )}
 
   <!-- Features2 Widget ************** -->
-
-  <Features2
-    title="Other ways to connect"
-    items={[
-      {
-        title: 'LinkedIn',
-        description: 'Connect with me on LinkedIn for professional networking and updates.',
-        icon: 'tabler:brand-linkedin',
-      },
-      {
-        title: 'GitHub',
-        description: 'Check out my open source contributions and projects.',
-        icon: 'tabler:brand-github',
-      },
-      {
-        title: 'Schedule a Call',
-        description: 'Book a time to discuss your project or technical challenges.',
-        icon: 'tabler:calendar',
-      },
-      {
-        title: 'Phone',
-        description: '+1 (514) 560-5016',
-        icon: 'tabler:phone',
-      },
-      {
-        title: 'Email',
-        description: 'me@ciprianrarau.com',
-        icon: 'tabler:mail',
-      },
-      {
-        title: 'Location',
-        description: 'Montreal, Quebec, Canada',
-        icon: 'tabler:map-pin',
-      },
-    ]}
-  />
+  {/* Only show other contact methods if not success */}
+  {!success && (
+    <Features2
+      title="Other ways to connect"
+      items={[
+        {
+          title: 'LinkedIn',
+          description: 'Connect with me on LinkedIn for professional networking and updates.',
+          icon: 'tabler:brand-linkedin',
+        },
+        {
+          title: 'GitHub',
+          description: 'Check out my open source contributions and projects.',
+          icon: 'tabler:brand-github',
+        },
+        {
+          title: 'Schedule a Call',
+          description: 'Book a time to discuss your project or technical challenges.',
+          icon: 'tabler:calendar',
+        },
+        {
+          title: 'Phone',
+          description: '+1 (514) 560-5016',
+          icon: 'tabler:phone',
+        },
+        {
+          title: 'Email',
+          description: 'me@ciprianrarau.com',
+          icon: 'tabler:mail',
+        },
+        {
+          title: 'Location',
+          description: 'Montreal, Quebec, Canada',
+          icon: 'tabler:map-pin',
+        },
+      ]}
+    />
+  )}
 </Layout>
