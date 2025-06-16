@@ -31,7 +31,7 @@ export const headerData = {
     { 
       text: 'Contact me', 
       href: getPermalink('/contact'),
-      variant: 'primary',
+      variant: 'primary' as const,
     }
   ],
 };
