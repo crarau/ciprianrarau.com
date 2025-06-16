@@ -10,6 +10,9 @@ import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 import { Icon } from 'astro-icon/components';
 import { getPermalink } from '~/utils/permalinks';
 
+// Enable static generation for SEO
+export const prerender = true;
+
 const metadata = {
   title: 'Ciprian (Chip) Rarau - Entrepreneur & CTO',
   ignoreTitleTemplate: true,
@@ -23,7 +26,7 @@ const metadata = {
     id="hero"
     title="Ciprian (Chip) Rarau"
     tagline="Entrepreneur & CTO"
-    actions={[{ variant: 'primary', text: 'Hire me', href: getPermalink('/contact') }]}
+    actions={[{ variant: 'primary', text: 'Contact me', href: getPermalink('/contact') }]}
   >
     <Fragment slot="subtitle">
       Systems thinker and hands-on builder with 25+ years across tech, product, and business. I've built companies from scratch, scaled platforms to millions in revenue, and delivered high-performance systems that keep growing.
