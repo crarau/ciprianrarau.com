@@ -1,0 +1,310 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Content from '~/components/widgets/Content.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import ImageCarousel from '~/components/widgets/ImageCarousel.astro';
+import { getPermalink } from '~/utils/permalinks';
+
+// Eli project images
+const eliImages = [
+  { src: '/images/projects/eli.health/platform-overview.png', alt: 'Eli Health Platform Overview' },
+  { src: '/images/projects/eli.health/analytics-dashboard.png', alt: 'Eli Health Analytics Dashboard' },
+  { src: '/images/projects/eli.health/patient-interface.png', alt: 'Eli Health Patient Interface' },
+  { src: '/images/projects/eli.health/provider-tools.png', alt: 'Eli Health Provider Tools' },
+];
+
+const metadata = {
+  title: 'Eli Health - Digital health platform | Ciprian Rarau',
+  description: 'Founder & CTO at Eli Health. Building innovative digital health solutions to improve patient outcomes and healthcare accessibility.',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+  <Hero
+    tagline="Project Showcase"
+    title="Eli Health"
+    subtitle="Digital health platform"
+    actions={[
+      { variant: 'primary', text: 'Visit Eli Health', href: 'https://eli.health', target: '_blank', icon: 'tabler:external-link' },
+      { text: 'Back to Projects', href: getPermalink('/#projects') },
+    ]}
+  />
+
+  <!-- Project Gallery -->
+  <ImageCarousel
+    images={eliImages}
+    title="Project Gallery"
+    subtitle="Screenshots and interfaces from Eli Health's digital health platform improving patient care and healthcare accessibility"
+    id="eli-gallery"
+  />
+
+  <!-- Project Overview -->
+  <Content
+    items={[
+      {
+        title: 'Role',
+        description: 'Founder & CTO (2024 - Present)',
+        icon: 'tabler:user',
+      },
+      {
+        title: 'Industry',
+        description: 'Digital Health & Healthcare Technology',
+        icon: 'tabler:building',
+      },
+      {
+        title: 'Focus',
+        description: 'Patient-Centered Healthcare Innovation',
+        icon: 'tabler:chart-pie',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/projects/eli.health/platform-overview.png',
+      alt: 'Eli Health Platform Overview',
+    }}
+  >
+    <Fragment slot="content">
+      <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Project Overview</h2>
+      <p class="text-lg">
+        Eli Health is transforming healthcare delivery through innovative digital solutions that prioritize patient outcomes and healthcare accessibility. As Founder & CTO, I'm building a comprehensive platform that bridges the gap between patients and healthcare providers.
+      </p>
+      <br />
+      <p class="text-lg">
+        Our mission is to democratize healthcare access by leveraging technology to create more efficient, effective, and patient-centered healthcare experiences for everyone.
+      </p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Digital Health Innovation -->
+  <Features3
+    title="Digital Health Innovation"
+    subtitle="Transforming healthcare through technology-driven patient care solutions"
+    columns={2}
+    items={[
+      {
+        title: 'Patient-Centered Care',
+        description: 'Comprehensive patient portals with personalized health management and care coordination',
+        icon: 'tabler:heart',
+      },
+      {
+        title: 'Telehealth Integration',
+        description: 'Seamless virtual care delivery with secure video consultations and remote monitoring',
+        icon: 'tabler:video',
+      },
+      {
+        title: 'Health Analytics',
+        description: 'Advanced analytics for population health insights and personalized care recommendations',
+        icon: 'tabler:chart-dots',
+      },
+      {
+        title: 'Provider Efficiency',
+        description: 'Streamlined clinical workflows and tools to enhance healthcare provider productivity',
+        icon: 'tabler:clock',
+      },
+      {
+        title: 'Care Coordination',
+        description: 'Integrated care team communication and patient handoff management systems',
+        icon: 'tabler:users',
+      },
+      {
+        title: 'Health Records Management',
+        description: 'Secure, interoperable health records with patient-controlled data access',
+        icon: 'tabler:file-text',
+      },
+    ]}
+  />
+
+  <!-- Technical Excellence -->
+  <Content
+    isReversed
+    isAfterContent
+    items={[
+      {
+        title: 'Healthcare Compliance',
+        description: 'HIPAA-compliant platform with enterprise-grade security and privacy protection',
+        icon: 'tabler:shield-check',
+      },
+      {
+        title: 'Interoperability',
+        description: 'HL7 FHIR integration for seamless health data exchange across systems',
+        icon: 'tabler:plug',
+      },
+      {
+        title: 'Scalable Infrastructure',
+        description: 'Cloud-native architecture designed for healthcare scale and reliability',
+        icon: 'tabler:cloud',
+      },
+      {
+        title: 'AI-Powered Insights',
+        description: 'Machine learning algorithms for predictive analytics and clinical decision support',
+        icon: 'tabler:brain',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/projects/eli.health/analytics-dashboard.png',
+      alt: 'Eli Health Analytics Dashboard',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Technical Excellence</h3>
+      <p class="text-lg">
+        Building a robust, secure, and compliant healthcare platform that meets the highest standards for patient data protection and clinical effectiveness.
+      </p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Platform Features -->
+  <Content
+    items={[
+      {
+        title: 'Virtual Care Delivery',
+        description: 'Comprehensive telehealth platform with video consultations, remote monitoring, and digital therapeutics',
+        icon: 'tabler:device-tablet',
+      },
+      {
+        title: 'Clinical Workflows',
+        description: 'Streamlined provider tools for appointment scheduling, patient management, and clinical documentation',
+        icon: 'tabler:calendar',
+      },
+      {
+        title: 'Patient Engagement',
+        description: 'Mobile-first patient experience with health tracking, medication management, and care plan adherence',
+        icon: 'tabler:device-mobile',
+      },
+      {
+        title: 'Population Health',
+        description: 'Analytics and reporting tools for population health management and outcome tracking',
+        icon: 'tabler:chart-bar',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/projects/eli.health/patient-interface.png',
+      alt: 'Eli Health Patient Interface',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Platform Features</h3>
+      <p class="text-lg">
+        Comprehensive digital health solutions designed to improve patient outcomes while reducing healthcare costs and increasing provider efficiency.
+      </p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Healthcare Impact -->
+  <Features3
+    title="Healthcare Transformation"
+    subtitle="How Eli Health is revolutionizing patient care and healthcare delivery"
+    columns={2}
+    items={[
+      {
+        title: 'Improved Access',
+        description: 'Breaking down geographic and economic barriers to quality healthcare services',
+        icon: 'tabler:world',
+      },
+      {
+        title: 'Better Outcomes',
+        description: 'Data-driven care coordination leading to improved patient health outcomes',
+        icon: 'tabler:trending-up',
+      },
+      {
+        title: 'Cost Reduction',
+        description: 'Efficient care delivery models reducing healthcare costs for patients and providers',
+        icon: 'tabler:currency-dollar',
+      },
+      {
+        title: 'Provider Satisfaction',
+        description: 'Streamlined workflows and tools improving healthcare provider experience and efficiency',
+        icon: 'tabler:mood-happy',
+      },
+      {
+        title: 'Preventive Care',
+        description: 'Proactive health monitoring and early intervention to prevent serious health conditions',
+        icon: 'tabler:shield',
+      },
+      {
+        title: 'Care Continuity',
+        description: 'Seamless care transitions and coordinated care across the entire patient journey',
+        icon: 'tabler:arrow-right',
+      },
+    ]}
+  />
+
+  <!-- Skills & Technologies -->
+  <Features3
+    title="Healthcare Technology Stack"
+    subtitle="Advanced technologies ensuring secure, compliant, and effective healthcare solutions"
+    columns={3}
+    defaultIcon="tabler:check"
+    items={[
+      {
+        title: 'HIPAA Compliance',
+        description: 'Healthcare data security and privacy protection',
+      },
+      {
+        title: 'HL7 FHIR',
+        description: 'Healthcare interoperability standards',
+      },
+      {
+        title: 'Telehealth APIs',
+        description: 'Video conferencing and remote care integration',
+      },
+      {
+        title: 'Clinical Decision Support',
+        description: 'AI-powered clinical recommendations',
+      },
+      {
+        title: 'Electronic Health Records',
+        description: 'Comprehensive patient data management',
+      },
+      {
+        title: 'Medical Device Integration',
+        description: 'IoMT and wearable device connectivity',
+      },
+      {
+        title: 'Healthcare Analytics',
+        description: 'Population health and outcome analytics',
+      },
+      {
+        title: 'Mobile Health Apps',
+        description: 'Patient-facing mobile applications',
+      },
+      {
+        title: 'Cloud Infrastructure',
+        description: 'Scalable, secure healthcare cloud solutions',
+      },
+    ]}
+  />
+
+  <!-- Call to Action -->
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Visit Eli Health',
+        href: 'https://eli.health',
+        target: '_blank',
+        icon: 'tabler:external-link',
+      },
+      {
+        text: 'View All Projects',
+        href: getPermalink('/#projects'),
+      },
+    ]}
+    title="Ready to transform healthcare delivery?"
+    subtitle="Discover how Eli Health is making quality healthcare more accessible, efficient, and patient-centered through innovative digital solutions."
+  />
+</Layout> 

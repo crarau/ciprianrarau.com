@@ -1,0 +1,309 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Content from '~/components/widgets/Content.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import ImageCarousel from '~/components/widgets/ImageCarousel.astro';
+import { getPermalink } from '~/utils/permalinks';
+
+// Mentorly project images
+const mentorlyImages = [
+  { src: '/images/projects/mentorly.com/platform-overview.png', alt: 'Mentorly Platform Overview' },
+  { src: '/images/projects/mentorly.com/mentor-dashboard.png', alt: 'Mentorly Mentor Dashboard' },
+  { src: '/images/projects/mentorly.com/ai-matching-system.png', alt: 'Mentorly AI Matching System' },
+];
+
+const metadata = {
+  title: 'Mentorly - AI-powered mentorship platform | Ciprian Rarau',
+  description: 'Founder & CTO at Mentorly. Building the future of professional mentorship with AI-powered matching and intelligent career guidance.',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+  <Hero
+    tagline="Project Showcase"
+    title="Mentorly"
+    subtitle="AI-powered mentorship platform"
+    actions={[
+      { variant: 'primary', text: 'Visit Mentorly', href: 'https://mentorly.com', target: '_blank', icon: 'tabler:external-link' },
+      { text: 'Back to Projects', href: getPermalink('/#projects') },
+    ]}
+  />
+
+  <!-- Project Gallery -->
+  <ImageCarousel
+    images={mentorlyImages}
+    title="Project Gallery"
+    subtitle="Screenshots and interfaces from Mentorly's AI-powered mentorship platform connecting professionals for career growth"
+    id="mentorly-gallery"
+  />
+
+  <!-- Project Overview -->
+  <Content
+    items={[
+      {
+        title: 'Role',
+        description: 'Founder & CTO (2024 - Present)',
+        icon: 'tabler:user',
+      },
+      {
+        title: 'Industry',
+        description: 'Professional Development & AI',
+        icon: 'tabler:building',
+      },
+      {
+        title: 'Focus',
+        description: 'AI-Powered Career Mentorship',
+        icon: 'tabler:chart-pie',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/projects/mentorly.com/platform-overview.png',
+      alt: 'Mentorly Platform Overview',
+    }}
+  >
+    <Fragment slot="content">
+      <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Project Overview</h2>
+      <p class="text-lg">
+        Mentorly is revolutionizing professional mentorship through AI-powered matching and intelligent career guidance. As Founder & CTO, I'm building a platform that connects ambitious professionals with experienced mentors, creating meaningful relationships that accelerate career growth.
+      </p>
+      <br />
+      <p class="text-lg">
+        Our mission is to democratize access to quality mentorship by leveraging artificial intelligence to create perfect mentor-mentee matches based on skills, experience, goals, and personality compatibility.
+      </p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- AI-Powered Mentorship Innovation -->
+  <Features3
+    title="AI-Powered Mentorship Innovation"
+    subtitle="Transforming how professionals connect and grow through intelligent matching"
+    columns={2}
+    items={[
+      {
+        title: 'Smart Matching Algorithm',
+        description: 'AI-driven mentor-mentee matching based on skills, experience, goals, and personality compatibility',
+        icon: 'tabler:brain',
+      },
+      {
+        title: 'Personalized Career Guidance',
+        description: 'Tailored career advice and development plans powered by machine learning insights',
+        icon: 'tabler:target',
+      },
+      {
+        title: 'Skill Development Tracking',
+        description: 'Comprehensive tracking of professional skills growth and development milestones',
+        icon: 'tabler:trending-up',
+      },
+      {
+        title: 'Global Professional Network',
+        description: 'Connecting professionals across industries and geographies for diverse mentorship opportunities',
+        icon: 'tabler:world',
+      },
+      {
+        title: 'Interactive Learning Platform',
+        description: 'Integrated learning tools and resources to support continuous professional development',
+        icon: 'tabler:school',
+      },
+      {
+        title: 'Performance Analytics',
+        description: 'Data-driven insights on mentorship effectiveness and career progress tracking',
+        icon: 'tabler:chart-dots',
+      },
+    ]}
+  />
+
+  <!-- Technical Excellence -->
+  <Content
+    isReversed
+    isAfterContent
+    items={[
+      {
+        title: 'AI & Machine Learning',
+        description: 'Advanced algorithms for mentor-mentee matching and career path recommendations',
+        icon: 'tabler:robot',
+      },
+      {
+        title: 'Scalable Architecture',
+        description: 'Cloud-native platform designed for global scale and real-time interactions',
+        icon: 'tabler:hierarchy',
+      },
+      {
+        title: 'Data Analytics',
+        description: 'Comprehensive analytics platform for measuring mentorship effectiveness and outcomes',
+        icon: 'tabler:database',
+      },
+      {
+        title: 'Security & Privacy',
+        description: 'Enterprise-grade security ensuring safe and private mentorship conversations',
+        icon: 'tabler:shield-check',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/projects/mentorly.com/mentor-dashboard.png',
+      alt: 'Mentorly Mentor Dashboard',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Technical Excellence</h3>
+      <p class="text-lg">
+        Building a cutting-edge platform that combines artificial intelligence with human expertise to create the most effective mentorship experience possible.
+      </p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Platform Features -->
+  <Content
+    items={[
+      {
+        title: 'Intelligent Matching',
+        description: 'AI algorithms analyze profiles, skills, and goals to create optimal mentor-mentee pairings',
+        icon: 'tabler:users',
+      },
+      {
+        title: 'Career Path Planning',
+        description: 'Personalized career roadmaps with milestone tracking and achievement recognition',
+        icon: 'tabler:route',
+      },
+      {
+        title: 'Communication Tools',
+        description: 'Integrated messaging, video calls, and collaboration tools for seamless mentorship',
+        icon: 'tabler:message-circle',
+      },
+      {
+        title: 'Progress Tracking',
+        description: 'Comprehensive analytics on skill development, goal achievement, and career advancement',
+        icon: 'tabler:progress',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/projects/mentorly.com/ai-matching-system.png',
+      alt: 'Mentorly AI Matching System',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Platform Features</h3>
+      <p class="text-lg">
+        Comprehensive suite of tools designed to make mentorship more accessible, effective, and measurable for both mentors and mentees.
+      </p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Mentorship Benefits -->
+  <Features3
+    title="Mentorship Revolution"
+    subtitle="How Mentorly transforms traditional mentorship for the modern professional"
+    columns={2}
+    items={[
+      {
+        title: 'Democratized Access',
+        description: 'Making quality mentorship accessible to professionals at all career stages and backgrounds',
+        icon: 'tabler:heart',
+      },
+      {
+        title: 'Data-Driven Insights',
+        description: 'Leveraging data to optimize mentorship relationships and career development strategies',
+        icon: 'tabler:chart-line',
+      },
+      {
+        title: 'Global Reach',
+        description: 'Connecting professionals across geographical boundaries for diverse perspectives',
+        icon: 'tabler:plane',
+      },
+      {
+        title: 'Measurable Outcomes',
+        description: 'Tracking and measuring the real impact of mentorship on career advancement',
+        icon: 'tabler:calculator',
+      },
+      {
+        title: 'Flexible Engagement',
+        description: 'Supporting various mentorship models from one-on-one to group mentoring',
+        icon: 'tabler:calendar',
+      },
+      {
+        title: 'Continuous Learning',
+        description: 'Integrated learning resources and skill development tools for ongoing growth',
+        icon: 'tabler:book',
+      },
+    ]}
+  />
+
+  <!-- Skills & Technologies -->
+  <Features3
+    title="Technical Innovation"
+    subtitle="Cutting-edge technologies powering the future of professional mentorship"
+    columns={3}
+    defaultIcon="tabler:check"
+    items={[
+      {
+        title: 'Artificial Intelligence',
+        description: 'Machine learning algorithms for intelligent matching',
+      },
+      {
+        title: 'Natural Language Processing',
+        description: 'Understanding and analyzing communication patterns',
+      },
+      {
+        title: 'Cloud Architecture',
+        description: 'Scalable, reliable cloud-native infrastructure',
+      },
+      {
+        title: 'Data Analytics',
+        description: 'Advanced analytics for insights and optimization',
+      },
+      {
+        title: 'Mobile Development',
+        description: 'Cross-platform mobile applications',
+      },
+      {
+        title: 'Real-time Communication',
+        description: 'Video, audio, and messaging integration',
+      },
+      {
+        title: 'Recommendation Systems',
+        description: 'Personalized content and mentor recommendations',
+      },
+      {
+        title: 'User Experience Design',
+        description: 'Intuitive, engaging platform design',
+      },
+      {
+        title: 'Security & Privacy',
+        description: 'Enterprise-grade security and data protection',
+      },
+    ]}
+  />
+
+  <!-- Call to Action -->
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Visit Mentorly',
+        href: 'https://mentorly.com',
+        target: '_blank',
+        icon: 'tabler:external-link',
+      },
+      {
+        text: 'View All Projects',
+        href: getPermalink('/#projects'),
+      },
+    ]}
+    title="Ready to accelerate your career with AI-powered mentorship?"
+    subtitle="Join Mentorly and discover how intelligent matching can connect you with the perfect mentor to unlock your professional potential."
+  />
+</Layout> 
