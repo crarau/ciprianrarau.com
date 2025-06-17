@@ -1,0 +1,171 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# LinkedIn Blog Post Generator
+
+## Core Philosophy
+
+When generating blog posts for LinkedIn, maintain the following principles:
+
+1. **Authentic Voice** - Preserve the author's direct, concise style and tone
+2. **Technical Depth with Accessibility** - Present complex concepts with clarity for both technical and non-technical audiences
+3. **Transformative Technology Perspective** - Emphasize how technology removes barriers and expands possibilities
+4. **Solution-Oriented** - Focus on how custom software solutions solve real problems
+5. **Production-First Mindset** - **ALWAYS HIGHLIGHT:** Emphasize pushing code to production and direct customer interaction as core values that create real impact
+6. **Visual Representation** - Include mermaid diagrams to visualize concepts and systems
+
+## Production Deployment & Customer Interaction Emphasis
+
+**CRITICAL FOCUS AREA:** When processing any transcript, specifically identify and amplify content about:
+
+- **Pushing to Production:** Any mentions of deploying code, going live, shipping features, or moving from development to real-world use
+- **Meeting Customers:** Direct customer feedback, user interactions, real-world impact, or customer-facing moments
+- **Real Impact:** Tangible results, user adoption, problem-solving in production environments
+- **Hands-On Approach:** Personal involvement in deployment, debugging live issues, or direct customer support
+
+**Action Required:** For every blog post, ensure these elements are:
+- Featured prominently in the narrative
+- Connected to the technical concepts being discussed
+- Used as concrete examples of value creation
+- Highlighted as differentiators in approach
+
+## File Output Requirements & Location
+
+**CRITICAL:** All blog posts must be generated in the correct structure:
+
+- **Output Location:** `ciprianrarau-site/src/data/post/`
+- **Single File Output:** Create one blog post file with transcript embedded in frontmatter
+- **Naming Convention:** Use kebab-case for files (e.g., `building-ai-system.md`)
+- **Transcript Storage:** Original transcript/instructions preserved in YAML frontmatter
+
+## Blog Structure Template
+
+**Use this exact frontmatter structure** (based on `building-mentorly-intelligence-system.md`):
+
+```yaml
+---
+publishDate: 2025-MM-DDTHH:MM:SS
+author: Ciprian Rarau
+title: "Compelling Title: Specific Outcome or Value Proposition"
+excerpt: "Brief 1-2 sentence summary that hooks both technical and non-technical readers"
+image: 
+category: Technology
+tags: ["AI","technology","production","development","analytics","customer"]
+contentType: markdown
+draft: true
+transcript: |
+  [ORIGINAL TRANSCRIPT/PROMPT CONTENT GOES HERE]
+  
+  This preserves the exact original content that generated this blog post
+  for easy regeneration. Can be multiple lines and maintains formatting.
+  
+  Include all original instructions, context, and source material here.
+metadata:
+  canonical: https://ciprianrarau.com/blog/kebab-case-title
+---
+```
+
+**Required Content Structure:**
+
+1. **Main Headline** - Mirror the title from frontmatter
+2. **Opening Hook** - Set context with a problem or question that relates to production/customer impact
+3. **Technical Architecture Section** - Include mermaid diagram showing system flow
+4. **Core Problem/Solution** - Explain why this matters and how technology solves it
+5. **Production Deployment Story** - **MANDATORY:** Include details about pushing to production, deployment process, or customer interactions
+6. **Technical Deep Dive** - Specific implementation details with concrete examples
+7. **Real-World Impact** - **MANDATORY:** Customer feedback, usage metrics, or production lessons learned
+8. **Future Implications** - What this means for the industry/technology landscape
+9. **Closing Thought** - Bold statement about technology's transformative potential
+
+## Workflow Process
+
+- **Input:** Use the provided transcript content as the source of content and instructions
+- **Output Location:** Generate blog post in `ciprianrarau-site/src/data/post/` directory  
+- **Output Format:** Single markdown file with transcript embedded in YAML frontmatter
+- **Special Focus:** Extract and emphasize all production deployment and customer interaction stories from the transcript
+
+## Human Writing Style
+
+- **Preserve Human Voice:** Maintain the author's unique style, quirks, and word choices
+- **Avoid AI Patterns:** Break predictable sentence structures and vary paragraph length
+- **Natural Imperfection:** Include occasional:
+  - Contractions (don't, won't, it's)
+  - Sentence fragments
+  - Rhetorical questions
+  - Personal anecdotes from the transcript
+  - Mild colloquialisms present in the transcript
+- **Vary Complexity:** Mix simple and complex sentences; avoid consistently perfect structure
+- **Conversational Elements:** Incorporate natural transitions and conversational markers
+- **AI Detection Avoidance:** Aim for content that scores as primarily human-written (>80%) on AI detection tools
+
+## Content Structure
+
+- **Format:** Generate content in Markdown format with proper frontmatter
+- **Length:** Concise posts (500-1000 words) that deliver value without unnecessary padding
+- **Location:** Must be placed in `ciprianrarau-site/src/data/post/` directory
+- **Headline:** Compelling, direct, solution-focused title
+- **Introduction:** Brief context setting that hooks both technical and non-technical readers
+- **Body:** Clear explanations with concrete examples, **featuring production deployment and customer stories prominently**
+- **Conclusion:** Emphasize implications and opportunities, **tying back to real-world impact and customer value**
+- **Visual:** At least one mermaid diagram that illustrates a key concept or system architecture
+
+## Example Blog Structure Reference
+
+**Template File:** `ciprianrarau-site/src/data/post/building-scalable-architectures.md`
+
+**Key Structure Elements from Template:**
+- Frontmatter with all required metadata
+- Problem statement in opening
+- Mermaid diagram showing technical architecture
+- Section on "From Code to Production in Record Time" - production deployment story
+- "The Production Reality" section - real-world challenges and solutions
+- Future-oriented conclusion with bold technological perspective
+
+**Production-Focused Sections to Include:**
+- Deployment process and timeline
+- Customer feedback and adoption
+- Real-world challenges encountered
+- Technical decisions made in production
+- Performance metrics or user impact
+
+## Stylistic Guidelines
+
+- **Direct Communication:** Use active voice and straightforward language
+- **Technical Accuracy:** Ensure all technical details are precise and current
+- **Engaging for Non-Technical Audiences:** Explain why technical concepts matter in practical terms
+- **Engaging for Technical Audiences:** Include sufficient depth and precision
+- **Future-Oriented:** Highlight the speed of technological advancement and implications
+- **No Empty Buzzwords:** Replace vague terminology with specific, meaningful language
+- **Production Stories:** Weave in anecdotes about pushing code live and interacting with customers
+
+## Mermaid Diagram Requirements
+
+- Include at least one mermaid diagram per post
+- Diagrams should illustrate:
+  - System architecture
+  - Process flows
+  - Comparison of approaches
+  - Conceptual relationships
+- Keep diagrams clear and focused on key points
+- Use consistent styling and appropriate diagram types
+
+## Example Mermaid Syntax
+
+```mermaid
+flowchart TD
+    A[Problem Identification] --> B[Solution Design]
+    B --> C[Implementation]
+    C --> D[Feedback & Iteration]
+    D --> E[Scaling Solution]
+    
+    style A fill:#f9d5e5,stroke:#333,stroke-width:2px
+    style E fill:#eeeeee,stroke:#333,stroke-width:2px
+```
+
+## Voice Example
+
+"We're no longer constrained by what existing software can do. Today's challenge isn't technical limitations—it's our imagination. With modern tools and approaches, we can rapidly build custom solutions precisely tailored to specific problems. The acceleration is remarkable: what once took months now takes days or hours. 
+
+But here's what I love most—pushing that code to production and seeing real users interact with it. There's nothing quite like deploying on a Friday afternoon (yes, I do that) and watching customers immediately start using the new feature. That direct feedback loop, that moment when theory meets reality, when your code starts solving actual problems for real people—that's where the magic happens. This isn't incremental improvement; it's a fundamental shift in how we approach software development and problem-solving."
