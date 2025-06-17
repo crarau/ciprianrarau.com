@@ -3,7 +3,6 @@ publishDate: 2025-01-20T12:00:00Z
 author: Ciprian Rarau
 title: "Voice Analytics Revolution: Building Tools That Show Real Productivity Impact"
 excerpt: "How I built a comprehensive analytics toolkit for voice recordings that reveals the hidden productivity gains from speaking instead of typing—with real numbers that'll surprise you."
-image: ~/assets/images/blog-placeholder.jpg
 category: Technology
 tags: ["AI","voice-technology","productivity","analytics","python","data-visualization"]
 contentType: markdown
@@ -30,8 +29,6 @@ transcript: |
 metadata:
   canonical: https://ciprianrarau.com/blog/voice-analytics-revolution
 ---
-
-# Voice Analytics Revolution: Building Tools That Show Real Productivity Impact
 
 What if I told you that talking to your computer for just 40 minutes a day could save you 20 hours of typing every month? Sounds too good to be true, right? Well, I built something to prove it.
 
