@@ -23,3 +23,9 @@ pnpm-lock.yaml
 
 .astro
 .vercel
+
+# Secret scripts and tokens
+*-secret.sh
+*-token.sh
+.vercel-token
+vercel-deploy.sh
