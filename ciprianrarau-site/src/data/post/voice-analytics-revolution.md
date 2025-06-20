@@ -60,6 +60,8 @@ flowchart TD
     style I fill:#e8f5e8,stroke:#1b5e20,stroke-width:2px
 ```
 
+![Diagram 1](/images/diagrams/voice-analytics-revolution-diagram-cdc31cfc.png?v=430261b9)
+
 The toolkit processes everything locally—no data leaves your machine. It handles iCloud sync delays, processes files in parallel, and generates both technical visualizations and AI-powered narrative summaries that anyone can understand.
 
 ## From Code to Production in Record Time

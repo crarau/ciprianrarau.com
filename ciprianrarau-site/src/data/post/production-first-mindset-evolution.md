@@ -39,6 +39,8 @@ flowchart TD
     style H fill:#e3f2fd,stroke:#333,stroke-width:3px
 ```
 
+![Diagram 1](/images/diagrams/production-first-mindset-evolution-diagram-a78f2c23.png?v=430261b9)
+
 ## The Post-Login Reality
 
 Here's something most people don't get: the real work starts after the login screen. That's where the complexity lives. Authentication is just the door—what matters is what happens inside.
