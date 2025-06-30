@@ -1,0 +1,229 @@
+---
+import { Image } from 'astro:assets';
+import { getPermalink } from '~/utils/permalinks';
+
+// Import images
+import wiskImage from '~/assets/images/projects/wisk/image21.png';
+import mentorlyImage from '~/assets/images/projects/mentorly.com/platform-overview.png';
+import wehappersImage from '~/assets/images/projects/wehappers.org/hero.png';
+import catalyzeImage from '~/assets/images/projects/catalyzeup.ai/hero.png';
+import alveoleImage from '~/assets/images/projects/alveole/main.png';
+import eliImage from '~/assets/images/projects/eli.health/platform-overview.png';
+import omsignalImage from '~/assets/images/projects/omsignal/main.png';
+import xpertseaImage from '~/assets/images/projects/xpertsea/image6.png';
+
+const projects = [
+  {
+    id: 1,
+    title: "WISK.ai",
+    subtitle: "Food & Beverage Intelligence",
+    image: wiskImage,
+    details: [
+      "Next-level inventory management",
+      "Real-time analytics platform",
+      "Multi-million dollar revenue",
+      "CTO/CPO & Co-founder"
+    ],
+    link: getPermalink('/projects/wisk')
+  },
+  {
+    id: 2,
+    title: "Mentorly",
+    subtitle: "AI-Powered Mentorship",
+    image: mentorlyImage,
+    details: [
+      "AI matching algorithms",
+      "Career development platform",
+      "Enterprise knowledge circulation",
+      "Founder & CTO"
+    ],
+    link: getPermalink('/projects/mentorly')
+  },
+  {
+    id: 3,
+    title: "WeHappers",
+    subtitle: "Global Happiness Initiative",
+    image: wehappersImage,
+    details: [
+      "Wealth redistribution tech",
+      "Non-profit innovation",
+      "Social impact platform",
+      "Co-founder & Tech Lead"
+    ],
+    link: getPermalink('/projects/wehappers')
+  },
+  {
+    id: 4,
+    title: "CatalyzeUP",
+    subtitle: "Startup Acceleration",
+    image: catalyzeImage,
+    details: [
+      "Engineering services",
+      "Startup consulting",
+      "Technology strategy",
+      "Founder & CEO"
+    ],
+    link: getPermalink('/projects/catalyzeup')
+  },
+  {
+    id: 5,
+    title: "Eli Health",
+    subtitle: "Hormone Health Tech",
+    image: eliImage,
+    details: [
+      "Biomarker measurement",
+      "Health data security",
+      "Mobile backend infrastructure",
+      "Technical Advisor"
+    ],
+    link: getPermalink('/projects/eli')
+  },
+  {
+    id: 6,
+    title: "OMsignal",
+    subtitle: "Wearable Technology",
+    image: omsignalImage,
+    details: [
+      "Bio-sensing wearables",
+      "Acquired by Honeywell",
+      "$10M+ funding raised",
+      "First Employee & CTO"
+    ],
+    link: getPermalink('/projects/omsignal')
+  }
+];
+---
+
+<div class="project-gallery-container py-8">
+  <!-- Desktop Gallery -->
+  <div class="hidden md:block relative w-full h-[500px] overflow-hidden rounded-xl shadow-2xl">
+    <div class="flex h-full">
+      {projects.map((project, index) => (
+        <div
+          class="gallery-item relative h-full transition-all duration-500 ease-in-out cursor-pointer"
+          data-index={index}
+        >
+          <a href={project.link} class="block relative w-full h-full">
+            <Image
+              src={project.image}
+              alt={project.title}
+              class="object-cover w-full h-full"
+              loading="eager"
+              width={800}
+              height={500}
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+            
+            <div class="absolute bottom-0 left-0 right-0 p-6 text-white transform transition-all duration-500">
+              <div class="bg-white/95 backdrop-blur-sm text-gray-900 rounded-lg p-4 shadow-xl">
+                <h3 class="text-xl font-bold mb-1">{project.title}</h3>
+                <p class="text-sm text-gray-600 mb-2">{project.subtitle}</p>
+                
+                <div class="details-container overflow-hidden transition-all duration-500 max-h-0 opacity-0">
+                  <ul class="space-y-1 mt-3 pt-3 border-t border-gray-200">
+                    {project.details.map((detail) => (
+                      <li class="text-sm text-gray-700 flex items-start">
+                        <span class="text-primary mr-2">•</span>
+                        <span>{detail}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <p class="text-sm font-medium text-primary mt-3">View Project →</p>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Mobile Gallery -->
+  <div class="md:hidden space-y-3">
+    {projects.map((project) => (
+      <a
+        href={project.link}
+        class="block relative h-64 overflow-hidden rounded-lg shadow-lg group"
+      >
+        <Image
+          src={project.image}
+          alt={project.title}
+          class="object-cover w-full h-full"
+          loading="eager"
+          width={800}
+          height={500}
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+        
+        <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
+          <div class="bg-white/95 backdrop-blur-sm text-gray-900 rounded-lg p-4">
+            <h3 class="text-lg font-bold">{project.title}</h3>
+            <p class="text-sm text-gray-600">{project.subtitle}</p>
+            <p class="text-sm font-medium text-primary mt-2 group-hover:translate-x-1 transition-transform">
+              View Project →
+            </p>
+          </div>
+        </div>
+      </a>
+    ))}
+  </div>
+</div>
+
+<style>
+  .gallery-item {
+    width: 16.666%;
+    position: relative;
+  }
+
+  .gallery-item.hovered {
+    width: 40%;
+  }
+
+  .gallery-item.other-hovered {
+    width: 12%;
+  }
+
+  .gallery-item.hovered .details-container {
+    max-height: 200px;
+    opacity: 1;
+  }
+
+  @media (hover: hover) {
+    .gallery-item:hover {
+      width: 40%;
+    }
+
+    .gallery-item:hover .details-container {
+      max-height: 200px;
+      opacity: 1;
+    }
+  }
+</style>
+
+<script>
+  // Only run on desktop
+  if (window.innerWidth >= 768) {
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const container = document.querySelector('.project-gallery-container .flex');
+    
+    galleryItems.forEach((item, index) => {
+      item.addEventListener('mouseenter', () => {
+        galleryItems.forEach((otherItem, otherIndex) => {
+          if (otherIndex === index) {
+            otherItem.classList.add('hovered');
+            otherItem.classList.remove('other-hovered');
+          } else {
+            otherItem.classList.remove('hovered');
+            otherItem.classList.add('other-hovered');
+          }
+        });
+      });
+    });
+
+    container?.addEventListener('mouseleave', () => {
+      galleryItems.forEach((item) => {
+        item.classList.remove('hovered', 'other-hovered');
+      });
+    });
+  }
+</script>
