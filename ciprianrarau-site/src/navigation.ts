@@ -59,7 +59,7 @@ export const footerData = {
         { text: 'WISK.ai', href: getPermalink('/projects/wisk') },
         { text: 'Mentorly', href: getPermalink('/projects/mentorly') },
         { text: 'WeHappers', href: getPermalink('/projects/wehappers') },
-        { text: 'CatalyzeUp', href: getPermalink('/projects/catalyzeup') },
+        { text: 'CatalyzeUP', href: getPermalink('/projects/catalyzeup') },
         { text: 'Alvéole', href: getPermalink('/projects/alveole') },
         { text: 'View All', href: getPermalink('/#projects') },
       ],
