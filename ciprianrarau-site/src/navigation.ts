@@ -15,6 +15,10 @@ export const headerData = {
       href: getPermalink('/#projects'),
     },
     {
+      text: 'Pet Projects',
+      href: getPermalink('/pet-projects'),
+    },
+    {
       text: 'Resume',
       href: getPermalink('/#resume'),
     },
@@ -52,11 +56,20 @@ export const footerData = {
     {
       title: 'Projects',
       links: [
-        { text: 'WISK.ai', href: 'https://wisk.ai', target: '_blank' },
-        { text: 'Alvéole', href: 'https://alveole.buzz', target: '_blank' },
-        { text: 'CatalyzeUp', href: '#' },
-        { text: 'IdeaPlaces', href: '#' },
-        { text: 'OMsignal', href: '#' },
+        { text: 'WISK.ai', href: getPermalink('/projects/wisk') },
+        { text: 'Mentorly', href: getPermalink('/projects/mentorly') },
+        { text: 'WeHappers', href: getPermalink('/projects/wehappers') },
+        { text: 'CatalyzeUp', href: getPermalink('/projects/catalyzeup') },
+        { text: 'Alvéole', href: getPermalink('/projects/alveole') },
+        { text: 'View All', href: getPermalink('/#projects') },
+      ],
+    },
+    {
+      title: 'Pet Projects',
+      links: [
+        { text: 'MyDayInMusic', href: getPermalink('/pet-projects/mydayinmusic') },
+        { text: 'OneOps Cloud', href: getPermalink('/pet-projects/oneops') },
+        { text: 'View All', href: getPermalink('/pet-projects') },
       ],
     },
     {

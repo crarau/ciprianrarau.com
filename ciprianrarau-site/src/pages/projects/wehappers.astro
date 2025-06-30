@@ -1,0 +1,228 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Content from '~/components/widgets/Content.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import ImageCarousel from '~/components/widgets/ImageCarousel.astro';
+import { getPermalink } from '~/utils/permalinks';
+
+// WeHappers project images
+const wehappersImages = [
+  { src: '/images/projects/wehappers.org/platform-overview.png', alt: 'WeHappers Platform Overview' },
+  { src: '/images/projects/wehappers.org/hero.png', alt: 'WeHappers Hero' },
+];
+
+const metadata = {
+  title: 'WeHappers - Re-imagining Wealth Distribution | Ciprian Rarau',
+  description: 'Co-founder at WeHappers. Building initiatives for global happiness through technology and wealth redistribution.',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+  <Hero
+    tagline="Project Showcase"
+    title="WeHappers"
+    subtitle="Re-imagining Wealth Distribution for a Happier World"
+    actions={[
+      { variant: 'primary', text: 'Visit WeHappers', href: 'https://wehappers.org', target: '_blank', icon: 'tabler:external-link' },
+      { text: 'Back to Projects', href: getPermalink('/#projects') },
+    ]}
+  />
+
+  <!-- Project Gallery -->
+  <ImageCarousel
+    images={wehappersImages}
+    title="Project Gallery"
+    subtitle="Sparking global happiness through tech initiatives and innovative wealth distribution models"
+    id="wehappers-gallery"
+  />
+
+  <!-- Project Overview -->
+  <Content
+    items={[
+      {
+        title: 'Role',
+        description: 'Co-founder & Technology Lead',
+        icon: 'tabler:user',
+      },
+      {
+        title: 'Industry',
+        description: 'Non-profit & Social Impact',
+        icon: 'tabler:building',
+      },
+      {
+        title: 'Focus',
+        description: 'Global Happiness & Wealth Distribution',
+        icon: 'tabler:chart-pie',
+      },
+    ]}
+    image={{
+      src: '/images/projects/wehappers.org/platform-overview.png',
+      alt: 'WeHappers Platform Overview',
+    }}
+  >
+    <Fragment slot="content">
+      <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Project Overview</h2>
+      <p class="text-lg">
+        WeHappers is a non-profit organization dedicated to re-imagining wealth distribution for a happier world. In a world haunted by wealth inequalities and a relentless pursuit of personal happiness, we've converged towards one goal, one motivation: Spark Global Happiness through Tech initiatives.
+      </p>
+      <br />
+      <p class="text-lg">
+        As Co-founder and Technology Lead, I'm helping build innovative platforms and solutions that leverage technology to create more equitable wealth distribution systems and promote global happiness through meaningful initiatives.
+      </p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-green-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Key Initiatives -->
+  <Features3
+    title="Key Initiatives"
+    subtitle="Technology-driven solutions for global happiness and wealth equality"
+    columns={2}
+    items={[
+      {
+        title: 'Wealth Distribution Platform',
+        description: 'Innovative technology solutions for transparent and equitable wealth redistribution',
+        icon: 'tabler:coin',
+      },
+      {
+        title: 'Happiness Measurement Tools',
+        description: 'Data-driven approaches to measure and improve global happiness indices',
+        icon: 'tabler:mood-smile',
+      },
+      {
+        title: 'Community Building',
+        description: 'Creating global communities focused on collective happiness and well-being',
+        icon: 'tabler:users',
+      },
+      {
+        title: 'Tech for Good',
+        description: 'Leveraging cutting-edge technology to solve social inequality challenges',
+        icon: 'tabler:heart-handshake',
+      },
+      {
+        title: 'Educational Programs',
+        description: 'Spreading awareness about wealth inequality and happiness economics',
+        icon: 'tabler:school',
+      },
+      {
+        title: 'Partnership Networks',
+        description: 'Building alliances with organizations sharing our vision for a happier world',
+        icon: 'tabler:network',
+      },
+    ]}
+  />
+
+  <!-- Impact & Vision -->
+  <Content
+    isReversed
+    isAfterContent
+    items={[
+      {
+        title: 'Global Reach',
+        description: 'Building solutions that transcend borders to create worldwide impact',
+        icon: 'tabler:world',
+      },
+      {
+        title: 'Data-Driven Approach',
+        description: 'Using analytics and insights to measure and maximize social impact',
+        icon: 'tabler:chart-dots',
+      },
+      {
+        title: 'Transparency',
+        description: 'Complete transparency in operations and wealth distribution mechanisms',
+        icon: 'tabler:eye',
+      },
+      {
+        title: 'Sustainability',
+        description: 'Creating sustainable models for long-term social and economic impact',
+        icon: 'tabler:plant',
+      },
+    ]}
+    image={{
+      src: '/images/projects/wehappers.org/hero.png',
+      alt: 'WeHappers Vision',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Impact & Vision</h3>
+      <p class="text-lg">
+        Our vision extends beyond traditional charity models. We're building technology infrastructure that enables sustainable, transparent, and effective wealth redistribution while fostering a global culture of happiness and well-being.
+      </p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-green-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Technology Stack -->
+  <Features3
+    title="Technology for Social Good"
+    subtitle="Innovative tech solutions powering our mission"
+    columns={3}
+    defaultIcon="tabler:check"
+    items={[
+      {
+        title: 'Blockchain Technology',
+        description: 'Transparent wealth distribution tracking',
+      },
+      {
+        title: 'AI & Machine Learning',
+        description: 'Predictive models for social impact',
+      },
+      {
+        title: 'Cloud Infrastructure',
+        description: 'Scalable global platform',
+      },
+      {
+        title: 'Data Analytics',
+        description: 'Impact measurement and insights',
+      },
+      {
+        title: 'Mobile Applications',
+        description: 'Accessible tools for everyone',
+      },
+      {
+        title: 'Open Source',
+        description: 'Community-driven development',
+      },
+      {
+        title: 'API Ecosystem',
+        description: 'Integration with partner organizations',
+      },
+      {
+        title: 'Security & Privacy',
+        description: 'Protecting user data and transactions',
+      },
+      {
+        title: 'Real-time Systems',
+        description: 'Instant impact tracking and reporting',
+      },
+    ]}
+  />
+
+  <!-- Call to Action -->
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Join WeHappers',
+        href: 'https://wehappers.org',
+        target: '_blank',
+        icon: 'tabler:external-link',
+      },
+      {
+        text: 'View All Projects',
+        href: getPermalink('/#projects'),
+      },
+    ]}
+    title="Ready to join the movement for global happiness?"
+    subtitle="Be part of the change. Join WeHappers in our mission to create a more equitable and happier world through technology and innovation."
+  />
+</Layout>

@@ -1,0 +1,257 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Content from '~/components/widgets/Content.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import ImageCarousel from '~/components/widgets/ImageCarousel.astro';
+import { getPermalink } from '~/utils/permalinks';
+
+// CatalyzeUp project images
+const catalyzeImages = [
+  { src: '/images/projects/catalyzeup.ai/platform-overview.png', alt: 'CatalyzeUp Platform Overview' },
+  { src: '/images/projects/catalyzeup.ai/hero.png', alt: 'CatalyzeUp Hero' },
+];
+
+const metadata = {
+  title: 'CatalyzeUp - Making Startups Go Farther Faster | Ciprian Rarau',
+  description: 'Building CatalyzeUp to help startups maximize their investment in software engineering and technology.',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+  <Hero
+    tagline="Project Showcase"
+    title="CatalyzeUp"
+    subtitle="We Make Startups Go Farther Faster"
+    actions={[
+      { variant: 'primary', text: 'Visit CatalyzeUp', href: 'https://catalyzeup.ai', target: '_blank', icon: 'tabler:external-link' },
+      { text: 'Back to Projects', href: getPermalink('/#projects') },
+    ]}
+  />
+
+  <!-- Project Gallery -->
+  <ImageCarousel
+    images={catalyzeImages}
+    title="Project Gallery"
+    subtitle="Helping startups maximize their investment in software engineering and build technology that enables and supports their business growth"
+    id="catalyze-gallery"
+  />
+
+  <!-- Project Overview -->
+  <Content
+    items={[
+      {
+        title: 'Role',
+        description: 'Founder & CEO',
+        icon: 'tabler:user',
+      },
+      {
+        title: 'Industry',
+        description: 'Technology Services & Consulting',
+        icon: 'tabler:building',
+      },
+      {
+        title: 'Focus',
+        description: 'Startup Acceleration & Software Engineering',
+        icon: 'tabler:rocket',
+      },
+    ]}
+    image={{
+      src: '/images/projects/catalyzeup.ai/platform-overview.png',
+      alt: 'CatalyzeUp Platform Overview',
+    }}
+  >
+    <Fragment slot="content">
+      <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Project Overview</h2>
+      <p class="text-lg">
+        CatalyzeUp is a technology services company dedicated to helping startups go farther, faster. We specialize in maximizing the return on investment in software engineering, enabling startups to build robust technology that accelerates their business growth.
+      </p>
+      <br />
+      <p class="text-lg">
+        Our mission is to be the catalyst that transforms ambitious startup ideas into successful technology companies by providing expert engineering services, strategic guidance, and proven methodologies that reduce time-to-market and maximize efficiency.
+      </p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-orange-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Core Services -->
+  <Features3
+    title="Our Value Proposition"
+    subtitle="Comprehensive technology services designed to accelerate startup success"
+    columns={2}
+    items={[
+      {
+        title: 'Software Engineering Excellence',
+        description: 'Expert development teams that build scalable, reliable software solutions',
+        icon: 'tabler:code',
+      },
+      {
+        title: 'Strategic Technology Consulting',
+        description: 'Guidance on technology decisions that align with business objectives',
+        icon: 'tabler:bulb',
+      },
+      {
+        title: 'Rapid MVP Development',
+        description: 'Fast-track your product to market with lean, effective MVP strategies',
+        icon: 'tabler:device-mobile',
+      },
+      {
+        title: 'Architecture & System Design',
+        description: 'Build foundations that scale with your business growth',
+        icon: 'tabler:building-arch',
+      },
+      {
+        title: 'Team Augmentation',
+        description: 'Skilled engineers who integrate seamlessly with your existing team',
+        icon: 'tabler:users-plus',
+      },
+      {
+        title: 'DevOps & Infrastructure',
+        description: 'Automated, scalable infrastructure that grows with your needs',
+        icon: 'tabler:server',
+      },
+    ]}
+  />
+
+  <!-- Our Approach -->
+  <Content
+    isReversed
+    isAfterContent
+    items={[
+      {
+        title: 'Startup-First Mindset',
+        description: 'We understand the unique challenges and constraints startups face',
+        icon: 'tabler:target',
+      },
+      {
+        title: 'Agile Methodology',
+        description: 'Flexible, iterative development that adapts to changing requirements',
+        icon: 'tabler:refresh',
+      },
+      {
+        title: 'Cost-Effective Solutions',
+        description: 'Maximize your runway with efficient, value-driven engineering',
+        icon: 'tabler:calculator',
+      },
+      {
+        title: 'Knowledge Transfer',
+        description: 'We empower your team with skills and best practices',
+        icon: 'tabler:school',
+      },
+    ]}
+    image={{
+      src: '/images/projects/catalyzeup.ai/hero.png',
+      alt: 'CatalyzeUp Approach',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Our Approach</h3>
+      <p class="text-lg">
+        We combine deep technical expertise with startup experience to deliver solutions that not only work but drive real business value. Our approach is tailored to each startup's unique needs, ensuring maximum impact with minimal waste.
+      </p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-orange-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Success Metrics -->
+  <Features3
+    title="Proven Results"
+    subtitle="How we measure success for our startup partners"
+    columns={2}
+    items={[
+      {
+        title: '3x Faster Development',
+        description: 'Accelerate your time-to-market with our experienced teams',
+        icon: 'tabler:trending-up',
+      },
+      {
+        title: '40% Cost Reduction',
+        description: 'Optimize development costs through efficient processes',
+        icon: 'tabler:coin-off',
+      },
+      {
+        title: '99.9% Uptime',
+        description: 'Build reliable systems that your customers can depend on',
+        icon: 'tabler:shield-check',
+      },
+      {
+        title: 'Scalable Architecture',
+        description: 'Systems designed to handle 10x growth without rewrites',
+        icon: 'tabler:chart-line',
+      },
+    ]}
+  />
+
+  <!-- Technology Expertise -->
+  <Features3
+    title="Technology Expertise"
+    subtitle="Modern tech stack for modern startups"
+    columns={3}
+    defaultIcon="tabler:check"
+    items={[
+      {
+        title: 'Cloud Native',
+        description: 'AWS, GCP, Azure expertise',
+      },
+      {
+        title: 'Modern Frameworks',
+        description: 'React, Vue, Angular, Next.js',
+      },
+      {
+        title: 'Backend Excellence',
+        description: 'Node.js, Python, Go, Java',
+      },
+      {
+        title: 'Mobile Development',
+        description: 'React Native, Flutter, Swift',
+      },
+      {
+        title: 'AI & Machine Learning',
+        description: 'TensorFlow, PyTorch, OpenAI',
+      },
+      {
+        title: 'DevOps & CI/CD',
+        description: 'Docker, Kubernetes, GitHub Actions',
+      },
+      {
+        title: 'Database Design',
+        description: 'PostgreSQL, MongoDB, Redis',
+      },
+      {
+        title: 'API Development',
+        description: 'REST, GraphQL, gRPC',
+      },
+      {
+        title: 'Security',
+        description: 'OWASP, penetration testing',
+      },
+    ]}
+  />
+
+  <!-- Call to Action -->
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Get Started',
+        href: 'https://catalyzeup.ai',
+        target: '_blank',
+        icon: 'tabler:external-link',
+      },
+      {
+        text: 'View All Projects',
+        href: getPermalink('/#projects'),
+      },
+    ]}
+    title="Ready to catalyze your startup's growth?"
+    subtitle="Let's build technology that accelerates your business. Partner with CatalyzeUp and go farther, faster."
+  />
+</Layout>

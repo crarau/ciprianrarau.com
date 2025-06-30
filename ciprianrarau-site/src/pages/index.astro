@@ -374,6 +374,91 @@ const metadata = {
     </Fragment>
   </Content>
 
+  <!-- Project: WeHappers -->
+  <Content
+    isReversed
+    isAfterContent={true}
+    items={[
+      {
+        title: 'Role:',
+        description: 'Co-founder & Technology Lead',
+      },
+      {
+        title: 'Description:',
+        description: 'WeHappers is a non-profit organization re-imagining wealth distribution for a happier world. We converged towards one goal: Spark Global Happiness through Tech initiatives. Building innovative platforms that leverage technology to create more equitable wealth distribution systems.',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/projects/wehappers.org/hero.png',
+      alt: 'WeHappers Platform',
+    }}
+    callToAction={{
+      text: 'Learn More',
+      icon: 'tabler:chevron-right',
+      href: getPermalink('/projects/wehappers'),
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        WeHappers <br /><span class="text-2xl">Re-imagining wealth distribution for global happiness</span>
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Project: CatalyzeApp -->
+  <Content
+    isAfterContent={true}
+    items={[
+      {
+        title: 'Role:',
+        description: 'Founder & CEO',
+      },
+      {
+        title: 'Description:',
+        description: 'CatalyzeApp helps startups go farther, faster. We maximize their investment in software engineering and build technology that enables and supports business growth. Providing expert engineering services, strategic guidance, and proven methodologies that reduce time-to-market.',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/projects/catalyzeup.ai/hero.png',
+      alt: 'CatalyzeApp Platform',
+    }}
+    callToAction={{
+      text: 'Learn More',
+      icon: 'tabler:chevron-right',
+      href: getPermalink('/projects/catalyzeapp'),
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        CatalyzeApp <br /><span class="text-2xl">Making startups go farther faster</span>
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Pet Projects Section -->
+  <div class="py-16 lg:py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Pet Projects</h2>
+        <p class="mt-4 text-lg text-muted dark:text-slate-400">
+          Experiments and side projects where I explore new technologies
+        </p>
+        <a href={getPermalink('/pet-projects')} class="inline-flex items-center gap-2 mt-4 text-primary hover:text-secondary transition-colors">
+          View All Pet Projects
+          <Icon name="tabler:arrow-right" class="w-4 h-4" />
+        </a>
+      </div>
+    </div>
+  </div>
+
   <!-- Resume Section -->
   <Steps
     id="resume"

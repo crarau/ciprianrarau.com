@@ -1,0 +1,205 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Content from '~/components/widgets/Content.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import ImageCarousel from '~/components/widgets/ImageCarousel.astro';
+import { getPermalink } from '~/utils/permalinks';
+
+// OneOps project images
+const oneopsImages = [
+  { src: '/images/pet-projects/oneops.cloud/platform-overview.png', alt: 'OneOps Platform Overview' },
+  { src: '/images/pet-projects/oneops.cloud/hero.png', alt: 'OneOps Hero' },
+];
+
+const metadata = {
+  title: 'OneOps - Infrastructure Automation Experiments | Ciprian Rarau',
+  description: 'A pet project exploring AI-powered DevOps and infrastructure automation.',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+  <Hero
+    tagline="Pet Project"
+    title="OneOps Cloud"
+    subtitle="Revolutionize Your Infrastructure with AI-Powered DevOps"
+    actions={[
+      { variant: 'primary', text: 'Visit OneOps', href: 'https://oneops.cloud', target: '_blank', icon: 'tabler:external-link' },
+      { text: 'Back to Pet Projects', href: getPermalink('/pet-projects') },
+    ]}
+  />
+
+  <!-- Project Gallery -->
+  <ImageCarousel
+    images={oneopsImages}
+    title="Project Gallery"
+    subtitle="Experimenting with intelligent infrastructure automation and DevOps workflows"
+    id="oneops-gallery"
+  />
+
+  <!-- Project Overview -->
+  <Content
+    items={[
+      {
+        title: 'Type',
+        description: 'Technical Experiment',
+        icon: 'tabler:flask',
+      },
+      {
+        title: 'Category',
+        description: 'DevOps & AI',
+        icon: 'tabler:server-2',
+      },
+      {
+        title: 'Status',
+        description: 'Proof of Concept',
+        icon: 'tabler:code',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/pet-projects/oneops.cloud/platform-overview.png',
+      alt: 'OneOps Platform',
+    }}
+  >
+    <Fragment slot="content">
+      <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">About This Project</h2>
+      <p class="text-lg">
+        OneOps Cloud is an experimental project exploring how AI can transform infrastructure management and DevOps workflows. It's a playground for testing innovative approaches to automated infrastructure provisioning, monitoring, and optimization.
+      </p>
+      <br />
+      <p class="text-lg">
+        This project serves as a testbed for integrating AI capabilities into traditional DevOps practices, aiming to reduce complexity and improve efficiency in infrastructure management.
+      </p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-gray-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Experimental Features -->
+  <Features3
+    title="Experimental Capabilities"
+    subtitle="Pushing the boundaries of AI-powered infrastructure"
+    columns={2}
+    items={[
+      {
+        title: 'Intelligent Infrastructure',
+        description: 'AI-driven infrastructure recommendations and optimizations',
+        icon: 'tabler:cpu',
+      },
+      {
+        title: 'Automated Troubleshooting',
+        description: 'Smart diagnosis and resolution of infrastructure issues',
+        icon: 'tabler:tool',
+      },
+      {
+        title: 'Predictive Scaling',
+        description: 'Machine learning models for predictive auto-scaling',
+        icon: 'tabler:trending-up',
+      },
+      {
+        title: 'Cost Optimization',
+        description: 'AI-powered cost analysis and optimization suggestions',
+        icon: 'tabler:currency-dollar',
+      },
+    ]}
+  />
+
+  <!-- Technical Stack -->
+  <Features3
+    title="Technology Experiments"
+    subtitle="Cutting-edge tech I'm exploring"
+    columns={3}
+    defaultIcon="tabler:flask-2"
+    items={[
+      {
+        title: 'Kubernetes',
+        description: 'Container orchestration',
+      },
+      {
+        title: 'Terraform',
+        description: 'Infrastructure as Code',
+      },
+      {
+        title: 'AI/ML Models',
+        description: 'Predictive analytics',
+      },
+      {
+        title: 'Prometheus',
+        description: 'Monitoring & alerting',
+      },
+      {
+        title: 'GraphQL',
+        description: 'API design',
+      },
+      {
+        title: 'Time Series DB',
+        description: 'Performance metrics',
+      },
+    ]}
+  />
+
+  <!-- Key Metrics -->
+  <Content
+    isReversed
+    items={[
+      {
+        title: '85% Automation',
+        description: 'Reduced manual intervention in infrastructure tasks',
+        icon: 'tabler:percentage',
+      },
+      {
+        title: '30% Cost Reduction',
+        description: 'AI-optimized resource allocation',
+        icon: 'tabler:trending-down',
+      },
+      {
+        title: '99.99% Uptime',
+        description: 'Predictive maintenance and auto-healing',
+        icon: 'tabler:shield-check',
+      },
+      {
+        title: '60% Faster Deployments',
+        description: 'Intelligent pipeline optimization',
+        icon: 'tabler:rocket',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/pet-projects/oneops.cloud/hero.png',
+      alt: 'OneOps Metrics',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Experimental Results</h3>
+      <p class="text-lg">
+        Early experiments show promising results in automating complex infrastructure tasks and optimizing resource utilization through AI-driven insights.
+      </p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-gray-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Call to Action -->
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Explore OneOps',
+        href: 'https://oneops.cloud',
+        target: '_blank',
+        icon: 'tabler:external-link',
+      },
+      {
+        text: 'View All Pet Projects',
+        href: getPermalink('/pet-projects'),
+      },
+    ]}
+    title="Interested in AI-powered DevOps?"
+    subtitle="OneOps Cloud is an experimental project exploring the future of intelligent infrastructure management."
+  />
+</Layout>

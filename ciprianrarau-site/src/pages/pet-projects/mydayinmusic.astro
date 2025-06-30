@@ -1,0 +1,163 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Content from '~/components/widgets/Content.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import ImageCarousel from '~/components/widgets/ImageCarousel.astro';
+import { getPermalink } from '~/utils/permalinks';
+
+// MyDayInMusic project images
+const mydayImages = [
+  { src: '/images/pet-projects/mydayinmusic.com/platform-overview.png', alt: 'MyDayInMusic Platform Overview' },
+  { src: '/images/pet-projects/mydayinmusic.com/hero.png', alt: 'MyDayInMusic Hero' },
+];
+
+const metadata = {
+  title: 'MyDayInMusic - Personal Music Journey | Ciprian Rarau',
+  description: 'A pet project exploring the intersection of personal memories and music discovery.',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+  <Hero
+    tagline="Pet Project"
+    title="MyDayInMusic"
+    subtitle="Discover your personal music journey with AI"
+    actions={[
+      { variant: 'primary', text: 'Visit MyDayInMusic', href: 'https://mydayinmusic.com', target: '_blank', icon: 'tabler:external-link' },
+      { text: 'Back to Pet Projects', href: getPermalink('/pet-projects') },
+    ]}
+  />
+
+  <!-- Project Gallery -->
+  <ImageCarousel
+    images={mydayImages}
+    title="Project Gallery"
+    subtitle="An experimental platform connecting personal memories with music discovery"
+    id="myday-gallery"
+  />
+
+  <!-- Project Overview -->
+  <Content
+    items={[
+      {
+        title: 'Type',
+        description: 'Personal Experiment',
+        icon: 'tabler:flask',
+      },
+      {
+        title: 'Category',
+        description: 'Music & AI',
+        icon: 'tabler:music',
+      },
+      {
+        title: 'Status',
+        description: 'Active Development',
+        icon: 'tabler:code',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/pet-projects/mydayinmusic.com/platform-overview.png',
+      alt: 'MyDayInMusic Platform',
+    }}
+  >
+    <Fragment slot="content">
+      <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">About This Project</h2>
+      <p class="text-lg">
+        MyDayInMusic is a pet project that explores how AI can connect our personal memories with music. It's an experimental platform where users can discover music that resonates with specific moments in their lives.
+      </p>
+      <br />
+      <p class="text-lg">
+        This project serves as a playground for testing new AI technologies, music APIs, and innovative user experience patterns in the intersection of personal storytelling and music discovery.
+      </p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-purple-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Key Features -->
+  <Features3
+    title="Experimental Features"
+    subtitle="Exploring new ways to connect memories and music"
+    columns={2}
+    items={[
+      {
+        title: 'AI-Powered Music Matching',
+        description: 'Using natural language processing to match memories with music',
+        icon: 'tabler:brain',
+      },
+      {
+        title: 'Personal Timeline',
+        description: 'Create a musical timeline of your life experiences',
+        icon: 'tabler:timeline',
+      },
+      {
+        title: 'Mood Analysis',
+        description: 'Analyze the emotional context of memories to find perfect songs',
+        icon: 'tabler:mood-smile',
+      },
+      {
+        title: 'Music Discovery',
+        description: 'Discover new music based on your personal stories',
+        icon: 'tabler:music-search',
+      },
+    ]}
+  />
+
+  <!-- Technical Exploration -->
+  <Features3
+    title="Technical Experiments"
+    subtitle="Technologies I'm exploring with this project"
+    columns={3}
+    defaultIcon="tabler:flask-2"
+    items={[
+      {
+        title: 'OpenAI Integration',
+        description: 'Natural language understanding',
+      },
+      {
+        title: 'Spotify API',
+        description: 'Music data and playback',
+      },
+      {
+        title: 'Emotion Analysis',
+        description: 'Sentiment and mood detection',
+      },
+      {
+        title: 'Vector Databases',
+        description: 'Semantic search capabilities',
+      },
+      {
+        title: 'React & Next.js',
+        description: 'Modern web framework',
+      },
+      {
+        title: 'Tailwind CSS',
+        description: 'Rapid UI development',
+      },
+    ]}
+  />
+
+  <!-- Call to Action -->
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Try MyDayInMusic',
+        href: 'https://mydayinmusic.com',
+        target: '_blank',
+        icon: 'tabler:external-link',
+      },
+      {
+        text: 'View All Pet Projects',
+        href: getPermalink('/pet-projects'),
+      },
+    ]}
+    title="Want to explore your musical memories?"
+    subtitle="MyDayInMusic is an experimental project that might just help you rediscover the soundtrack of your life."
+  />
+</Layout>

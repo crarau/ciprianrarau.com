@@ -1,0 +1,96 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Features from '~/components/widgets/Features.astro';
+import { getPermalink } from '~/utils/permalinks';
+
+const petProjects = [
+  {
+    title: 'MyDayInMusic',
+    description: 'An experimental platform connecting personal memories with music discovery through AI',
+    link: getPermalink('/pet-projects/mydayinmusic'),
+    image: '/images/pet-projects/mydayinmusic.com/hero.png',
+    tags: ['AI', 'Music', 'Personal'],
+  },
+  {
+    title: 'OneOps Cloud',
+    description: 'Exploring AI-powered DevOps and intelligent infrastructure automation',
+    link: getPermalink('/pet-projects/oneops'),
+    image: '/images/pet-projects/oneops.cloud/hero.png',
+    tags: ['DevOps', 'AI', 'Infrastructure'],
+  },
+];
+
+const metadata = {
+  title: 'Pet Projects - Experiments & Side Projects | Ciprian Rarau',
+  description: 'A collection of experimental projects and technical explorations in AI, music, DevOps, and more.',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+  <Hero
+    tagline="Experiments & Side Projects"
+    title="Pet Projects"
+    subtitle="Where I explore new technologies, test wild ideas, and build things just for fun"
+    actions={[
+      { text: 'Back to Homepage', href: getPermalink('/') },
+    ]}
+  />
+
+  <!-- Pet Projects Grid -->
+  <Features
+    id="pet-projects"
+    title="Current Experiments"
+    subtitle="These are my playground projects where I test new technologies and explore innovative ideas"
+    columns={2}
+    items={petProjects.map(project => ({
+      title: project.title,
+      description: project.description,
+      icon: 'tabler:flask',
+      callToAction: {
+        text: 'Explore Project',
+        href: project.link,
+      },
+    }))}
+  />
+
+  <!-- About Pet Projects Section -->
+  <Features
+    title="Why Pet Projects?"
+    subtitle="The laboratory where innovation happens"
+    columns={3}
+    items={[
+      {
+        title: 'Technology Exploration',
+        description: 'Testing cutting-edge technologies and frameworks in real-world scenarios',
+        icon: 'tabler:microscope',
+      },
+      {
+        title: 'Creative Freedom',
+        description: 'Building without constraints to explore unconventional solutions',
+        icon: 'tabler:palette',
+      },
+      {
+        title: 'Rapid Prototyping',
+        description: 'Quickly validating ideas and concepts through hands-on experimentation',
+        icon: 'tabler:rocket',
+      },
+      {
+        title: 'Learning & Growth',
+        description: 'Continuously expanding skills by tackling diverse technical challenges',
+        icon: 'tabler:plant',
+      },
+      {
+        title: 'Open Innovation',
+        description: 'Sharing learnings and potentially open-sourcing useful components',
+        icon: 'tabler:brand-github',
+      },
+      {
+        title: 'Fun & Passion',
+        description: 'Working on projects purely driven by curiosity and enthusiasm',
+        icon: 'tabler:heart',
+      },
+    ]}
+  />
+</Layout>
