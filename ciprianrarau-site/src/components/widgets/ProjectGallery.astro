@@ -11,6 +11,8 @@ import alveoleImage from '~/assets/images/projects/alveole/main.png';
 import eliImage from '~/assets/images/projects/eli.health/platform-overview.png';
 import omsignalImage from '~/assets/images/projects/omsignal/main.png';
 import xpertseaImage from '~/assets/images/projects/xpertsea/image6.png';
+import easternbankImage from '~/assets/images/projects/easternbank/main.png';
+import ideaplacesImage from '~/assets/images/projects/ideaplaces/main.png';
 
 const projects = [
   {
@@ -90,6 +92,45 @@ const projects = [
       "First Employee & CTO"
     ],
     link: getPermalink('/projects/omsignal')
+  },
+  {
+    id: 7,
+    title: "XpertSea",
+    subtitle: "Aquaculture Technology",
+    image: xpertseaImage,
+    details: [
+      "Aquaculture platform",
+      "Technical leadership transition",
+      "React Native development",
+      "CTO Advisor"
+    ],
+    link: getPermalink('/projects/xpertsea')
+  },
+  {
+    id: 8,
+    title: "Eastern Bank",
+    subtitle: "Mobile Banking",
+    image: easternbankImage,
+    details: [
+      "Mobile banking app",
+      "PWC security audit passed",
+      "API integration",
+      "Head of Mobile"
+    ],
+    link: getPermalink('/projects/easternbank')
+  },
+  {
+    id: 9,
+    title: "IdeaPlaces",
+    subtitle: "Location-Based Notes",
+    image: ideaplacesImage,
+    details: [
+      "Evernote & Dropbox integration",
+      "Featured by Evernote",
+      "25,000+ downloads",
+      "Founder"
+    ],
+    link: getPermalink('/projects/ideaplaces')
   }
 ];
 ---
@@ -171,16 +212,16 @@ const projects = [
 
 <style>
   .gallery-item {
-    width: 16.666%;
+    width: 11.111%;
     position: relative;
   }
 
   .gallery-item.hovered {
-    width: 40%;
+    width: 35%;
   }
 
   .gallery-item.other-hovered {
-    width: 12%;
+    width: 8.125%;
   }
 
   .gallery-item.hovered .details-container {
@@ -190,7 +231,7 @@ const projects = [
 
   @media (hover: hover) {
     .gallery-item:hover {
-      width: 40%;
+      width: 35%;
     }
 
     .gallery-item:hover .details-container {
