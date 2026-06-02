@@ -48,7 +48,7 @@ ciprianrarau.com/
 ├── lib/
 │   ├── data/               # hardcoded products, companies, track record, projects
 │   └── blog.ts             # markdown loader + renderer
-├── content/blog/           # 25 blog posts (.md with frontmatter)
+├── content/blog/           # blog posts (.md with frontmatter)
 ├── public/
 │   ├── projects/           # carousel images (10 PNGs)
 │   ├── images/blog/        # post inline images
@@ -91,9 +91,9 @@ Body in plain markdown. Code fences, GFM tables, mermaid PNG references all
 work. Do NOT use raw `<jsx>` — the renderer is markdown, not MDX.
 ```
 
-The Substack sync workflow at `.github/workflows/substack-sync.yml` watches `src/data/post/**` from the legacy path. **It needs updating to watch `content/blog/**` after this migration lands.** Until then, sync to Substack runs manually (see workflow_dispatch).
+The Substack sync workflow at `.github/workflows/substack-sync.yml` watches `content/blog/**` and also supports manual runs via `workflow_dispatch`.
 
-Mermaid diagrams in posts use pre-rendered PNGs from `public/images/diagrams/`. To re-process diagrams, port `_legacy-astro/scripts/process-mermaid-diagrams.cjs` to the new structure.
+Mermaid diagrams in posts use pre-rendered PNGs from `public/images/diagrams/`. To re-process diagrams, run `npm run process-mermaid` (`scripts/process-mermaid-diagrams.cjs`).
 
 ### Voice Guidelines
 
