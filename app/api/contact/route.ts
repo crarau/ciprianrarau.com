@@ -38,7 +38,10 @@ export async function POST(req: Request): Promise<Response> {
 
   const apiKey = process.env.RESEND_API_KEY;
   const recipient = process.env.RECIPIENT_EMAIL ?? 'chip@ideaplaces.com';
-  const from = process.env.RESEND_FROM ?? 'Ciprian Rarau <noreply@ciprianrarau.com>';
+  // Default must stay on a Resend-verified domain. The account's single
+  // verified domain is ideaplaces.com; sending from ciprianrarau.com gets a
+  // 403 validation_error and the form breaks (June 2026 incident).
+  const from = process.env.RESEND_FROM ?? 'Ciprian Rarau <noreply@ideaplaces.com>';
   if (!apiKey) {
     console.error('RESEND_API_KEY missing');
     return json({ error: 'Mail service not configured' }, 500);
