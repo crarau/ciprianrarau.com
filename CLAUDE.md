@@ -69,6 +69,7 @@ npm run build     # production build
 npm run start     # serve the build on 5310
 npm run typecheck # tsc --noEmit
 npm run lint
+npm run test:unit # vitest, tests/unit/ (contact form route)
 ```
 
 ## Adding a Blog Post
@@ -122,8 +123,10 @@ Pulled at runtime by the Container App. Set in Azure Key Vault and bound as Cont
 
 - `RESEND_API_KEY` — used by `/api/contact` and `/api/subscribe`
 - `RESEND_AUDIENCE_ID` — newsletter audience
-- `RESEND_FROM` — sender address (defaults to `Ciprian Rarau <noreply@ciprianrarau.com>`)
+- `RESEND_FROM` — sender address (defaults to `Ciprian Rarau <noreply@ideaplaces.com>`)
 - `RECIPIENT_EMAIL` — contact form destination (defaults to `chip@ideaplaces.com`)
+
+**CRITICAL: the sender domain must be verified in Resend.** The Resend account (key `resend-api-key-ciprianrarau` in `kv-ideaplaces`) is on the free plan with a single verified domain: `ideaplaces.com`. Sending from any `@ciprianrarau.com` address returns a 403 `validation_error` and the contact form breaks with "Could not send message right now" (this happened in June 2026). If `ciprianrarau.com` is ever added and verified in Resend (requires a paid plan or replacing the domain), `RESEND_FROM` can move back to `noreply@ciprianrarau.com`. The deploy workflow's end-to-end contact check guards this either way.
 
 Turnstile is wired into the legacy site but not the new contact form. To re-add, set `TURNSTILE_SITE_KEY` and `TURNSTILE_SECRET_KEY` and validate the token in `app/api/contact/route.ts`.
 
@@ -131,11 +134,13 @@ Turnstile is wired into the legacy site but not the new contact form. To re-add,
 
 Push to `main` triggers `.github/workflows/deploy.yml`:
 
-1. Build Docker image from `./Dockerfile`
-2. Push to Azure Container Registry (`vars.ACR_LOGIN_SERVER`)
-3. Update Azure Container App revision (`vars.AZURE_CONTAINER_APP`)
-4. Health check: poll `https://${FQDN}/` until 200 (max 150 seconds)
-5. Discord failure notification via `secrets.DISCORD_WEBHOOK_CHIP_LUCA`
+1. Typecheck + unit tests (`npm run typecheck`, `npm run test:unit`) — the build fails if either fails
+2. Build Docker image from `./Dockerfile`
+3. Push to Azure Container Registry (`vars.ACR_LOGIN_SERVER`)
+4. Update Azure Container App revision (`vars.AZURE_CONTAINER_APP`)
+5. Health check: poll `https://${FQDN}/` until 200 (max 150 seconds)
+6. End-to-end contact form check: POST a real message to `/api/contact` and fail the deploy unless Resend delivers it (one short "Deploy check" email per deploy lands in the inbox as positive confirmation)
+7. Discord failure notification via `secrets.DISCORD_WEBHOOK_CHIP_LUCA`
 
 The Dockerfile listens on port **4321** to match the existing Container App ingress targetPort. If the ingress targetPort is changed, update `ENV PORT` in the Dockerfile to match.
 
