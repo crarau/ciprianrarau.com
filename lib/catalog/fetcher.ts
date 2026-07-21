@@ -24,7 +24,7 @@ const MANIFEST_URL = 'https://ideaplaces.com/api/manifest';
 
 export interface ProductManifestEntry {
   slug: string;
-  catalogUrl: string;
+  catalogUrl?: string;
   fallback: {
     name: string;
     url: string;
@@ -82,7 +82,8 @@ async function fetchWithTimeout(url: string, ms = 8000): Promise<Response> {
 function isManifestEntry(v: unknown): v is ProductManifestEntry {
   if (!v || typeof v !== 'object') return false;
   const e = v as Record<string, unknown>;
-  if (typeof e.slug !== 'string' || typeof e.catalogUrl !== 'string') return false;
+  if (typeof e.slug !== 'string') return false;
+  if (e.catalogUrl !== undefined && typeof e.catalogUrl !== 'string') return false;
   if (!e.fallback || typeof e.fallback !== 'object') return false;
   const fb = e.fallback as Record<string, unknown>;
   return typeof fb.name === 'string' && typeof fb.url === 'string';
@@ -108,6 +109,9 @@ async function fetchManifest(): Promise<ProductManifestEntry[]> {
 }
 
 async function fetchCatalogFromEntry(entry: ProductManifestEntry): Promise<ProductCatalog> {
+  if (!entry.catalogUrl) {
+    return fallbackCatalog({ slug: entry.slug, ...entry.fallback });
+  }
   try {
     const res = await fetchWithTimeout(entry.catalogUrl);
     if (!res.ok) {
