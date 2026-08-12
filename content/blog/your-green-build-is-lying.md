@@ -13,7 +13,7 @@ tags:
   - engineering-practices
   - i18n
   - static-analysis
-draft: true
+draft: false
 metadata:
   featured: false
   showAuthor: true
