@@ -4,6 +4,7 @@ author: Ciprian Rarau
 publishDate: 2026-08-19T09:00:00Z
 category: Thinking
 excerpt: "A dozen AI sessions running in parallel, and the slow part was me walking between terminals to see which ones were done. The compute was never the constraint. My attention was, and nothing in the stack was managing it."
+image: /images/diagrams/the-agents-finished-nobody-noticed-diagram-d1a151c2.png
 substack: true
 tags:
   - ai-agents
@@ -60,6 +61,8 @@ flowchart LR
     c -->|finished / needs you| ch
     ch --> inbox
 ```
+
+![Diagram 1](/images/diagrams/the-agents-finished-nobody-noticed-diagram-d1a151c2.png?v=c7e06db1)
 
 Three parts, and the interesting decision is the middle one.
 
