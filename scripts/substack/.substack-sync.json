@@ -155,6 +155,12 @@
       "draft_id": 196271885,
       "title": "Sentry in Terraform: One Module, Three Environments, Zero UI Clicks",
       "synced_at": "2026-05-03T12:00:00+00:00"
+    },
+    "style-is-data-rebrand-in-one-shot": {
+      "hash": "2c403c68c8f73051",
+      "draft_id": 213488723,
+      "title": "Style Is Data: I Rebranded an Entire Product in One Shot",
+      "synced_at": "2026-08-31T12:00:00+00:00"
     }
   }
 }
