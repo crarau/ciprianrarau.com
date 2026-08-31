@@ -110,6 +110,27 @@ The blog should feel like coffee with a senior technical leader who has battle s
 
 `Building`, `Shipping`, `Thinking`, `Operating`, `Workflow`. Real posts also use `AI`, etc. The schema accepts any string.
 
+### Show the value: proof over prose (the format, settled 2026-08-31)
+
+Chip: "I like the new blog format, putting screenshots and examples. I'm super interested in
+showing value." Reference posts: `style-is-data-rebrand-in-one-shot.md` and
+`the-help-center-that-films-itself.md`. Every post from now on:
+
+- **The first scroll carries the proof.** A real screenshot of the thing right after the opening
+  claim, before any explanation. Before/after composites (labelled bands, ImageMagick `-append`)
+  when the post is about a change.
+- **Every major claim gets a visual or a link the reader can act on.** Screenshots come from the
+  REAL product in session (never mockups); "press play on one yourself" beats a paragraph about
+  video; "it is live, you can go play with it" beats a feature list. Link the live pages, the raw
+  artifacts (versioned immutable URLs so they never break), and the IdeaPlaces products.
+- **Post images** go under `public/images/blog/<post-slug>/` as compressed JPEGs (~90 quality,
+  1200 to 1600px wide, under ~300KB). Mermaid stays conceptual and goes through
+  `npm run process-mermaid`.
+- **Verify the rendered page locally before pushing** (dev server on 5310, check every image's
+  naturalWidth in a real browser), because the VS Code preview cannot resolve `/images/...`.
+- **Concrete numbers that show value, sparingly**: one "73 minutes, unattended" or "1:10 vs 1:07"
+  carries more than a paragraph; do not pad with stats.
+
 ### Content rules
 
 - **First person singular** (`I`, `my`, `me`). Not `we`.
