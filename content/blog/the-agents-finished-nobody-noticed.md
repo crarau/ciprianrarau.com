@@ -62,7 +62,7 @@ flowchart LR
     ch --> inbox
 ```
 
-![Diagram 1](/images/diagrams/the-agents-finished-nobody-noticed-diagram-d1a151c2.png?v=c7e06db1)
+![Diagram 1](/images/diagrams/the-agents-finished-nobody-noticed-diagram-d1a151c2.png?v=e01b41f3)
 
 Three parts, and the interesting decision is the middle one.
 
