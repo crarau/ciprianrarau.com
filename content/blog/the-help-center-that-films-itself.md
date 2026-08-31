@@ -56,6 +56,10 @@ every caption is computed from when the words are actually said.
 
 ![A frame from a generated help film: the real board, the rolling caption, the camera on what the voice is describing](/images/blog/help-films-itself/film-frame.jpg)
 
+Press play on one yourself: [the pickup-times film in English](https://sttourcockpitmedia.blob.core.windows.net/video/help/pickup-times/en/v5/clip.mp4)
+or [the same film in Spanish](https://sttourcockpitmedia.blob.core.windows.net/video/help/pickup-times/es/v5/clip.mp4), or watch it in its habitat on
+[the live help page](https://tourcockpit.com/help/pickup-times), where the language switcher swaps the words and the film together.
+
 The pictures come from the product itself. A headless browser drives the real application with
 seeded demo data, captures the screens the script talks about, and the renderer cuts them to the
 voice. Nobody points a camera at anything. Nobody edits a timeline. Change the script and the film
