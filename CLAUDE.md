@@ -114,6 +114,7 @@ The blog should feel like coffee with a senior technical leader who has battle s
 
 - **First person singular** (`I`, `my`, `me`). Not `we`.
 - **No client names**: use generic terms (`a healthcare startup`, `a SaaS company`). Exceptions: WISK.ai, IdeaPlaces, well-known tools (AWS, Stripe, etc.).
+- **Anything IdeaPlaces is fair game, by name, with links.** Chip holds full IP on the IdeaPlaces portfolio, so posts should name the products and link to them (tourcockpit.com, styleguide.ideaplaces.com, ideaplaces.com, and the rest). Chip, 2026-08-31: "for any project that is there, you can put links to it, to all of them." Public product pages only; never internal URLs, keys, or customer data.
 - **No team member names** in prose.
 - **No markdown tables** in posts that sync to Substack (Substack API does not support them).
 
