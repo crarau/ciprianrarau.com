@@ -185,14 +185,50 @@ showing value." Reference posts: `style-is-data-rebrand-in-one-shot.md` and
   rejects anything longer, which blocks the whole post from syncing. Two posts silently could
   not sync for weeks because of this.
 
+## Newsletter (our own list, no third-party provider)
+
+The subscriber list is ours, in Azure Table Storage (`stideaplacesnewsletter` in
+`rg-ideaplaces`, managed by Terraform in ideaplaces-devops `newsletter.tf`).
+Sending goes through Azure Communication Services as `chip@ciprianrarau.com`
+(fully verified domain on `acs-ideaplaces`). Resend is NOT used for the
+newsletter anymore; it remains only behind the contact form.
+
+- **`subscribers` table**: PartitionKey is the list (`ciprianrarau` or
+  `ideaplaces`), RowKey the lowercased email, `status` is `active` or
+  `unsubscribed`. `/api/subscribe` here writes the `ciprianrarau` partition;
+  ideaplaces.com's own `/api/subscribe` writes `ideaplaces`. Unsubscribing
+  flips status, never deletes: the row is also the suppression record.
+- **`sends` table**: the announcement ledger. A post whose slug is in it is
+  never emailed again. All pre-newsletter posts were seeded on 2026-09-01.
+- **Sending**: `scripts/newsletter/send-post.mjs`. The deploy workflow runs
+  `--auto` after every deploy: it announces published posts (publishDate in
+  the last 14 days) that are not in the ledger, to both lists deduped, one
+  personalized email per recipient with an HMAC unsubscribe link
+  (`/unsubscribe?token=...`) and RFC 8058 one-click headers. Test with
+  `--slug <slug> --to you@example.com` (no ledger write) or `--dry-run`
+  (writes an HTML preview). `--seed` marks the backlog as sent.
+- **Subscribe surfaces**: homepage newsletter box, end-of-post box
+  (`SubscribePrompt`), and a slide-in popup 8s into reading a post
+  (`SubscribePopup`; localStorage-silenced after subscribe or dismiss).
+- **Tokens**: `lib/newsletter/token.ts` (app) and
+  `scripts/newsletter/token.mjs` (sender) must stay byte-identical; the
+  `newsletter-token.test.ts` lockstep test enforces it.
+- **Secrets**: `NEWSLETTER_STORAGE_CONNECTION_STRING` and
+  `NEWSLETTER_UNSUBSCRIBE_SECRET` (Container App via Terraform, GitHub
+  Actions secrets for the send job, both mirrored in `kv-ideaplaces`), plus
+  `ACS_CONNECTION_STRING` (`acs-connection-string-ciprianrarau` in the
+  vault) for the send job only. The web app never sends email.
+
 ## Environment Variables
 
 Pulled at runtime by the Container App. Set in Azure Key Vault and bound as Container App secrets:
 
-- `RESEND_API_KEY` — used by `/api/contact` and `/api/subscribe`
-- `RESEND_AUDIENCE_ID` — newsletter audience
+- `RESEND_API_KEY`: used by `/api/contact`
+- `RESEND_AUDIENCE_ID`: legacy Resend audience (no longer written to)
 - `RESEND_FROM` — sender address (defaults to `Ciprian Rarau <noreply@ideaplaces.com>`)
 - `RECIPIENT_EMAIL` — contact form destination (defaults to `chip@ideaplaces.com`)
+- `NEWSLETTER_STORAGE_CONNECTION_STRING`: subscriber list Table Storage
+- `NEWSLETTER_UNSUBSCRIBE_SECRET`: HMAC key for unsubscribe tokens
 
 **CRITICAL: the sender domain must be verified in Resend.** The Resend account (key `resend-api-key-ciprianrarau` in `kv-ideaplaces`) is on the free plan with a single verified domain: `ideaplaces.com`. Sending from any `@ciprianrarau.com` address returns a 403 `validation_error` and the contact form breaks with "Could not send message right now" (this happened in June 2026). If `ciprianrarau.com` is ever added and verified in Resend (requires a paid plan or replacing the domain), `RESEND_FROM` can move back to `noreply@ciprianrarau.com`. The deploy workflow's end-to-end contact check guards this either way.
 

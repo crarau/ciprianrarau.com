@@ -5,6 +5,8 @@ import { ArrowLeft } from 'lucide-react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Container } from '@/components/Container';
+import { SubscribePrompt } from '@/components/SubscribePrompt';
+import { SubscribePopup } from '@/components/SubscribePopup';
 import { getAllPosts, getPost, formatDate, renderPostHtml } from '@/lib/blog';
 
 type Params = { slug: string };
@@ -89,8 +91,10 @@ export default async function PostPage({ params }: { params: Promise<Params> }) 
                 ))}
               </div>
             )}
+            <SubscribePrompt source={slug} />
           </Container>
         </article>
+        <SubscribePopup source={slug} />
       </main>
       <Footer />
     </>

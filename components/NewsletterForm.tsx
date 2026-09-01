@@ -4,7 +4,23 @@ import { useState } from 'react';
 
 type Status = 'idle' | 'submitting' | 'success' | 'error';
 
-export function NewsletterForm() {
+export const SUBSCRIBED_FLAG = 'newsletter-subscribed';
+
+function rememberSubscribed() {
+  try {
+    localStorage.setItem(SUBSCRIBED_FLAG, new Date().toISOString());
+  } catch {
+    // storage unavailable (private mode); the flag is a convenience only
+  }
+}
+
+export function NewsletterForm({
+  source = 'site',
+  onSuccess,
+}: {
+  source?: string;
+  onSuccess?: () => void;
+}) {
   const [status, setStatus] = useState<Status>('idle');
   const [error, setError] = useState<string | null>(null);
 
@@ -14,18 +30,21 @@ export function NewsletterForm() {
     setError(null);
     const fd = new FormData(event.currentTarget);
     const email = String(fd.get('email') ?? '').trim();
+    const website = String(fd.get('website') ?? '');
     try {
       const res = await fetch('/api/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, source, website }),
       });
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
         throw new Error(data.error ?? `Request failed (${res.status})`);
       }
       setStatus('success');
+      rememberSubscribed();
       (event.target as HTMLFormElement).reset();
+      onSuccess?.();
     } catch (err) {
       setStatus('error');
       setError(err instanceof Error ? err.message : 'Something went wrong');
@@ -40,6 +59,14 @@ export function NewsletterForm() {
 
   return (
     <form onSubmit={onSubmit} className="flex flex-col sm:flex-row gap-3">
+      <input
+        type="text"
+        name="website"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        className="hidden"
+      />
       <input
         type="email"
         name="email"

@@ -145,3 +145,47 @@ jobs:
                 \"timestamp\": \"$(date -u +%Y-%m-%dT%H:%M:%SZ)\"
               }]
             }"
+
+  # Announce newly published posts to the newsletter subscribers. The sends
+  # ledger in Table Storage makes this idempotent: each post is announced
+  # exactly once, so deploys with no new post are quiet no-ops.
+  newsletter:
+    name: Announce new posts
+    needs: build-and-deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+
+      - name: Set up Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Send new-post emails
+        run: node scripts/newsletter/send-post.mjs --auto
+        env:
+          ACS_CONNECTION_STRING: ${{ secrets.ACS_CONNECTION_STRING }}
+          NEWSLETTER_STORAGE_CONNECTION_STRING: ${{ secrets.NEWSLETTER_STORAGE_CONNECTION_STRING }}
+          NEWSLETTER_UNSUBSCRIBE_SECRET: ${{ secrets.NEWSLETTER_UNSUBSCRIBE_SECRET }}
+
+      - name: Discord notification on failure
+        if: failure()
+        run: |
+          COMMIT_MSG=$(echo "${{ github.event.head_commit.message }}" | head -1 | sed 's/"/\\"/g')
+          curl -s -X POST "${{ secrets.DISCORD_WEBHOOK_CHIP_LUCA }}" \
+            -H "Content-Type: application/json" \
+            -d "{
+              \"embeds\": [{
+                \"title\": \":x: ciprianrarau.com — Newsletter send failed\",
+                \"description\": \"**Commit:** ${COMMIT_MSG}\n**Branch:** main\n**By:** ${{ github.actor }}\",
+                \"url\": \"https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}\",
+                \"color\": 15158332,
+                \"footer\": {\"text\": \"production | ciprianrarau.com\"},
+                \"timestamp\": \"$(date -u +%Y-%m-%dT%H:%M:%SZ)\"
+              }]
+            }"

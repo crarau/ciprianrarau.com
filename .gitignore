@@ -47,3 +47,4 @@ next-env.d.ts
 
 # tailwind source from styleguide export (committed only as tailwind.config.ts)
 tailwind.source.js
+newsletter-preview-*.html
