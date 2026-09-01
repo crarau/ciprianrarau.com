@@ -21,6 +21,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const post = getPost(slug);
   if (!post) return { title: 'Not found' };
   return {
+    robots: post.frontmatter.draft ? { index: false, follow: false } : undefined,
     title: post.frontmatter.title,
     description: post.frontmatter.excerpt,
     openGraph: {

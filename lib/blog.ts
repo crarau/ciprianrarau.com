@@ -77,13 +77,13 @@ export function getAllPosts(): PostMeta[] {
     .map(({ content: _content, ...meta }) => meta);
 }
 
+// Drafts are unlisted, not blocked: excluded from getAllPosts (list, RSS,
+// sitemap) but served here so a direct link can be shared for review.
 export function getPost(slug: string): Post | null {
   const files = listFiles();
   const file = files.find((f) => f.replace(/\.mdx?$/, '') === slug);
   if (!file) return null;
-  const post = readPost(file);
-  if (post.frontmatter.draft) return null;
-  return post;
+  return readPost(file);
 }
 
 export function getRecentPosts(limit = 6): PostMeta[] {
