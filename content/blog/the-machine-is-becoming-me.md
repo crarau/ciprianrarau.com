@@ -23,7 +23,7 @@ metadata:
 
 DHH just shipped Omarchy 4, his own Linux distribution. He calls it "the malleable OS for the age of agents." He spent 3,000 hours on it, left macOS after two decades, and there is now a foundation with $12.6 million behind the idea. The pitch is that your computer should be a true extension of who you are and how you work, and that in the age of agents, the machine has to be something an agent can read, script, and reshape.
 
-I read that and recognized my own machine. Not the laptop. The laptop is a screen with a keyboard. I mean the cloud VM I have been [developing on for over a year](/cloud-dev-machine-no-laptop-required), the one that started as infrastructure and has quietly turned into something else.
+I read that and recognized my own machine. Not the laptop. The laptop is a screen with a keyboard. I mean the cloud VM I have been [developing on for over a year](/blog/cloud-dev-machine-no-laptop-required), the one that started as infrastructure and has quietly turned into something else.
 
 Here is what lives on that machine today. Forty-nine project folders, and they are not just work: the product portfolio of [IdeaPlaces](https://ideaplaces.com), my company, next to my accounting, my personal projects, every corner of my life as code in one place. Eleven CI runners building everything from iOS apps to documentation sites. Thirty-six agent triggers, seventeen of them on cron, running through [C3](https://c3.ideaplaces.com), one of our own products, investigating production errors, writing briefs, watching costs, posting to Discord while I sleep. A ledger with 596 agent sessions in it, every token on record. And the part that changes the category of the thing: 39,000 of my own dictations, indexed and searchable, next to every meeting I have recorded and my entire message history. When an agent on that machine drafts something for me, it retrieves how I actually phrase things before it writes a word.
 
@@ -45,7 +45,7 @@ I agree with all three. I just think he stopped one layer too early.
 
 My development machine is spun up in the cloud and I SSH into it. That has been my setup for over a year, and I wrote about the mechanics already: the two disks, the daily snapshots, the environment you can rebuild from a script. The laptop contributes nothing but a window.
 
-The consequence took longer to see than the setup took to build. When the machine is detached from the desk, it stops inheriting the desk's limits. It does not sleep when a lid closes. It does not care which laptop I picked up, or whether I am on hotel Wi-Fi, or whether I am present at all. [The agents finished, and nobody needed to notice](/the-agents-finished-nobody-noticed), because the results come to me instead of me going to look.
+The consequence took longer to see than the setup took to build. When the machine is detached from the desk, it stops inheriting the desk's limits. It does not sleep when a lid closes. It does not care which laptop I picked up, or whether I am on hotel Wi-Fi, or whether I am present at all. [The agents finished, and nobody needed to notice](/blog/the-agents-finished-nobody-noticed), because the results come to me instead of me going to look.
 
 Omarchy makes agents one keystroke away on the machine in front of you. My version removes the machine in front of you from the loop entirely. The agent runs on my development machine as if I was running it myself, with all the context, whether or not I am there.
 

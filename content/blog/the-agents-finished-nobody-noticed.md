@@ -26,7 +26,7 @@ Running a dozen at once, some on a laptop and some on a dev box across the city,
 
 That second one deserves a moment. An agent waiting for you to approve a command is indistinguishable, from the outside, from an agent working. Same spinner, same silence, same terminal. So the only way to know is to go and look. Which means the more agents you run, the more of your day becomes walking a beat.
 
-I have written before about [getting out of the AI's way](/you-are-the-bottleneck). This is the sequel, and the constraint moved. It is no longer that I interfere too much. It is that I cannot see enough.
+I have written before about [getting out of the AI's way](/blog/you-are-the-bottleneck). This is the sequel, and the constraint moved. It is no longer that I interfere too much. It is that I cannot see enough.
 
 ## The compute was never the constraint
 

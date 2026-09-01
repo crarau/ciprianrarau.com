@@ -84,7 +84,7 @@ At that scale, a single configuration file would be unmanageable. The formalism 
 
 ## What I Have Instead
 
-I manage infrastructure, DevOps, and product development across multiple companies simultaneously. Each company has its own [meta repository](/meta-repository-pattern) containing 10 to 20 sub-repositories: backend, web, mobile, DevOps, documentation, KPIs, and more. Each company has its own Docusaurus site serving as the [DNA of the business](/company-docs-dna-of-the-business). Each one deploys through Terraform across AWS, Azure, and GCP with full CI/CD pipelines.
+I manage infrastructure, DevOps, and product development across multiple companies simultaneously. Each company has its own [meta repository](/blog/meta-repository-pattern) containing 10 to 20 sub-repositories: backend, web, mobile, DevOps, documentation, KPIs, and more. Each company has its own Docusaurus site serving as the [DNA of the business](/blog/company-docs-dna-of-the-business). Each one deploys through Terraform across AWS, Azure, and GCP with full CI/CD pipelines.
 
 This is not a simple setup. It is a sophisticated, multi-company, multi-cloud operation with different teams in each company.
 
@@ -101,20 +101,20 @@ company-meta/company-devops/CLAUDE.md  # Repo: Terraform, CI/CD, infrastructure
 
 When I say "send a message to the team about the deployment," Claude reads my global CLAUDE.md, finds the messaging section with the webhook configuration, and follows the steps. When I say "create a task for the frontend developer about the new API endpoint," Claude reads the same file, creates the work item in the project management tool, sends the notification. Two steps, one file, everything works.
 
-I wrote about this layered approach in [The Meta Repository Pattern](/meta-repository-pattern). The CLAUDE.md hierarchy is a natural extension of it.
+I wrote about this layered approach in [The Meta Repository Pattern](/blog/meta-repository-pattern). The CLAUDE.md hierarchy is a natural extension of it.
 
 ## The System Behind the Simplicity
 
 To be clear about the scope: my workflow is not trivial. Across these companies, I manage:
 
-- **Multi-cloud infrastructure** deployed through Terraform across [all three major cloud providers](/devops-across-clouds-production-first)
-- **Docusaurus documentation sites** for each company, deployed as [first-class services](/company-docs-dna-of-the-business) with Google OAuth
-- **Spec-driven development** where [specifications are the single source of truth](/specs-as-single-source-of-truth) that drives code, documentation, and marketing
-- **Configuration as code** for everything: [Sentry alerts](/sentry-configuration-as-code), [Slack channel access](/slack-configuration-as-code), [Google Workspace users](/google-workspace-as-code)
+- **Multi-cloud infrastructure** deployed through Terraform across [all three major cloud providers](/blog/devops-across-clouds-production-first)
+- **Docusaurus documentation sites** for each company, deployed as [first-class services](/blog/company-docs-dna-of-the-business) with Google OAuth
+- **Spec-driven development** where [specifications are the single source of truth](/blog/specs-as-single-source-of-truth) that drives code, documentation, and marketing
+- **Configuration as code** for everything: [Sentry alerts](/blog/sentry-configuration-as-code), [Slack channel access](/blog/slack-configuration-as-code), [Google Workspace users](/blog/google-workspace-as-code)
 - **Multiple teammates per company** with task assignment, code review, and async communication
-- **Production deployments** [multiple times daily](/production-first-mindset-evolution) across all environments
-- **KPI dashboards** and data warehouses built on [BigQuery with cross-source analytics](/the-first-thing-i-set-up-data-warehouse)
-- **AI-assisted development** where [specs guide every implementation step](/ai-reads-my-specs)
+- **Production deployments** [multiple times daily](/blog/production-first-mindset-evolution) across all environments
+- **KPI dashboards** and data warehouses built on [BigQuery with cross-source analytics](/blog/the-first-thing-i-set-up-data-warehouse)
+- **AI-assisted development** where [specs guide every implementation step](/blog/ai-reads-my-specs)
 
 The sophistication lives in the infrastructure, the processes, and the documentation. Not in the AI configuration layer. That is the key distinction.
 

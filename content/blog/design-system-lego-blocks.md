@@ -96,7 +96,7 @@ From this, the design direction became clear:
 - **Background: Warm Linen (#FAF8F5)** instead of cold white/gray
 - **Fonts: Inter** (body, readable at all sizes) + **Plus Jakarta Sans** (headings, warm and distinctive)
 
-The full [design brief and prompt](https://docs.catalyzeupdev.com/impact-pulse/technical/style-guide) is available in our documentation site, which itself is built on a [specs-as-single-source-of-truth](/specs-as-single-source-of-truth) approach.
+The full [design brief and prompt](https://docs.catalyzeupdev.com/impact-pulse/technical/style-guide) is available in our documentation site, which itself is built on a [specs-as-single-source-of-truth](/blog/specs-as-single-source-of-truth) approach.
 
 ## Step 3: Build 7 Components, Not 70
 
@@ -143,7 +143,7 @@ This is not a Figma file that gets out of sync. It's a React page that uses the 
 
 **Refactor all at once, not incrementally.** If half your pages use the old patterns and half use the new components, you have two systems to maintain. Rip the band-aid off.
 
-**In-memory databases make this workflow possible.** The entire development cycle (change code, hot reload, test, screenshot) happens in milliseconds because there's no disk I/O. The [in-memory MongoDB pattern](/specs-as-single-source-of-truth) that powers our test suite also powers this kind of rapid iteration.
+**In-memory databases make this workflow possible.** The entire development cycle (change code, hot reload, test, screenshot) happens in milliseconds because there's no disk I/O. The [in-memory MongoDB pattern](/blog/specs-as-single-source-of-truth) that powers our test suite also powers this kind of rapid iteration.
 
 ## The Stack
 
