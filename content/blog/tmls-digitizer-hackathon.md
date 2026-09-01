@@ -15,7 +15,7 @@ draft: false
 
 I went to Toronto for the TMLS hackathon last week. Monday to Friday, five days, one product. Team of three: myself, Luca and Mo. Thursday was the cutoff for development. Friday was the demo for judges from the FGF bakery team, a 5 billion dollar business with almost 100 engineers. The mission was wider than the prize: I wanted to see what the current landscape actually looks like for digitizing documents. Not what the marketing pages claim. What the models can do today when you point them at the messy real world.
 
-I came at this with scar tissue. At Wisk I was CTO and we dealt with invoices from tens of thousands of different suppliers. I know exactly where these systems crack: the handwritten note in the corner, the supplier who faxes you their invoice, the multilingual line item, the rotated scan from a phone camera. So when I joined the hackathon, I had a specific test in mind for whatever we built.
+I came at this with battle scars. At Wisk I was CTO and we dealt with invoices from tens of thousands of different suppliers. I know exactly where these systems crack: the handwritten note in the corner, the supplier who faxes you their invoice, the multilingual line item, the rotated scan from a phone camera. So when I joined the hackathon, I had a specific test in mind for whatever we built.
 
 Mo brought significant OCR experience. He is currently building a product around searchable document datasets, so he had walked into every wall this space has. Luca is newer to software but very enthusiastic, and he ended up building UI components that survived the rewrite intact.
 
@@ -37,7 +37,7 @@ Important caveat. I was not building the production scaffolding on the train. I 
 - A Python (FastAPI) backend skeleton with a tested pipeline shape
 - A Next.js frontend skeleton with the design system from styleguide.ideaplaces.com
 
-So the train ride was not "write the CI/CD." It was "take the hackathon code, decide what survives, drop the rest, and wire the survivors into the existing skeleton." That is a much smaller, much cleaner unit of work than building from zero, and it is exactly the kind of work an offline train ride is good for.
+So the train ride was not "write the CI/CD." It was "take the hackathon code, decide what survives, drop the rest, and wire what survived into the existing skeleton." That is a much smaller, much cleaner unit of work than building from zero, and it is exactly the kind of work an offline train ride is good for.
 
 By the time I rolled into Montreal: end to end working, every pipeline step unit and integration tested, the live URL responding. Sunday I added the demo gallery, processed a stack of varied real-world documents through the pipeline to stress-test it, and made it actually demo-able. The result is at [digitizer.ideaplaces.com](https://digitizer.ideaplaces.com).
 
@@ -49,9 +49,9 @@ Concrete example from our pipeline. For document rotation we run Tesseract OSD f
 
 Same for bboxes. The VLM returns approximate bboxes for every field, but they drift by 5 to 10 percent because the model is not optimized for pixel-accurate localization. So we run a second pass: a focused locator call that takes the extracted text values and snaps the bboxes tightly to the page. Each tool does what it is good at.
 
-This pattern is going to become more important, not less, as the model landscape matures. Picking one technology and committing to it monogamously is the wrong shape. The right shape is: a pipeline where each step uses the cheapest tool that solves it correctly, with one fallback tier for when the cheap tool gives up.
+This pattern is going to become more important, not less, as the model landscape matures. Picking one technology and committing to just one is the wrong shape. The right shape is: a pipeline where each step uses the cheapest tool that solves it correctly, with one fallback tier for when the cheap tool gives up.
 
-## A footnote: a kid's letter to Santa Claus
+## A side note: a kid's letter to Santa Claus
 
 Somewhere on Sunday, while I was reaching into my own phone camera roll for edge cases (phone photos are the genuinely ugly case: angle, glare, EXIF orientation, partial crops), I found a small folder of photos I had taken of my kids' handwritten letters to Santa. Three of them, across three different years. Cursive French ("Cher Père Noël" at the top), no labels, no fields, just prose.
 

@@ -39,7 +39,7 @@ transcript: |
   observability stack I already use.
 ---
 
-I run several mobile-first projects, and every one of them needs Sentry. The first time I did this through the Sentry UI I clicked through forty-something forms across three environments. Two days later staging had drifted from production and nobody noticed until an alert that should have stayed silent paged the team at 2am.
+I run several mobile-first projects, and every one of them needs Sentry. The first time I did this through the Sentry UI I clicked through 40-something forms across three environments. Two days later staging had drifted from production and nobody noticed until an alert that should have stayed silent paged the team at 2am.
 
 That is the problem this post is about. Configure Sentry the way you configure the rest of your infrastructure, then stop living inside its UI.
 

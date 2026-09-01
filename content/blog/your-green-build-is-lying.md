@@ -24,7 +24,7 @@ metadata:
 
 I move fast and in a lot of directions at once. A dozen projects live at any given moment, and I am
 almost never coming back to a file I wrote three months ago. So I do not rely on remembering things.
-I rely on the build refusing to go green.
+I rely on the build saying no.
 
 That works right up to the moment a check tells you the truth about itself instead of about your code.
 
@@ -63,8 +63,8 @@ think of, and ran the check against it. It found one.
 One out of three. On a check I had already shipped, already wired into CI, already told myself
 guaranteed something.
 
-That five-minute exercise was worth more than every green build it had produced. And it generalises
-past my situation entirely, so I will put it plainly:
+That five-minute exercise was worth more than every green build it had produced. And it applies far
+past my situation, so here it is, straight:
 
 **A clean report is evidence about your scanner. It is not evidence about your code.**
 
@@ -83,7 +83,7 @@ always been that high. I had just been reading a smaller instrument.
 
 ## Then the same lesson arrived from three more directions
 
-Once you start distrusting the shape of your checks rather than their output, you notice the pattern
+Once you start questioning the shape of your checks rather than their output, you notice the pattern
 is not one bug. It is a category.
 
 A check scoped to a folder says nothing about what that folder imports. I had a screen that was
@@ -122,7 +122,7 @@ place that builds one of these documents is now forced to answer the question it
 in whose language?
 
 That last one is my favourite consequence, and it is the one people underrate. The type did not just
-block a mistake. It surfaced a question the design had been quietly avoiding.
+block a mistake. It surfaced a question the design had been avoiding.
 
 There is a weaker version of this fix that looks identical and is not. You could let a column hold a
 function that returns a heading rather than the heading itself. Feels rigorous. Still lets someone

@@ -66,9 +66,9 @@ flowchart LR
 
 ![Diagram 1](/images/diagrams/the-machine-is-becoming-me-diagram-ec65f5f4.png?v=e01b41f3)
 
-Every loop through that cycle makes the next loop better. A lesson learned in one session becomes a rule every future session follows. A phrase I use often becomes retrievable cadence. A production incident becomes a precheck that costs zero tokens on quiet days. The machine compounds, the way a codebase compounds, because that is what it is: the business, and more and more the way I think about the business, replaced with code.
+Every loop through that cycle makes the next loop better. A lesson learned in one session becomes a rule every future session follows. A phrase I use often becomes cadence the machine can pull up. A production incident becomes a precheck that costs zero tokens on quiet days. The machine compounds, the way a codebase compounds, because that is what it is: the business, and more and more the way I think about the business, replaced with code.
 
-This is the point where "dev machine" stops being the right name. A dev machine is a place where work happens. This is a project in its own right, maybe the one with the highest return of anything I run, and what it is converging toward is me. It knows what I am building, how I decide, how I phrase things, what I got wrong last month. My son Luca works the same way on his own machine, and the shared standard means our two machines agree on how we build. Two people, a dozen products, and the reason that math works is sitting in a data center in Canada.
+This is the point where "dev machine" stops being the right name. A dev machine is a place where work happens. This is a project in its own right, maybe the one with the highest return of anything I run, and where it is heading is me. It knows what I am building, how I decide, how I phrase things, what I got wrong last month. My son Luca works the same way on his own machine, and the shared standard means our two machines agree on how we build. Two people, a dozen products, and the reason that math works is sitting in a data center in Canada.
 
 ## Personal means it knows you
 

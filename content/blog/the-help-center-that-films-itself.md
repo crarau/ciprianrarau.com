@@ -49,7 +49,7 @@ Spanish product does.
 ## The film is a function of the page
 
 Here is the part I like most. Each topic carries a short narrated film, and the film is generated
-end to end. The script is written from the page. ElevenLabs turns it into narration, and, crucially,
+end to end. The script is written from the page. ElevenLabs turns it into narration, and, this is the key part,
 returns the timing of every spoken word along with the audio. Markers in the script resolve against
 those timings, so the narration becomes the master clock of the film: every cut, every camera move,
 every caption is computed from when the words are actually said.
@@ -57,7 +57,7 @@ every caption is computed from when the words are actually said.
 ![A frame from a generated help film: the real board, the rolling caption, the camera on what the voice is describing](/images/blog/help-films-itself/film-frame.jpg)
 
 Press play on one yourself: [the pickup-times film in English](https://sttourcockpitmedia.blob.core.windows.net/video/help/pickup-times/en/v5/clip.mp4)
-or [the same film in Spanish](https://sttourcockpitmedia.blob.core.windows.net/video/help/pickup-times/es/v5/clip.mp4), or watch it in its habitat on
+or [the same film in Spanish](https://sttourcockpitmedia.blob.core.windows.net/video/help/pickup-times/es/v5/clip.mp4), or watch it where it lives on
 [the live help page](https://tourcockpit.com/help/pickup-times), where the language switcher swaps the words and the film together.
 
 The pictures come from the product itself. A headless browser drives the real application with
@@ -82,7 +82,7 @@ Languages multiply for almost nothing. The films exist in English and Spanish to
 translated through the same agent, re-voiced, and the entire film re-times itself around the new
 narration, because the cuts follow the words. That is why the English cut of one topic runs 1:10
 and the Spanish 1:07: Spanish says it three seconds faster, and the picture simply follows. The
-other four languages read their own prose and play the English film until their voice is a
+other four languages read their own text and play the English film until their voice is a
 translation away.
 
 ## Why this matters beyond the help button
@@ -94,7 +94,7 @@ something else.
 
 Because think about what the pipeline actually is: specs in, and out come explained pages built
 from real software, with a narrated, localized film per page, that stay current forever. Every SaaS
-company on earth has the same rot in their help center and the same dread of re-recording videos.
+company on earth has the same rot in their help center and the same fear of re-recording videos.
 This could be a product in itself. For now it ships inside TourCockpit, where a dispatcher in
 Spanish or a reseller in English presses play and watches their own product explain itself, in
 their own language, exactly as it looks today.

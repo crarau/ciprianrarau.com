@@ -60,9 +60,9 @@ Two details did most of the work:
 
 **The contrast maths sat next to the taste.** Every candidate carries a live accessibility score,
 computed the way the system actually paints: the label on the real button, the accent as text on
-the real background. Half the candidates eliminated themselves. Taste picked from the survivors.
+the real background. Half the candidates eliminated themselves. Taste picked from what was left.
 
-**The URL is the state.** Every switch writes itself into the address bar, so anyone can wander
+**The URL is the state.** Every switch writes itself into the address bar, so anyone can click through
 through the candidates and send back exactly what they saw as a link. No screenshots, no "the third
 one, no, the other third one". Feedback becomes a URL.
 
@@ -128,7 +128,7 @@ as hard as it should be, a real argument about identity, taken with real feedbac
 decision becomes free. And when execution is free, you can afford to change your mind, which means
 the look of the product can keep up with your understanding of who it is for.
 
-The rebrand was one shot. The years of refusing to hard-code a colour were the trigger being
+The rebrand was one shot. The years of never hard-coding a colour were the trigger being
 loaded.
 
 *TourCockpit and the style guide generator are part of [IdeaPlaces](https://ideaplaces.com), the

@@ -24,7 +24,7 @@ transcript: |
   I built the Android side of a mobile release pipeline next to the iOS one that already existed. Push to a branch and a signed build lands on the store's testing track. The version number comes from the store itself, the commit list goes to Slack, and who has access to the store console is a YAML file where the pull request shows the plan and the merge applies it. The two stores work completely differently and I wanted everything managed the same way: from git.
 ---
 
-The QA engineer was testing the wrong app. She had the opt-in link, she had the phone, she was motivated, and the store was quietly serving her a build from before the pipeline existed, while every fresh build sat in a state nobody could receive. Nothing was broken. Every run was green. The gap was invisible until someone typed one sentence in Slack: "while it is draft there is no update of the app to testers."
+The QA engineer was testing the wrong app. She had the opt-in link, she had the phone, she was motivated, and the store was serving her a build from before the pipeline existed, while every fresh build sat in a state nobody could receive. Nothing was broken. Every run was green. The gap was invisible until someone typed one sentence in Slack: "while it is draft there is no update of the app to testers."
 
 That sentence is why I like this project as a story. Over a couple of days at a healthcare startup I build with, I stood up the complete Android release pipeline next to an existing iOS one: builds, store uploads, tester rollouts, failure and success alerts, store team access, all of it. The pipeline itself is not the interesting part. The interesting part is that the two app stores disagree about almost everything, and the only way to keep both of them sane is to make git the control plane and treat each store as just another deploy target.
 
@@ -44,7 +44,7 @@ I tested the whole thing on the pull request branch before merging, with a tempo
 
 3. **Parallel Gradle killed the runner.** I gave the build more heap and parallel workers to speed it up, and the VM died mid-build with "the hosted runner lost communication with the server". The fix was moving to a larger runner, where the build now takes 18 minutes. But the lesson worth money is the failure mode: a dead runner never reaches your notification step. The build just vanishes. If your alerting assumes the workflow gets to say goodbye, you have a class of silent failures waiting for you.
 
-4. **An upstream bug on the empty track.** The store client library crashed reading a testing track that had never had a release, a known upstream issue. Rescued that one specific error as "empty track, bootstrap the sequence" so a brand new app's first upload works from CI, no console ceremony required.
+4. **An upstream bug on the empty track.** The store client library crashed reading a testing track that had never had a release, a known upstream issue. Rescued that one specific error as "empty track, bootstrap the sequence" so a brand new app's first upload works from CI, no console clicking required.
 
 Four runs, four fixes, all of them in the pull request before anyone reviewed it. This is what testing infrastructure means to me: not "the YAML parses", but "the pipeline has already survived contact with production reality before the merge button exists".
 
@@ -56,7 +56,7 @@ Here is the part that surprised the team, and it will surprise anyone carrying a
 
 **Google is synchronous.** When the upload step returns, the build is on the track. Done. No webhook exists and none is needed; the workflow itself posts the success message with the commits, because the workflow is the first and only system that knows. Same outcome as iOS, opposite architecture, and the deciding factor is nothing you control: it is how the store's pipeline works.
 
-**Testers are inverted too.** On TestFlight, an internal tester must be a member of your App Store Connect team, so tester management is team management. On Google Play, testers are just email addresses on a list plus a one-time opt-in link, completely decoupled from console access. A person can test every build without having any access to anything. My own team tripped on this within a day, asking how to "onboard devices" when the answer was: click the link, that is the whole ceremony.
+**Testers are inverted too.** On TestFlight, an internal tester must be a member of your App Store Connect team, so tester management is team management. On Google Play, testers are just email addresses on a list plus a one-time opt-in link, completely decoupled from console access. A person can test every build without having any access to anything. My own team tripped on this within a day, asking how to "onboard devices" when the answer was: click the link, that is the whole thing.
 
 And the draft problem from the opening: uploads were landing as drafts, which the store shows in the console but never delivers. One word in the upload configuration, draft to completed, and every build since rolls out to testers automatically. The store had been green the whole time. Green is not the same as delivered.
 
@@ -66,7 +66,7 @@ The piece I care most about is not the build. It is access.
 
 Both stores have a console, and both consoles have a users page where somebody clicks. I have replaced that page with a YAML file in the devops repository. The roster lists people and roles. Open a pull request that changes it and CI posts a read-only plan as a comment: who gets invited, who changes, what would be removed. Merge to main and the plan applies. Removals are never automatic; deleting a person requires a deliberate manual flag, because the failure mode of "the roster tool quietly removed the account owner" is not one I want to discover.
 
-Two details matter for doing this properly. First, the automation runs as a service account, not as me. My personal access can disappear tomorrow and the tooling does not care. Second, the same pattern now covers both stores, so adding a developer to both consoles is one file edit, and the answer to "who has access to what" is git log instead of an archaeology session through two admin UIs.
+Two details matter for doing this properly. First, the automation runs as a service account, not as me. My personal access can disappear tomorrow and the tooling does not care. Second, the same pattern now covers both stores, so adding a developer to both consoles is one file edit, and the answer to "who has access to what" is git log instead of digging through two admin UIs.
 
 This is the same shape as everything else I run: Slack channels from YAML, Google Workspace from Terraform, Sentry from config. The app stores were the last two surfaces that still lived in a browser tab, and now they do not.
 
