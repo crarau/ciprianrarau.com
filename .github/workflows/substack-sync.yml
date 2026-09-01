@@ -27,11 +27,27 @@ jobs:
         uses: actions/checkout@v7
 
       - name: Fetch Substack cookie from Key Vault
+        id: cookie
         run: |
+          set +e
           SUBSTACK_COOKIE=$(az keyvault secret show \
             --vault-name ${{ vars.AZURE_KEYVAULT_NAME }} \
             --name substack-cookie \
-            --query value -o tsv)
+            --query value -o tsv 2>/tmp/az-err)
+          RC=$?
+          set -e
+          if [ $RC -ne 0 ]; then
+            # The runner reads Key Vault through the Mac's interactive az
+            # session, so a lapsed login is the most common cause here.
+            if grep -qiE "az login|AADSTS|refresh token|expired|not logged in" /tmp/az-err; then
+              echo "failure_reason=az-login" >> "$GITHUB_OUTPUT"
+            else
+              echo "failure_reason=keyvault" >> "$GITHUB_OUTPUT"
+            fi
+            echo "::error::Key Vault fetch failed:"
+            cat /tmp/az-err
+            exit 1
+          fi
           echo "::add-mask::$SUBSTACK_COOKIE"
           echo "SUBSTACK_COOKIE=$SUBSTACK_COOKIE" >> "$GITHUB_ENV"
 
@@ -39,7 +55,24 @@ jobs:
         run: pip3 install -r scripts/substack/requirements.txt
 
       - name: Run Substack sync
-        run: python3 scripts/substack/sync.py
+        id: sync
+        run: |
+          set +e
+          python3 scripts/substack/sync.py 2>&1 | tee /tmp/sync.log
+          RC=${PIPESTATUS[0]}
+          set -e
+          if [ $RC -ne 0 ]; then
+            if grep -qiE "Just a moment|cloudflare|challenge" /tmp/sync.log; then
+              echo "failure_reason=cloudflare" >> "$GITHUB_OUTPUT"
+            elif grep -qiE "401|403|unauthoriz|forbidden" /tmp/sync.log; then
+              echo "failure_reason=substack-cookie" >> "$GITHUB_OUTPUT"
+            elif grep -qiE "Subtitle is too long" /tmp/sync.log; then
+              echo "failure_reason=subtitle" >> "$GITHUB_OUTPUT"
+            else
+              echo "failure_reason=sync" >> "$GITHUB_OUTPUT"
+            fi
+            exit $RC
+          fi
 
       - name: Commit updated sync state
         run: |
@@ -53,3 +86,75 @@ jobs:
             git pull --rebase origin main
             git push
           fi
+
+      - name: Notify Discord on failure
+        if: failure()
+        env:
+          WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_CIPRIANRARAU_PRODUCTION }}
+          REASON: ${{ steps.cookie.outputs.failure_reason || steps.sync.outputs.failure_reason }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          COMMIT_MSG: ${{ github.event.head_commit.message }}
+          ACTOR: ${{ github.actor }}
+        run: |
+          python3 - <<'PY'
+          import json, os, urllib.request
+
+          reason = os.environ.get("REASON") or "unknown"
+          cases = {
+              "az-login": (
+                  "Substack sync blocked: az login expired on chips-mac",
+                  "The runner could not read `substack-cookie` from Key Vault. The "
+                  "Azure CLI session on the Mac has lapsed.\n\n"
+                  "**Fix:** run `az login` on the Mac, then re-run this workflow.",
+                  15105570),
+              "keyvault": (
+                  "Substack sync failed: Key Vault unreachable",
+                  "`az keyvault secret show` failed for a reason other than a lapsed "
+                  "login. Check the run log for the Azure error.",
+                  15158332),
+              "substack-cookie": (
+                  "Substack sync failed: the Substack cookie is rejected",
+                  "Substack returned 401/403. The `substack.sid` cookie has most "
+                  "likely expired.\n\n**Fix:** copy a fresh `substack.sid` from the "
+                  "browser and run `az keyvault secret set --vault-name kv-ideaplaces "
+                  "--name substack-cookie --value \"s%3A...\"`.",
+                  15158332),
+              "cloudflare": (
+                  "Substack sync failed: blocked by Cloudflare",
+                  "Substack served a challenge page instead of the API. The runner's "
+                  "IP is being treated as non-residential. Check the Mac's network "
+                  "(VPN on?), since a residential IP is the whole reason this job "
+                  "runs on chips-mac.",
+                  15158332),
+              "subtitle": (
+                  "Substack sync failed: an excerpt is too long",
+                  "Substack rejects a `draft_subtitle` over **255 characters**, and "
+                  "the sync maps a post's `excerpt` onto it. Shorten the excerpt in "
+                  "the post's frontmatter.",
+                  15844367),
+          }
+          title, desc, color = cases.get(reason, (
+              "Substack sync failed",
+              "The sync job failed. Check the run log for details.",
+              15158332))
+
+          commit = (os.environ.get("COMMIT_MSG") or "").splitlines()
+          commit = commit[0] if commit else "(manual run)"
+          desc += f"\n\n**Commit:** {commit}\n**By:** {os.environ.get('ACTOR','')}"
+
+          payload = {"embeds": [{
+              "title": f":x: {title}",
+              "description": desc,
+              "url": os.environ["RUN_URL"],
+              "color": color,
+              "footer": {"text": "ciprianrarau.com | substack-sync | runner chips-mac"},
+          }]}
+          req = urllib.request.Request(
+              os.environ["WEBHOOK"],
+              data=json.dumps(payload).encode(),
+              headers={"Content-Type": "application/json",
+                       # Discord 403s the default Python-urllib User-Agent.
+                       "User-Agent": "ideaplaces-ci/1.0"})
+          with urllib.request.urlopen(req) as r:
+              print("discord:", r.status)
+          PY
