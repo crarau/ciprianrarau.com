@@ -97,23 +97,45 @@ The Substack sync workflow at `.github/workflows/substack-sync.yml` watches `con
 
 ### Substack sync operations (as of 2026-08-31)
 
-- **The cookie** lives in Key Vault `kv-ideaplaces` / `substack-cookie` (the `substack.sid` value,
-  URL-encoded `s%3A...`). Refreshed 2026-08-31 by signing in from chipdev. **When it expires**
-  (sync fails with 401 behind the Cloudflare message): Substack signs in by a 6-digit emailed code;
+- **It is automatic again.** The `chips-mac` runner was re-registered on Chip's new Mac on
+  2026-08-31, so a push touching `content/blog/**` syncs to Substack on its own. Nothing needs
+  to be run by hand in the normal case. Runbook:
+  `ideaplaces-devops/github-actions-runners/README.md`.
+- **Subtitle limit: 255 characters.** Substack rejects a longer `draft_subtitle` with
+  `400 Subtitle is too long`, and the sync maps a post's `excerpt` onto the subtitle, so an
+  over-long excerpt means the post **cannot sync at all**. Confirmed against the API, not
+  guessed. See the content rules below.
+- **Publishing emails subscribers.** New posts publish with `send: True`, so each one hits
+  every subscriber's inbox; updates to an already-published post use `send: False` and do not.
+  **Always `--dry-run` first** to see exactly what would go out, and when several posts are
+  pending, publish them deliberately with `--post <slug>` rather than letting one run send them
+  all at once.
+- **Azure auth is OIDC, not a human session.** The workflow logs in as
+  `github-actions-ideaplaces` over GitHub OIDC (the same app registration `deploy.yml` uses,
+  which already holds Key Vault Secrets User on `kv-ideaplaces`). It no longer depends on
+  anyone's interactive `az login`. The login is pinned to a per-run `AZURE_CONFIG_DIR` because
+  `azure/login`'s post-step runs `az account clear`, which against the default `~/.azure` would
+  log Chip out of his own Mac on every sync.
+- **Failures are announced on Discord** in `#ciprianrarau-production`, and the message names
+  the cause: a broken OIDC federation, a revoked Key Vault role, a rejected Substack cookie, a
+  Cloudflare challenge, or an excerpt over the 255-character limit.
+- **The cookie** lives in Key Vault `kv-ideaplaces` / `substack-cookie` (the `substack.sid`
+  value, URL-encoded `s%3A...`). Refreshed 2026-08-31. **When it expires** (the sync fails with
+  401 and Discord says the cookie is rejected): Substack signs in by a 6-digit emailed code;
   request it at substack.com/sign-in for ciprarau@gmail.com, read the code with the `gmail` CLI
-  (`gmail search "from:no-reply@substack.com subject:verification"`), enter it in the SAME browser
-  session that requested it, then store the fresh `substack.sid` back in the vault.
-- **Cloudflare blocks plain requests from chipdev** (datacenter IP): `sync.py` gets 403 before
-  auth. A headed Chromium under `xvfb-run` passes the challenge instantly where headless does not;
-  the working recipe is to capture that browser's `cf_clearance` cookie plus its exact User-Agent
-  and inject both into `sync.py`'s requests session, then run
-  `python3 scripts/substack/sync.py --post <slug>` for a targeted publish. Clearances expire in
-  about 30 minutes, so refresh per run. The `chips-mac` runner exists precisely to avoid all this
-  (residential IP); as of 2026-08-31 it is **unregistered** and the per-push sync does not run.
-- **Backlog**: five posts were never synced while the runner was down (Green Build, Voice Twin,
-  Mobile Releases, Agents Finished, plus a Sentry update). The queued workflow run was cancelled
-  deliberately so they do not email subscribers all at once; publish them spaced with
-  `--post <slug>`, on Chip's call. `--dry-run` first, always: it lists exactly what would go out.
+  (`gmail search "from:no-reply@substack.com subject:verification"`), enter it in the SAME
+  browser session that requested it, then store the fresh `substack.sid` back in the vault.
+- **Running it by hand** (only needed when the Mac is unavailable, or to publish one post
+  deliberately): from a checkout, `export SUBSTACK_URL=https://chiprarau.substack.com` and
+  `SUBSTACK_COOKIE` from the vault, then `python3 scripts/substack/sync.py --dry-run`,
+  `--list`, or `--post <slug>`. Deps are `scripts/substack/requirements.txt`; on a Mac with a
+  Homebrew Python you need a venv, since PEP 668 makes a bare `pip3 install` fail.
+- **Fallback: Cloudflare blocks plain requests from chipdev** (datacenter IP), so `sync.py` gets
+  403 there before it ever authenticates. A headed Chromium under `xvfb-run` passes the
+  challenge where headless does not; capture that browser's `cf_clearance` cookie plus its exact
+  User-Agent, inject both into `sync.py`'s requests session, and publish with `--post <slug>`.
+  Clearances expire in about 30 minutes. **The `chips-mac` runner exists precisely to avoid all
+  of this** (residential IP), so this is only for when that Mac is off or offline.
 
 Mermaid diagrams in posts use pre-rendered PNGs from `public/images/diagrams/`. To re-process diagrams, run `npm run process-mermaid` (`scripts/process-mermaid-diagrams.cjs`).
 
@@ -159,6 +181,9 @@ showing value." Reference posts: `style-is-data-rebrand-in-one-shot.md` and
 - **Anything IdeaPlaces is fair game, by name, with links.** Chip holds full IP on the IdeaPlaces portfolio, so posts should name the products and link to them (tourcockpit.com, styleguide.ideaplaces.com, ideaplaces.com, and the rest). Chip, 2026-08-31: "for any project that is there, you can put links to it, to all of them." Public product pages only; never internal URLs, keys, or customer data.
 - **No team member names** in prose.
 - **No markdown tables** in posts that sync to Substack (Substack API does not support them).
+- **Keep `excerpt` under 255 characters.** It becomes the Substack subtitle, and Substack
+  rejects anything longer, which blocks the whole post from syncing. Two posts silently could
+  not sync for weeks because of this.
 
 ## Environment Variables
 
