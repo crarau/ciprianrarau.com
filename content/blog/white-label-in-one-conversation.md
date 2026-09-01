@@ -3,7 +3,7 @@ title: "White Label in One Conversation"
 author: Ciprian Rarau
 publishDate: 2026-09-01T09:00:00Z
 category: Shipping
-excerpt: "Our first customer wanted the product to wear their name: their own subdomain, their brand on the login page. By the end of one conversation it was live in production, with DNS in code, one sign-in valid across every subdomain, and a rule that a signed-in user never sees our domain again."
+excerpt: "Our first customer wanted the product to wear their name: their own subdomain, their brand on the login page. By the end of one conversation it was live in production, with DNS in code, and a rule that a signed-in user never sees our domain again."
 image: /images/diagrams/white-label-in-one-conversation-diagram-046b85fd.png
 substack: true
 tags:
