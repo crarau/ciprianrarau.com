@@ -36,9 +36,9 @@ export function CatalogProductCard({ catalog }: { catalog: ProductCatalog }) {
       href={catalog.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group relative flex flex-col p-7 bg-surface border border-border-light rounded-xl transition-all hover:border-primary hover:shadow-md"
+      className="group relative flex flex-col p-6 bg-surface border border-border-light rounded-xl transition-all hover:border-primary hover:shadow-md"
     >
-      <div className="flex items-center justify-between mb-5">
+      <div className="flex items-center justify-between mb-4">
         <span
           className={`inline-flex items-center whitespace-nowrap px-2.5 py-1 text-[10px] uppercase tracking-widest font-mono font-semibold rounded ${STATUS_BG[catalog.status]}`}
         >
@@ -51,34 +51,12 @@ export function CatalogProductCard({ catalog }: { catalog: ProductCatalog }) {
         />
       </div>
 
-      <h3 className="font-heading font-bold tracking-tight text-2xl mb-1.5">
+      <h3 className="font-heading font-bold tracking-tight text-xl mb-1.5">
         {catalog.name}
       </h3>
-      <div className="text-sm font-medium text-secondary mb-3">
+      <div className="text-sm font-medium text-secondary mb-4">
         {catalog.tagline}
       </div>
-      <p className="text-sm leading-relaxed text-foreground-muted mb-5">
-        {catalog.description}
-      </p>
-
-      {catalog.features.length > 0 && (
-        <ul className="space-y-1.5 mb-5">
-          {catalog.features.slice(0, 4).map((feature) => (
-            <li
-              key={feature.title}
-              className="text-xs text-foreground-muted flex items-start"
-            >
-              <span className="text-secondary mr-2 mt-1">•</span>
-              <span>
-                <span className="font-semibold text-foreground">
-                  {feature.title}
-                </span>
-                {feature.body ? ` — ${feature.body}` : null}
-              </span>
-            </li>
-          ))}
-        </ul>
-      )}
 
       <div className="mt-auto pt-4 border-t border-border-light flex items-center justify-between text-xs">
         <span className="text-foreground-muted">
