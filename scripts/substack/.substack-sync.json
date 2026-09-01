@@ -79,10 +79,10 @@
       "synced_at": "2025-11-03T12:00:00+00:00"
     },
     "sentry-configuration-as-code": {
-      "hash": "c8001489cc0436c7",
+      "hash": "0f047d3d0c19a854",
       "draft_id": 189129664,
-      "title": "Sentry Alerts, Filters, and Scrubbing: Programmatic Error Management",
-      "synced_at": "2025-12-15T12:00:00+00:00"
+      "title": "Sentry Is a Source, Not Where I Live: Config as Code, AI-Summarized Alerts",
+      "synced_at": "2026-05-03T18:30:00+00:00"
     },
     "slack-configuration-as-code": {
       "hash": "7f42ee55d51a3f87",
