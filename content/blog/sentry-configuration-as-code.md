@@ -3,7 +3,7 @@ title: "Sentry Is a Source, Not Where I Live: Config as Code, AI-Summarized Aler
 author: Ciprian Rarau
 publishDate: 2026-05-03T18:30:00Z
 category: Building
-excerpt: "I do not configure Sentry through the UI. Alerts, inbound filters, scrubbing rules, members, all defined in YAML and applied through a Python CLI. The events themselves get forwarded into GCP, summarized by Claude, and posted to Slack. Sentry becomes a source. The investigation happens elsewhere."
+excerpt: "I do not configure Sentry through the UI. Alerts, inbound filters, scrubbing rules, all defined in YAML and applied through a Python CLI. The events get forwarded into GCP, summarized by Claude, posted to Slack. The investigation happens elsewhere."
 image: /images/diagrams/sentry-configuration-as-code-diagram-e8dc6ef9.png
 substack: true
 tags:

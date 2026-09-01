@@ -3,7 +3,7 @@ title: "I Open Sourced My Voice Twin: A Year of Wispr Flow as a Graph I Can Wand
 author: Ciprian Rarau
 publishDate: 2026-05-03T18:00:00Z
 category: Building
-excerpt: "1.66 million dictated words become a searchable corpus, a topical map, a graph of nearest semantic neighbors, and a writer that drafts in my own voice. Local-first. The architecture is hybrid retrieval: vectors for precision, a kNN graph for wandering, topic clusters to keep me oriented. GraphRAG, on a year of my own voice. Now public on GitHub."
+excerpt: "1.66 million dictated words become a searchable corpus, a graph of nearest semantic neighbors, and a writer that drafts in my own voice. Local-first. Hybrid retrieval: vectors for precision, a kNN graph for wandering. Now public on GitHub."
 image: /images/diagrams/wispr-flow-voice-twin-open-source-diagram-791f09e6.png
 substack: true
 tags:
