@@ -35,6 +35,7 @@ ciprianrarau.com/
 │   ├── api/
 │   │   ├── contact/        # Resend send-email
 │   │   ├── subscribe/      # Resend audience add
+│   │   ├── posts/          # blog feed JSON (consumed by ideaplaces.com's "From the blog")
 │   │   └── health/         # liveness probe
 │   ├── icon.svg            # browser tab icon
 │   ├── apple-icon.tsx      # 180x180 home-screen icon
