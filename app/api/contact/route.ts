@@ -37,7 +37,13 @@ export async function POST(req: Request): Promise<Response> {
   }
 
   const apiKey = process.env.RESEND_API_KEY;
-  const recipient = process.env.RECIPIENT_EMAIL ?? 'chip@ideaplaces.com';
+  // The deploy workflow posts a synthetic submission after every deploy to
+  // prove the Resend path end to end. Route it to Resend's delivery sink so
+  // it exercises the same send without landing in the real inbox.
+  const isDeployCheck = email === 'deploy-check@ideaplaces.com';
+  const recipient = isDeployCheck
+    ? 'delivered@resend.dev'
+    : process.env.RECIPIENT_EMAIL ?? 'chip@ideaplaces.com';
   // Default must stay on a Resend-verified domain. The account's single
   // verified domain is ideaplaces.com; sending from ciprianrarau.com gets a
   // 403 validation_error and the form breaks (June 2026 incident).

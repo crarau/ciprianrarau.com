@@ -108,6 +108,24 @@ describe('POST /api/contact', () => {
     expect(payload.to).toBe('other@ideaplaces.com');
   });
 
+  it('routes the deploy-check submission to the Resend sink, not the inbox', async () => {
+    vi.stubEnv('RESEND_API_KEY', 're_test_key');
+    vi.stubEnv('RECIPIENT_EMAIL', 'chip@ideaplaces.com');
+    const fetchMock = mockResend();
+
+    const res = await POST(
+      request({
+        name: 'Deploy check',
+        email: 'deploy-check@ideaplaces.com',
+        message: 'Post-deploy verification for commit abc123.',
+      }),
+    );
+    expect(res.status).toBe(200);
+
+    const payload = JSON.parse(fetchMock.mock.calls[0][1].body);
+    expect(payload.to).toBe('delivered@resend.dev');
+  });
+
   it('escapes HTML in the rendered email body', async () => {
     vi.stubEnv('RESEND_API_KEY', 're_test_key');
     const fetchMock = mockResend();
