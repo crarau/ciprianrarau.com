@@ -12,7 +12,7 @@ tags:
   - multi-tenant
   - shipping
   - saas
-draft: true
+draft: false
 metadata:
   featured: false
   showAuthor: true
