@@ -94,6 +94,26 @@ work. Do NOT use raw `<jsx>` — the renderer is markdown, not MDX.
 
 The Substack sync workflow at `.github/workflows/substack-sync.yml` watches `content/blog/**` and also supports manual runs via `workflow_dispatch`.
 
+### Substack sync operations (as of 2026-08-31)
+
+- **The cookie** lives in Key Vault `kv-ideaplaces` / `substack-cookie` (the `substack.sid` value,
+  URL-encoded `s%3A...`). Refreshed 2026-08-31 by signing in from chipdev. **When it expires**
+  (sync fails with 401 behind the Cloudflare message): Substack signs in by a 6-digit emailed code;
+  request it at substack.com/sign-in for ciprarau@gmail.com, read the code with the `gmail` CLI
+  (`gmail search "from:no-reply@substack.com subject:verification"`), enter it in the SAME browser
+  session that requested it, then store the fresh `substack.sid` back in the vault.
+- **Cloudflare blocks plain requests from chipdev** (datacenter IP): `sync.py` gets 403 before
+  auth. A headed Chromium under `xvfb-run` passes the challenge instantly where headless does not;
+  the working recipe is to capture that browser's `cf_clearance` cookie plus its exact User-Agent
+  and inject both into `sync.py`'s requests session, then run
+  `python3 scripts/substack/sync.py --post <slug>` for a targeted publish. Clearances expire in
+  about 30 minutes, so refresh per run. The `chips-mac` runner exists precisely to avoid all this
+  (residential IP); as of 2026-08-31 it is **unregistered** and the per-push sync does not run.
+- **Backlog**: five posts were never synced while the runner was down (Green Build, Voice Twin,
+  Mobile Releases, Agents Finished, plus a Sentry update). The queued workflow run was cancelled
+  deliberately so they do not email subscribers all at once; publish them spaced with
+  `--post <slug>`, on Chip's call. `--dry-run` first, always: it lists exactly what would go out.
+
 Mermaid diagrams in posts use pre-rendered PNGs from `public/images/diagrams/`. To re-process diagrams, run `npm run process-mermaid` (`scripts/process-mermaid-diagrams.cjs`).
 
 ### Voice Guidelines
