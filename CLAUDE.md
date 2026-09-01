@@ -210,6 +210,16 @@ newsletter anymore; it remains only behind the contact form.
 - **Subscribe surfaces**: homepage newsletter box, end-of-post box
   (`SubscribePrompt`), and a slide-in popup 8s into reading a post
   (`SubscribePopup`; localStorage-silenced after subscribe or dismiss).
+- **Discord ping**: a genuinely new subscriber (or a returning unsubscribed
+  one) posts a line to the private #subscribers channel via
+  `NEWSLETTER_DISCORD_WEBHOOK` (`lib/newsletter/notify.ts`); repeat signups
+  of an active address stay quiet. Best effort, never fails the signup.
+- **Read analytics**: PostHog (same project as the portfolio, app
+  `ciprianrarau`), wired in `components/PostHogProvider.tsx`. Every blog
+  post also captures a `blog_read` event (`components/BlogReadTracker.tsx`)
+  with slug, seconds the tab was actually visible, and max scroll depth,
+  sent on tab-hide/leave via sendBeacon; take max(seconds) per `read_id`
+  when analyzing.
 - **Tokens**: `lib/newsletter/token.ts` (app) and
   `scripts/newsletter/token.mjs` (sender) must stay byte-identical; the
   `newsletter-token.test.ts` lockstep test enforces it.

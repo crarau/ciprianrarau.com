@@ -26,18 +26,30 @@ export function subscribersClient(): TableClient | null {
   return TableClient.fromConnectionString(conn, SUBSCRIBERS_TABLE);
 }
 
+/**
+ * Returns true when this signup actually changed something (a brand-new
+ * address, or a previously unsubscribed one coming back), so callers can
+ * notify on real events and stay quiet on repeat submits.
+ */
 export async function addSubscriber(
   list: ListName,
   email: string,
   source: string,
-): Promise<void> {
+): Promise<boolean> {
   const normalized = email.trim().toLowerCase();
   const table = subscribersClient();
   if (!table) {
     console.log(
       `[newsletter] (no storage configured) would subscribe ${normalized} to ${list} (${source})`,
     );
-    return;
+    return true;
+  }
+  let isNew = true;
+  try {
+    const existing = await table.getEntity<{ status?: string }>(list, normalized);
+    isNew = existing.status !== 'active';
+  } catch {
+    // 404: first time we see this address
   }
   await table.upsertEntity(
     {
@@ -50,6 +62,7 @@ export async function addSubscriber(
     },
     'Merge',
   );
+  return isNew;
 }
 
 export async function markUnsubscribed(

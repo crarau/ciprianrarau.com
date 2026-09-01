@@ -6,6 +6,7 @@
  */
 
 import { addSubscriber } from '@/lib/newsletter/store';
+import { notifyNewSubscriber } from '@/lib/newsletter/notify';
 
 export const runtime = 'nodejs';
 
@@ -31,7 +32,10 @@ export async function POST(req: Request): Promise<Response> {
   const source = (body.source ?? 'site').slice(0, 64).replace(/[^\w.-]/g, '');
 
   try {
-    await addSubscriber('ciprianrarau', email, source || 'site');
+    const isNew = await addSubscriber('ciprianrarau', email, source || 'site');
+    if (isNew) {
+      await notifyNewSubscriber('ciprianrarau', email, source || 'site');
+    }
   } catch (err) {
     console.error('[newsletter] subscribe failed:', (err as Error).message);
     return json({ error: 'Subscription failed. Try again in a moment.' }, 502);

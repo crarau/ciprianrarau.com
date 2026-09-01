@@ -5,6 +5,11 @@ vi.mock('@/lib/newsletter/store', () => ({
   addSubscriber: (...args: unknown[]) => addSubscriber(...args),
 }));
 
+const notifyNewSubscriber = vi.fn();
+vi.mock('@/lib/newsletter/notify', () => ({
+  notifyNewSubscriber: (...args: unknown[]) => notifyNewSubscriber(...args),
+}));
+
 import { POST } from '../../app/api/subscribe/route';
 
 function request(body: unknown): Request {
@@ -17,6 +22,7 @@ function request(body: unknown): Request {
 
 afterEach(() => {
   addSubscriber.mockReset();
+  notifyNewSubscriber.mockReset();
 });
 
 describe('POST /api/subscribe', () => {
@@ -38,16 +44,24 @@ describe('POST /api/subscribe', () => {
     expect(addSubscriber).not.toHaveBeenCalled();
   });
 
-  it('subscribes a valid email to the ciprianrarau list with its source', async () => {
-    addSubscriber.mockResolvedValue(undefined);
+  it('subscribes a valid email and notifies Discord for a new subscriber', async () => {
+    addSubscriber.mockResolvedValue(true);
     const res = await POST(request({ email: 'reader@example.com', source: 'post-my-slug' }));
     expect(res.status).toBe(200);
     expect(await res.json()).toEqual({ ok: true });
     expect(addSubscriber).toHaveBeenCalledWith('ciprianrarau', 'reader@example.com', 'post-my-slug');
+    expect(notifyNewSubscriber).toHaveBeenCalledWith('ciprianrarau', 'reader@example.com', 'post-my-slug');
+  });
+
+  it('stays quiet on a repeat signup of an active subscriber', async () => {
+    addSubscriber.mockResolvedValue(false);
+    const res = await POST(request({ email: 'reader@example.com' }));
+    expect(res.status).toBe(200);
+    expect(notifyNewSubscriber).not.toHaveBeenCalled();
   });
 
   it('sanitizes the source field', async () => {
-    addSubscriber.mockResolvedValue(undefined);
+    addSubscriber.mockResolvedValue(true);
     await POST(request({ email: 'reader@example.com', source: '<script>x</script>' }));
     expect(addSubscriber).toHaveBeenCalledWith('ciprianrarau', 'reader@example.com', 'scriptxscript');
   });

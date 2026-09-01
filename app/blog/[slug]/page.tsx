@@ -7,6 +7,7 @@ import { Footer } from '@/components/Footer';
 import { Container } from '@/components/Container';
 import { SubscribePrompt } from '@/components/SubscribePrompt';
 import { SubscribePopup } from '@/components/SubscribePopup';
+import { BlogReadTracker } from '@/components/BlogReadTracker';
 import { getAllPosts, getPost, formatDate, renderPostHtml } from '@/lib/blog';
 
 type Params = { slug: string };
@@ -95,6 +96,7 @@ export default async function PostPage({ params }: { params: Promise<Params> }) 
           </Container>
         </article>
         <SubscribePopup source={slug} />
+        <BlogReadTracker slug={slug} />
       </main>
       <Footer />
     </>
