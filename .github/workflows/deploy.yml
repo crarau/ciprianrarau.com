@@ -167,7 +167,7 @@ jobs:
         run: npm ci
 
       - name: Send new-post emails
-        run: node scripts/newsletter/send-post.mjs --auto
+        run: npx tsx scripts/newsletter/send-post.mjs --auto
         env:
           ACS_CONNECTION_STRING: ${{ secrets.ACS_CONNECTION_STRING }}
           NEWSLETTER_STORAGE_CONNECTION_STRING: ${{ secrets.NEWSLETTER_STORAGE_CONNECTION_STRING }}

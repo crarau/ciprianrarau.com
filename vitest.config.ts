@@ -7,4 +7,12 @@ export default defineConfig({
       '@': path.resolve(__dirname),
     },
   },
+  // Next.js sets "jsx": "preserve" in tsconfig, which the test transformer
+  // would otherwise inherit; tests import .tsx (the newsletter email), so
+  // transform JSX here.
+  oxc: {
+    jsx: {
+      runtime: 'automatic',
+    },
+  },
 });

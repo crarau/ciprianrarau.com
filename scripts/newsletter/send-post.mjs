@@ -10,11 +10,11 @@
  * again, which is what makes running `--auto` on every deploy safe.
  *
  * Usage:
- *   node scripts/newsletter/send-post.mjs --auto            # announce new posts (deploy hook)
- *   node scripts/newsletter/send-post.mjs --slug my-post    # announce one post
- *   node scripts/newsletter/send-post.mjs --slug my-post --to a@b.com   # test send, no ledger
- *   node scripts/newsletter/send-post.mjs --seed            # mark all published posts as sent
- *   node scripts/newsletter/send-post.mjs --auto --dry-run  # print what would happen
+ *   npx tsx scripts/newsletter/send-post.mjs --auto            # announce new posts (deploy hook)
+ *   npx tsx scripts/newsletter/send-post.mjs --slug my-post    # announce one post
+ *   npx tsx scripts/newsletter/send-post.mjs --slug my-post --to a@b.com   # test send, no ledger
+ *   npx tsx scripts/newsletter/send-post.mjs --seed            # mark all published posts as sent
+ *   npx tsx scripts/newsletter/send-post.mjs --auto --dry-run  # print what would happen
  *
  * Env: ACS_CONNECTION_STRING, NEWSLETTER_STORAGE_CONNECTION_STRING,
  *      NEWSLETTER_UNSUBSCRIBE_SECRET
@@ -23,15 +23,10 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import matter from 'gray-matter';
-import { unified } from 'unified';
-import remarkParse from 'remark-parse';
-import remarkGfm from 'remark-gfm';
-import remarkRehype from 'remark-rehype';
-import rehypeRaw from 'rehype-raw';
-import rehypeStringify from 'rehype-stringify';
 import { TableClient } from '@azure/data-tables';
 import { EmailClient } from '@azure/communication-email';
 import { unsubscribeToken } from './token.mjs';
+import { renderNewPostEmail } from './render-email.tsx';
 
 const SITE = 'https://ciprianrarau.com';
 const FROM = 'chip@ciprianrarau.com';
@@ -103,93 +98,6 @@ async function sentSlugs() {
   return done;
 }
 
-// ---------- email body ----------
-
-/** Content up to the first H2: the post's intro, what the email carries. */
-function intro(content) {
-  const withoutMermaid = content.replace(/```mermaid[\s\S]*?```/g, '');
-  const cut = withoutMermaid.search(/\n## /);
-  let text = cut >= 0 ? withoutMermaid.slice(0, cut) : withoutMermaid;
-  if (text.length > 2600) {
-    const paragraphBreak = text.lastIndexOf('\n\n', 2600);
-    text = paragraphBreak > 400 ? text.slice(0, paragraphBreak) : text.slice(0, 2600);
-  }
-  return text.trim();
-}
-
-async function renderIntroHtml(markdown) {
-  const file = await unified()
-    .use(remarkParse)
-    .use(remarkGfm)
-    .use(remarkRehype, { allowDangerousHtml: true })
-    .use(rehypeRaw)
-    .use(rehypeStringify, { allowDangerousHtml: true })
-    .process(markdown);
-  return String(file)
-    .replaceAll('href="/', `href="${SITE}/`)
-    .replaceAll('src="/', `src="${SITE}/`);
-}
-
-function emailHtml(post, introHtml, postUrl, unsubscribeUrl) {
-  const date = new Date(post.frontmatter.publishDate).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
-  return `<!doctype html>
-<html>
-<body style="margin:0;padding:0;background:#F5F4F1;">
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F5F4F1;padding:24px 0;">
-    <tr><td align="center">
-      <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;">
-        <tr><td style="padding:0 20px 16px;font-family:Helvetica,Arial,sans-serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#7C746B;">
-          Ciprian (Chip) Rarau &middot; New post
-        </td></tr>
-        <tr><td style="background:#FFFFFF;border:1px solid #E4E1DB;border-radius:12px;padding:36px 32px;font-family:Helvetica,Arial,sans-serif;color:#2B2723;">
-          <h1 style="margin:0 0 8px;font-size:26px;line-height:1.2;color:#21517C;">${escapeHtml(post.frontmatter.title)}</h1>
-          <p style="margin:0 0 24px;font-size:13px;color:#7C746B;">${date}</p>
-          <div style="font-size:16px;line-height:1.65;">
-            ${introHtml}
-          </div>
-          <table role="presentation" cellpadding="0" cellspacing="0" style="margin:28px 0 8px;">
-            <tr><td style="background:#21517C;border-radius:8px;">
-              <a href="${postUrl}" style="display:inline-block;padding:13px 26px;font-size:15px;font-weight:bold;color:#FFFFFF;text-decoration:none;">Read the full post &rarr;</a>
-            </td></tr>
-          </table>
-        </td></tr>
-        <tr><td style="padding:20px 24px;font-family:Helvetica,Arial,sans-serif;font-size:12px;line-height:1.6;color:#7C746B;">
-          You're getting this because you subscribed on <a href="${SITE}" style="color:#A45C36;">ciprianrarau.com</a> or <a href="https://ideaplaces.com" style="color:#A45C36;">ideaplaces.com</a>.
-          One email per post, nothing else.<br>
-          Ciprian Rarau &middot; Montreal, Canada &middot; <a href="${unsubscribeUrl}" style="color:#A45C36;">Unsubscribe</a>
-        </td></tr>
-      </table>
-    </td></tr>
-  </table>
-</body>
-</html>`;
-}
-
-function emailText(post, postUrl, unsubscribeUrl) {
-  return [
-    post.frontmatter.title,
-    '',
-    post.frontmatter.excerpt ?? '',
-    '',
-    `Read the full post: ${postUrl}`,
-    '',
-    `You're getting this because you subscribed on ciprianrarau.com or ideaplaces.com.`,
-    `Unsubscribe: ${unsubscribeUrl}`,
-  ].join('\n');
-}
-
-function escapeHtml(s) {
-  return s
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
-}
-
 // ---------- recipients ----------
 
 async function activeRecipients() {
@@ -206,19 +114,20 @@ async function activeRecipients() {
 
 // ---------- send ----------
 
-async function sendToRecipient(emailClient, secret, post, introHtml, recipient) {
+async function sendToRecipient(emailClient, secret, post, recipient) {
   const postUrl = `${SITE}/blog/${post.slug}?utm_source=newsletter&utm_medium=email&utm_campaign=${post.slug}`;
   const token = unsubscribeToken(recipient.list, recipient.email, secret);
   const unsubscribeUrl = `${SITE}/unsubscribe?token=${token}`;
   const oneClickUrl = `${SITE}/api/unsubscribe?token=${token}`;
+  const { html, text } = await renderNewPostEmail(post, postUrl, unsubscribeUrl);
 
   const message = {
     senderAddress: FROM,
     replyTo: [{ address: FROM }],
     content: {
       subject: post.frontmatter.title,
-      html: emailHtml(post, introHtml, postUrl, unsubscribeUrl),
-      plainText: emailText(post, postUrl, unsubscribeUrl),
+      html,
+      plainText: text,
     },
     recipients: { to: [{ address: recipient.email }] },
     headers: {
@@ -252,7 +161,6 @@ async function sendToRecipient(emailClient, secret, post, introHtml, recipient) 
 
 async function announce(post) {
   const secret = requireEnv('NEWSLETTER_UNSUBSCRIBE_SECRET');
-  const introHtml = await renderIntroHtml(intro(post.content));
 
   const recipients = mode.to
     ? [{ email: mode.to, list: 'ciprianrarau' }]
@@ -265,15 +173,12 @@ async function announce(post) {
     for (const r of recipients) console.log(`  would send to ${r.email} (${r.list})`);
     const previewPath = path.join(process.cwd(), `newsletter-preview-${post.slug}.html`);
     const token = unsubscribeToken('ciprianrarau', 'preview@example.com', secret);
-    fs.writeFileSync(
-      previewPath,
-      emailHtml(
-        post,
-        introHtml,
-        `${SITE}/blog/${post.slug}?utm_source=newsletter&utm_medium=email&utm_campaign=${post.slug}`,
-        `${SITE}/unsubscribe?token=${token}`,
-      ),
+    const { html } = await renderNewPostEmail(
+      post,
+      `${SITE}/blog/${post.slug}?utm_source=newsletter&utm_medium=email&utm_campaign=${post.slug}`,
+      `${SITE}/unsubscribe?token=${token}`,
     );
+    fs.writeFileSync(previewPath, html);
     console.log(`Dry run: no emails sent. Preview written to ${previewPath}`);
     return;
   }
@@ -283,7 +188,7 @@ async function announce(post) {
   let failed = 0;
   for (const recipient of recipients) {
     try {
-      await sendToRecipient(emailClient, secret, post, introHtml, recipient);
+      await sendToRecipient(emailClient, secret, post, recipient);
       sent++;
       console.log(`  sent to ${recipient.email}`);
     } catch (err) {
