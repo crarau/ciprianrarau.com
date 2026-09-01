@@ -13,6 +13,7 @@ concurrency:
 
 permissions:
   contents: write
+  id-token: write
 
 env:
   SUBSTACK_URL: https://chiprarau.substack.com
@@ -26,6 +27,25 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v7
 
+      # chips-mac is a shared machine: azure/login's cleanup runs against
+      # AZURE_CONFIG_DIR, and if that is the default ~/.azure it logs Chip
+      # out of his own session. Give every run its own config dir. This
+      # must come before azure/login. (azure/login@v1 would clear the
+      # shared dir in a PRE-step, before this could run: never use v1 here.)
+      - name: Isolate Azure CLI config (per-run)
+        run: |
+          DIR="$RUNNER_TEMP/azure-$GITHUB_RUN_ID"
+          mkdir -p "$DIR"
+          echo "AZURE_CONFIG_DIR=$DIR" >> "$GITHUB_ENV"
+
+      - name: Log in to Azure via OIDC
+        id: azlogin
+        uses: azure/login@v3
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
       - name: Fetch Substack cookie from Key Vault
         id: cookie
         run: |
@@ -37,10 +57,8 @@ jobs:
           RC=$?
           set -e
           if [ $RC -ne 0 ]; then
-            # The runner reads Key Vault through the Mac's interactive az
-            # session, so a lapsed login is the most common cause here.
-            if grep -qiE "az login|AADSTS|refresh token|expired|not logged in" /tmp/az-err; then
-              echo "failure_reason=az-login" >> "$GITHUB_OUTPUT"
+            if grep -qiE "Forbidden|does not have secrets get|AuthorizationFailed|403" /tmp/az-err; then
+              echo "failure_reason=keyvault-permission" >> "$GITHUB_OUTPUT"
             else
               echo "failure_reason=keyvault" >> "$GITHUB_OUTPUT"
             fi
@@ -91,7 +109,7 @@ jobs:
         if: failure()
         env:
           WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_CIPRIANRARAU_PRODUCTION }}
-          REASON: ${{ steps.cookie.outputs.failure_reason || steps.sync.outputs.failure_reason }}
+          REASON: ${{ steps.azlogin.outcome == 'failure' && 'oidc' || steps.cookie.outputs.failure_reason || steps.sync.outputs.failure_reason }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
           COMMIT_MSG: ${{ github.event.head_commit.message }}
           ACTOR: ${{ github.actor }}
@@ -101,16 +119,25 @@ jobs:
 
           reason = os.environ.get("REASON") or "unknown"
           cases = {
-              "az-login": (
-                  "Substack sync blocked: az login expired on chips-mac",
-                  "The runner could not read `substack-cookie` from Key Vault. The "
-                  "Azure CLI session on the Mac has lapsed.\n\n"
-                  "**Fix:** run `az login` on the Mac, then re-run this workflow.",
+              "oidc": (
+                  "Substack sync blocked: Azure OIDC login failed",
+                  "The job could not get an Azure token from GitHub's OIDC "
+                  "federation. Nothing on the Mac needs fixing.\n\n"
+                  "**Check:** the `ciprianrarau-com-main` federated credential on "
+                  "the `github-actions-ideaplaces` app registration (its subject "
+                  "must match `repo:Ideaplaces/ciprianrarau.com:ref:refs/heads/"
+                  "main`), and that the job still requests `id-token: write`.",
+                  15105570),
+              "keyvault-permission": (
+                  "Substack sync blocked: no access to substack-cookie",
+                  "Azure login worked, but reading the secret was denied.\n\n"
+                  "**Check:** `github-actions-ideaplaces` still holds **Key Vault "
+                  "Secrets User** on `kv-ideaplaces`.",
                   15105570),
               "keyvault": (
                   "Substack sync failed: Key Vault unreachable",
-                  "`az keyvault secret show` failed for a reason other than a lapsed "
-                  "login. Check the run log for the Azure error.",
+                  "`az keyvault secret show` failed after a successful login. "
+                  "Check the run log for the Azure error.",
                   15158332),
               "substack-cookie": (
                   "Substack sync failed: the Substack cookie is rejected",
