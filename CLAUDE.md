@@ -215,7 +215,7 @@ newsletter anymore; it remains only behind the contact form.
   `NEWSLETTER_DISCORD_WEBHOOK` (`lib/newsletter/notify.ts`); repeat signups
   of an active address stay quiet. Best effort, never fails the signup.
 - **Read analytics**: PostHog (same project as the portfolio, app
-  `ciprianrarau`), wired in `components/PostHogProvider.tsx`. Every blog
+  `ciprianrarau.com`), wired in `components/PostHogProvider.tsx`. Every blog
   post also captures a `blog_read` event (`components/BlogReadTracker.tsx`)
   with slug, seconds the tab was actually visible, and max scroll depth,
   sent on tab-hide/leave via sendBeacon; take max(seconds) per `read_id`

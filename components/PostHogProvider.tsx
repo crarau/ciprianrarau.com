@@ -25,7 +25,9 @@ if (typeof window !== 'undefined') {
     loaded: (ph) => {
       ph.register({
         environment: getEnvironment(),
-        app: 'ciprianrarau',
+        // Renamed from 'ciprianrarau' on 2026-09-02; rows before then carry
+        // the old name.
+        app: 'ciprianrarau.com',
       });
     },
   });
