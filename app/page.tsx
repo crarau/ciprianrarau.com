@@ -24,9 +24,9 @@ export default function Home() {
       <main>
         <Hero />
         <ProductsInMotion />
+        <BlogTeaser />
         <Companies />
         <Portfolio />
-        <BlogTeaser />
         <TrackRecord />
         <Newsletter />
       </main>

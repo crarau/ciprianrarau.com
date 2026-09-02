@@ -8,6 +8,14 @@ export type Company = {
 
 export const ACTIVE_COMPANIES: Company[] = [
   {
+    slug: 'ideaplaces',
+    name: 'IdeaPlaces',
+    role: 'Founder',
+    context:
+      'The product portfolio company. TourCockpit, C3, Style Guide, and the rest, built with my son Luca as a two-person team running on an agent system.',
+    url: 'https://ideaplaces.com',
+  },
+  {
     slug: 'mentorly',
     name: 'Mentorly',
     role: 'CTO / CPO',
