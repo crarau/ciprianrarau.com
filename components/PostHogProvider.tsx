@@ -17,6 +17,15 @@ function getEnvironment(): string {
   return 'production';
 }
 
+// The app name IS the domain, derived at runtime, so reports stay clean
+// with zero per-site configuration. Renamed from 'ciprianrarau' on
+// 2026-09-02; rows before then carry the old name.
+function getAppName(): string {
+  if (typeof window === 'undefined') return 'ciprianrarau.com';
+  const host = window.location.hostname.replace(/^www\./, '');
+  return host === 'localhost' || host === '127.0.0.1' ? 'ciprianrarau.com' : host;
+}
+
 if (typeof window !== 'undefined') {
   posthog.init(POSTHOG_KEY, {
     api_host: 'https://us.i.posthog.com',
@@ -25,9 +34,7 @@ if (typeof window !== 'undefined') {
     loaded: (ph) => {
       ph.register({
         environment: getEnvironment(),
-        // Renamed from 'ciprianrarau' on 2026-09-02; rows before then carry
-        // the old name.
-        app: 'ciprianrarau.com',
+        app: getAppName(),
       });
     },
   });
